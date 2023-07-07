@@ -2,6 +2,7 @@
  * Author:          Kyle Grenier
  * Date Created:    
  /********************************/
+using System.Collections;
 using UnityEngine;
 
 public class MouseInteractor : MonoBehaviour
@@ -10,11 +11,21 @@ public class MouseInteractor : MonoBehaviour
     [Header("Current Mouse Settings")]
     public float mouseLerpSpeed = 0.1f;
     public float forcePower = 100f;
-    private Vector3 previousInteractablePos;
+    private Vector3 previousInteractPos;
 
+    /// <summary>
+    /// The rate at which the mouse position is sampled.
+    /// </summary>
+    public float posSampleRateSeconds = 0.1f;
 
+    private Coroutine sampleMousePosCoroutine;
 
     public IInteractable currentInteractable;
+
+    private void Start()
+    {
+        sampleMousePosCoroutine = StartCoroutine(SampleMousePosition());
+    }
 
     public void Update()
     {
@@ -55,11 +66,12 @@ public class MouseInteractor : MonoBehaviour
                 print($"Unassigning interactable {currentInteractable}");
 
                 // Calculate the force to apply to the interactabl
-                Vector3 force = currentInteractable.gameObject.transform.position - previousInteractablePos;
+                Vector3 force = currentInteractable.gameObject.transform.position - previousInteractPos;
                 force *= forcePower;
 
                 // Apply the force
-                currentInteractable.rigidbody2D.AddForce(force, ForceMode2D.Impulse);
+                // currentInteractable.rigidbody2D.AddForce(force, ForceMode2D.Impulse);
+                currentInteractable.rigidbody2D.velocity = force;
 
                 currentInteractable.OnUnassigned();
                 currentInteractable = null;
@@ -77,10 +89,17 @@ public class MouseInteractor : MonoBehaviour
         // Fix z component to some value
         mousePos.z = 10f;
 
-        // Store previous position
-        previousInteractablePos = currentInteractable.gameObject.transform.position;
-
         // Lerp towards mouse to give it a bit of force to throw
         currentInteractable.gameObject.transform.position = Vector3.Lerp(currentInteractable.gameObject.transform.position, mousePos, mouseLerpSpeed);
+    }
+
+    private IEnumerator SampleMousePosition()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(posSampleRateSeconds);
+            // previousInteractPos = currentInteractable.gameObject.transform.position;
+            previousInteractPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
     }
 }

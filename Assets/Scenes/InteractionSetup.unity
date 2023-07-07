@@ -1093,8 +1093,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45bb56fcf68caef4e929157e87852d87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseLerpSpeed: 0.1
-  forcePower: 20
+  mouseLerpSpeed: 0.8
+  forcePower: 5
+  posSampleRateSeconds: 0.1
 --- !u!4 &781511743
 Transform:
   m_ObjectHideFlags: 0
