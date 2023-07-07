@@ -51,10 +51,12 @@ public class MouseInteractor : MonoBehaviour
                     if(currentInteractable != null)
                     {
                         currentInteractable.OnUnassigned();
+                        currentInteractable.OnInteractableDestroyed -= OnInteractableDestroyed;
                     }
 
                     interactable.Interact();
                     currentInteractable = interactable;
+                    currentInteractable.OnInteractableDestroyed += OnInteractableDestroyed;
                 }
             }
         }
@@ -74,6 +76,7 @@ public class MouseInteractor : MonoBehaviour
                 currentInteractable.rigidbody2D.velocity = force;
 
                 currentInteractable.OnUnassigned();
+                currentInteractable.OnInteractableDestroyed -= OnInteractableDestroyed;
                 currentInteractable = null;
             }
         }
@@ -91,6 +94,11 @@ public class MouseInteractor : MonoBehaviour
 
         // Lerp towards mouse to give it a bit of force to throw
         currentInteractable.gameObject.transform.position = Vector3.Lerp(currentInteractable.gameObject.transform.position, mousePos, mouseLerpSpeed);
+    }
+
+    private void OnInteractableDestroyed()
+    {
+        currentInteractable = null;
     }
 
     private IEnumerator SampleMousePosition()

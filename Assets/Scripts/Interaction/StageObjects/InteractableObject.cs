@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -5,11 +6,11 @@ public class InteractableObject : MonoBehaviour, IInteractable
 {
     Rigidbody2D IInteractable.rigidbody2D => GetComponent<Rigidbody2D>();
 
-    // public new Rigidbody2D rigidbody2D { get { return GetComponent<Rigidbody2D>(); } }
+    public event Action OnInteractableDestroyed;
+
     public virtual void Interact()
     {
         Debug.Log("Interacting with " + gameObject.name);
-
     }
 
     public virtual void OnAssigned()
@@ -20,5 +21,10 @@ public class InteractableObject : MonoBehaviour, IInteractable
     public virtual void OnUnassigned()
     {
 
+    }
+
+    void OnDestroy()
+    {
+        OnInteractableDestroyed?.Invoke();
     }
 }

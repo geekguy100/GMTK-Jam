@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 6300097219355550163}
   - component: {fileID: 3399455575211976038}
   - component: {fileID: 6654331739571420700}
+  - component: {fileID: 8799092438539010464}
   m_Layer: 0
-  m_Name: Bottle
+  m_Name: BaseStageObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,6 +187,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8799092438539010464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3047843699924100991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21307540d92d63dd096ef00f5bfcb1b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5438412961743131630
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -196,7 +209,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6418518396211899565, guid: 27a26b2a6dee0b948a083ce9b72ed74e, type: 3}
       propertyPath: m_Name
-      value: BottlePiece
+      value: Piece
       objectReference: {fileID: 0}
     - target: {fileID: 7041430956921512423, guid: 27a26b2a6dee0b948a083ce9b72ed74e, type: 3}
       propertyPath: m_RootOrder
@@ -262,7 +275,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6418518396211899565, guid: 27a26b2a6dee0b948a083ce9b72ed74e, type: 3}
       propertyPath: m_Name
-      value: BottlePiece (1)
+      value: Piece
       objectReference: {fileID: 0}
     - target: {fileID: 7041430956921512423, guid: 27a26b2a6dee0b948a083ce9b72ed74e, type: 3}
       propertyPath: m_RootOrder
