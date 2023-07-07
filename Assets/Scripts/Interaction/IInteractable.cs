@@ -2,12 +2,15 @@
  * Author:          Kyle Grenier
  * Date Created:    
  /********************************/
-namespace Interaction
+
+using UnityEngine;
+public interface IInteractable
 {
-    public interface IInteractable
-    {
-        void Interact();
-        void OnAssigned();
-        void OnUnassigned();
-    }   
-}
+    void Interact();
+    void OnAssigned();
+    void OnUnassigned();
+
+    GameObject gameObject { get; }
+
+    Rigidbody2D rigidbody2D { get; }
+}   
