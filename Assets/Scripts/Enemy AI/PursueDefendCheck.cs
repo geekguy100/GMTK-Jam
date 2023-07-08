@@ -35,10 +35,5 @@ namespace EnemyAI
         {
             throw new System.NotImplementedException();
         }
-
-        public override void OnStunned()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

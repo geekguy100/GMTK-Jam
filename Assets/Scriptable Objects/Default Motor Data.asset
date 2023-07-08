@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab324e99148437f428b56b8d51fc9847, type: 3}
   m_Name: Default Motor Data
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 10
   airControl: 10
   canJump: 1
   jumpHeight: 1

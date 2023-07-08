@@ -25,10 +25,11 @@ namespace EnemyAI
 
         public void OnHit(DamageData damageData)
         {
+            damageData.force.y = 0;
+            damageData.force.x = Mathf.Clamp(damageData.force.x, -10, 10f);
             rb.AddForce(damageData.force, ForceMode2D.Impulse);
         }
         
-        public abstract void OnStunned();
         public abstract string GetStateName();
 
         public virtual void OnStateEnter()
