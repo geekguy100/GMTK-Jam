@@ -8,9 +8,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4241159902045997724, guid: 27a26b2a6dee0b948a083ce9b72ed74e, type: 3}
+      propertyPath: m_Mass
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 6418518396211899565, guid: 27a26b2a6dee0b948a083ce9b72ed74e, type: 3}
       propertyPath: m_Name
-      value: BasePiece
+      value: BottlePiece
       objectReference: {fileID: 0}
     - target: {fileID: 7041430956921512423, guid: 27a26b2a6dee0b948a083ce9b72ed74e, type: 3}
       propertyPath: m_RootOrder
