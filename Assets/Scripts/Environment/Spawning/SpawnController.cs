@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class SpawnController : MonoBehaviour
 {
-    [SerializeField] private int bottleCount;
-    [SerializeField] private int stoolCount;
-    [SerializeField] private int foodCount;
     [SerializeField] private float spawnFrequency;
     [SerializeField] private List<ObstacleSpawner> obstacleSpawners;
 
     private float timeElapsed;
 
+    private Dictionary<ObstacleType, float> obstacleTimers = new Dictionary<ObstacleType, float>();
     private Dictionary<ObstacleType, int> obstacleStorage = new Dictionary<ObstacleType, int>();
 
     ///if an object is destroyed put it back in the queue;
@@ -25,13 +23,20 @@ public class SpawnController : MonoBehaviour
             switch((ObstacleType)System.Enum.Parse(typeof(ObstacleType), type))
             {
                 case ObstacleType.Bottle:
-                    obstacleStorage.Add(ObstacleType.Bottle, bottleCount);
+                    obstacleStorage.Add(ObstacleType.Bottle, SpawnConstants.INITIAL_BOTTLE_LIMIT);
+                    obstacleTimers.Add(ObstacleType.Bottle, SpawnConstants.BOTTLE_SPAWN_COOLDOWN);
                     break;
                 case ObstacleType.Stool:
-                    obstacleStorage.Add(ObstacleType.Stool, stoolCount);
+                    obstacleStorage.Add(ObstacleType.Stool, SpawnConstants.INITIAL_STOOL_LIMIT);
+                    obstacleTimers.Add(ObstacleType.Stool, SpawnConstants.STOOL_SPAWN_COOLDOWN);
                     break;
                 case ObstacleType.Food:
-                    obstacleStorage.Add(ObstacleType.Food, foodCount);
+                    obstacleStorage.Add(ObstacleType.Food, SpawnConstants.INITIAL_FOOD_LIMIT);
+                    obstacleTimers.Add(ObstacleType.Food, SpawnConstants.FOOD_SPAWN_COOLDOWN);
+                    break;
+                case ObstacleType.Heavy:
+                    obstacleStorage.Add(ObstacleType.Heavy, SpawnConstants.INITIAL_HEAVY_LIMIT);
+                    obstacleTimers.Add(ObstacleType.Heavy, SpawnConstants.HEAVY_SPAWN_COOLDOWN);
                     break;
                 default:
                     break;
@@ -42,16 +47,45 @@ public class SpawnController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeElapsed += Time.deltaTime;
+        CalculateTime();
         if(timeElapsed >= spawnFrequency)
         {
             SpawnRandomObstacle();
             timeElapsed = 0;
         }
-
+        /*
         if (Input.GetKeyDown(KeyCode.Space))
         {
             TestSpawnRandom();
+        }
+        */
+    }
+
+    /// <summary>
+    /// Handles individual spawning cooldowns
+    /// </summary>
+    private void CalculateTime()
+    {
+        timeElapsed += Time.deltaTime;
+        if(obstacleTimers[ObstacleType.Bottle] > 0)
+        {
+            obstacleTimers[ObstacleType.Bottle] -= Time.deltaTime;
+        }
+
+        if (obstacleTimers[ObstacleType.Food] > 0)
+        {
+            obstacleTimers[ObstacleType.Food] -= Time.deltaTime;
+        }
+
+        if (obstacleTimers[ObstacleType.Stool] > 0)
+        {
+            obstacleTimers[ObstacleType.Stool] -= Time.deltaTime;
+        }
+
+        if (obstacleTimers[ObstacleType.Heavy] > 0)
+        {
+            obstacleTimers[ObstacleType.Heavy] -= Time.deltaTime;
+            Debug.Log("HEAVY TIMER: " + obstacleTimers[ObstacleType.Heavy]);
         }
     }
 
@@ -65,8 +99,9 @@ public class SpawnController : MonoBehaviour
 
         foreach(KeyValuePair<ObstacleType,int> obstaclePair in obstacleStorage)
         {
-            if(obstaclePair.Value > 0)
+            if(obstaclePair.Value > 0 && obstacleTimers[obstaclePair.Key] <= 0)
             {
+                Debug.Log(obstaclePair.Key + " -- " + obstacleTimers[obstaclePair.Key]);
                 potentialObstacleSpawns.Add(obstaclePair.Key);
             }
         }
@@ -77,11 +112,29 @@ public class SpawnController : MonoBehaviour
             Obstacle spawnedObs = obstacleSpawners[Random.Range(0, obstacleSpawners.Count)].SpawnObstacleType(obs);
             if(spawnedObs == null) { Debug.Log("Missing obstacle Type: " + obs); return; }
             obstacleStorage[spawnedObs.Type]--;
+            obstacleTimers[spawnedObs.Type] = GetSpawnCooldownConstant(spawnedObs.Type);
             spawnedObs.OnObstacleRemove += OnObstacleRemoveListener;
+            
         }
        //obstacleSpawners[Random.Range(0, obstacleSpawners.Count)].SpawnRandomObstacle();
     }
 
+    private float GetSpawnCooldownConstant(ObstacleType type)
+    {
+        switch (type)
+        {
+            case ObstacleType.Bottle:
+                return SpawnConstants.BOTTLE_SPAWN_COOLDOWN;
+            case ObstacleType.Stool:
+                return SpawnConstants.STOOL_SPAWN_COOLDOWN;
+            case ObstacleType.Food:
+                return SpawnConstants.FOOD_SPAWN_COOLDOWN;
+            case ObstacleType.Heavy:
+                return SpawnConstants.HEAVY_SPAWN_COOLDOWN;
+            default:
+                return 0;
+        }
+    }
     /// <summary>
     /// Handles when an obstacle in the scene is removed
     /// </summary>
