@@ -3,20 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace EnemyAI.Attacks
 {
+    [RequireComponent(typeof(OpponentContainer))]
     public class AttackBehaviourManager : MonoBehaviour
     {
         private AttackBehaviour currentAttack;
         private Dictionary<string, AttackBehaviour> attacks;
         private int NumAttacks => attacks.Count;
 
-        [SerializeField] private OpponentContainer opponentContainer;
+        private OpponentContainer opponentContainer;
 
         private void Awake()
         {
+            opponentContainer = GetComponent<OpponentContainer>();
+                
             var components = GetComponents<AttackBehaviour>();
             attacks = new Dictionary<string, AttackBehaviour>();
 
@@ -44,7 +46,7 @@ namespace EnemyAI.Attacks
 
         private void SetRandomAttack()
         {
-            int index = Random.Range(0, NumAttacks);
+            int index = UnityEngine.Random.Range(0, NumAttacks);
             currentAttack = attacks.Values.ElementAt(index);
         }
 

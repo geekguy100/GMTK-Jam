@@ -1,7 +1,6 @@
 ﻿using System;
 using KpattGames.Movement;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace EnemyAI
 {
@@ -12,9 +11,11 @@ namespace EnemyAI
         
         private float accumulatedAngle;
         private Vector2 dir;
+        private float currentDefenseTime;
 
         [SerializeField][Min(1f)] private float frequency;
         [SerializeField] private float maxMoveDistance;
+        [SerializeField] private float defenseTime;
 
         protected override void Awake()
         {
@@ -22,10 +23,24 @@ namespace EnemyAI
             motor = GetComponent<PlayerMotor2D>();
         }
 
+        public override void OnStateEnter()
+        {
+            base.OnStateEnter();
+            currentDefenseTime = 0f;
+        }
+
         private void Update()
         {
             if (!StateActive)
                 return;
+
+            currentDefenseTime += Time.deltaTime;
+
+            if (currentDefenseTime >= defenseTime)
+            {
+                StateManager.SetState(nameof(PursueState));
+                return;
+            }
             
             accumulatedAngle += Time.deltaTime;
             accumulatedAngle %= (Mathf.PI * 2);

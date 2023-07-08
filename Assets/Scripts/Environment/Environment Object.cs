@@ -8,6 +8,7 @@ using System;
 /// </summary>
 public class EnvironmentObject : MonoBehaviour
 {
+    public float MaxHealth { get; private set; }
     [SerializeField] private float health;
     [SerializeField] private bool invincible;
 
@@ -19,6 +20,7 @@ public class EnvironmentObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MaxHealth = health;
         rigidBody = GetComponent<Rigidbody2D>();
     }
 
@@ -35,7 +37,11 @@ public class EnvironmentObject : MonoBehaviour
         CollisionHandler(collision);
     }
 
-
+    public float GetHealthPercent()
+    {
+        return (health / MaxHealth);
+    }
+    
     protected virtual void CollisionHandler(Collision2D collision)
     {
         float collisionForce = collision.relativeVelocity.magnitude;

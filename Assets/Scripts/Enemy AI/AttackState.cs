@@ -4,20 +4,35 @@ using UnityEngine;
 
 namespace EnemyAI
 {
+    [RequireComponent(typeof(AttackBehaviourManager))]
     public class AttackState : EnemyStateBase
     {
-        [SerializeField] private AttackBehaviourManager attackManager;
+        private AttackBehaviourManager attackManager;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            attackManager = GetComponent<AttackBehaviourManager>();
+        }
 
         public override void OnStateEnter()
         {
+            base.OnStateEnter();
             StartCoroutine(Attack());
         }
-
-        public override void OnStateExit()
-        {
-            StopAllCoroutines();
-        }
         
+        private IEnumerator Attack()
+        {
+            // Perform the attack and wait for it to complete.
+            // Once the attack is done, switch back to the PursueDefendCheck state to see
+            // if we should continue attacking or go on the defense.
+            attackManager.PerformAttack();
+            
+            yield return new WaitWhile(() => attackManager.IsMidAttack());
+            
+            StateManager.SetState(nameof(PursueDefendCheck));
+        }
+
         public override void OnPursued()
         {
             print(gameObject.name + " is being pursued while attacking.");
@@ -26,15 +41,6 @@ namespace EnemyAI
         public override void OnStunned()
         {
             print(gameObject.name + " stunned while attacking!");
-        }
-
-        private IEnumerator Attack()
-        {
-            while (StateManager.IsStateActive(nameof(AttackState)))
-            {
-                yield return new WaitWhile(() => attackManager.IsMidAttack());
-                attackManager.PerformAttack();
-            }
         }
 
         public override void OnHit(object sender)

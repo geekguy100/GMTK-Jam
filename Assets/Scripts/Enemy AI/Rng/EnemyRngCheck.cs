@@ -1,10 +1,14 @@
-﻿namespace EnemyAI
+﻿using UnityEngine;
+
+namespace EnemyAI
 {
-    public static class EnemyRngCheck
+    public class EnemyRngCheck : MonoBehaviour
     {
-        public static float Check(float health)
+        [SerializeField] private MinMax defenseWaitTimes;
+
+        public bool GetDefenseCheck()
         {
-            return 0;
+            return true;
         }
     }
 }

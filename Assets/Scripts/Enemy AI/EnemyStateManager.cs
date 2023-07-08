@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace EnemyAI
 {
     public class EnemyStateManager : MonoBehaviour, IEnemyState
     {
+        private bool HasCurrentState => !ReferenceEquals(currentState, null);
         private EnemyStateBase currentState;
         private Dictionary<string, EnemyStateBase> states;
 
@@ -21,9 +20,13 @@ namespace EnemyAI
             }
         }
 
+        /// <summary>
+        /// Performs an RNG check to see if the fighter should be in
+        /// an Attack or Defend state.
+        /// </summary>
         private void Start()
         {
-            SetState(states.Keys.ElementAt(0));
+            SetState(nameof(PursueDefendCheck));
         }
 
         /// <summary>
@@ -35,55 +38,59 @@ namespace EnemyAI
             if (!states.TryGetValue(stateName, out EnemyStateBase state))
             {
                 Debug.LogError("[EnemyStateManager]: Could not set the state named " + stateName);
+                
+                OnStateExit();
+                currentState = null;
                 return;
             }
             
+            SetState(state);
+        }
+
+        public void SetState(EnemyStateBase state)
+        {
+            if (HasCurrentState)
+                Debug.Log("[StateManager]: " + gameObject.name + " switching from " + currentState.GetStateName() + " to " + state.GetStateName());
+            else
+                Debug.Log("[StateManager]: Switching to " + state.GetStateName());
+
             OnStateExit();
             currentState = state;
             OnStateEnter();
         }
 
-        /// <summary>
-        /// Returns true if the current state's name matches the provided state name.
-        /// </summary>
-        /// <param name="stateName">The name of the state to check.</param>
-        /// <returns>True if the current state's name matches the provided state name.</returns>
-        public bool IsStateActive(string stateName)
-        {
-            if (ReferenceEquals(currentState, null))
-                return false;
-            
-            return currentState.GetStateName() == stateName;
-        }
-
         #region IEnemyState implementations
         public void OnPursued()
         {
-            if (!ReferenceEquals(currentState, null))
+            if (HasCurrentState)
                 currentState.OnPursued();
         }
 
         public void OnHit(object sender)
         {
-            if (!ReferenceEquals(currentState, null))
+            if (HasCurrentState)
                 currentState.OnHit(sender);
         }
 
         public string GetStateName()
         {
-            return !ReferenceEquals(currentState, null) ? currentState.GetStateName() : "Null";
+            return HasCurrentState ? currentState.GetStateName() : "Null";
         }
 
         public void OnStateEnter()
         {
-            if (!ReferenceEquals(currentState, null))
-                currentState.OnStateEnter();
+            if (!HasCurrentState)
+                return;
+            
+            currentState.OnStateEnter();
         }
 
         public void OnStateExit()
         {
-            if (!ReferenceEquals(currentState, null))
-                currentState.OnStateExit();
+            if (!HasCurrentState)
+                return;
+            
+            currentState.OnStateExit();
         }
         #endregion
     }
