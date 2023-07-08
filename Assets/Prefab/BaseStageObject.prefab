@@ -102,6 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   invincible: 0
+  audioSource: {fileID: 0}
+  damageSounds: []
+  destructionSounds: []
   destructionAssets:
   - {fileID: 1716747850403598206, guid: 27a26b2a6dee0b948a083ce9b72ed74e, type: 3}
   - {fileID: 1716747850403598206, guid: 27a26b2a6dee0b948a083ce9b72ed74e, type: 3}
