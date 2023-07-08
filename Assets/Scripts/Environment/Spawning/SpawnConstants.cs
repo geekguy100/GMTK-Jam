@@ -29,11 +29,11 @@ public struct SpawnConstants
     /// <summary>
     /// Speed Variance added on top of base speed
     /// </summary>
-    public const float LAUNCH_SPEED_VARIANCE = 5;
+    public const float LAUNCH_SPEED_VARIANCE = 10;
     /// <summary>
     /// Initial Launch speed
     /// </summary>
-    public const float LAUNCH_BASE_SPEED = 5;
+    public const float LAUNCH_BASE_SPEED = 10;
     /// <summary>
     /// Random applied torque on spawn
     /// </summary>

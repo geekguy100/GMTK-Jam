@@ -30,15 +30,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6027291601114443676, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6027291601114443676, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 6027291601114443676, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6027291601114443676, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -89,13 +89,33 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6300097219355550163, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
+      propertyPath: damageSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6300097219355550163, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
+      propertyPath: damageSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: fe34a5aa17931ee4195273d034112fde, type: 3}
+    - target: {fileID: 6300097219355550163, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
       propertyPath: destructionAssets.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6300097219355550163, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
+      propertyPath: destructionSounds.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6300097219355550163, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
       propertyPath: destructionAssets.Array.data[0]
       value: 
       objectReference: {fileID: 6952256829737466722, guid: f2f0ffe82db60e94cabcc4da137e4d2a, type: 3}
+    - target: {fileID: 6300097219355550163, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
+      propertyPath: destructionSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 074ea07c1738070ca83977b8ba72031c, type: 3}
+    - target: {fileID: 6300097219355550163, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
+      propertyPath: destructionSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 992798152d816a51fa43c72247241326, type: 3}
     - target: {fileID: 6654331739571420700, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
       propertyPath: m_Mass
       value: 2

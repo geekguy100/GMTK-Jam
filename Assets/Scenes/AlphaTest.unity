@@ -186,6 +186,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2404781579802618222, guid: 48576317fb09f51e8a214b6d3711d2d1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.582
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404781579802618222, guid: 48576317fb09f51e8a214b6d3711d2d1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2404781579802618222, guid: 48576317fb09f51e8a214b6d3711d2d1, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.582
+      objectReference: {fileID: 0}
     - target: {fileID: 2573140971505745571, guid: 48576317fb09f51e8a214b6d3711d2d1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -436,16 +448,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectParent: {fileID: 162056266}
-  direction: {x: 1, y: 0.25}
-  directionVariance: 30
-  launchVariance: 40
+  direction: {x: 1, y: 0.1}
   obstacles:
-  - {fileID: 4426981986048087617, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
+  - {fileID: 3371100915924836937, guid: b7fc324dd10a9f24e844ab4c28a0a0da, type: 3}
+  - {fileID: 5778202543868156678, guid: 969b0801355c5b14c875969f0cb7aded, type: 3}
+  - {fileID: 859437644137818341, guid: eb8d1f4363828664594b23844aaf8017, type: 3}
+  - {fileID: 2053385479285643555, guid: 08194decbc103c14597ba34400de46b0, type: 3}
+  - {fileID: 5625004071440861180, guid: a8906d7ec83e4f64d9be71de53dc955d, type: 3}
+  - {fileID: 6752665820243387972, guid: b33557220adca5c4488a0519e84c4e2e, type: 3}
+  - {fileID: 6059459925139993341, guid: d4eb8119fad999e468400cb2c5956ae1, type: 3}
   leftSide: 1
   bottles:
   - {fileID: 4426981986048087617, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
   stools: []
   foods: []
+  heavys: []
 --- !u!1 &654084277
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,16 +920,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectParent: {fileID: 162056266}
-  direction: {x: -1, y: 0.25}
-  directionVariance: 30
-  launchVariance: 40
+  direction: {x: -1, y: 0.1}
   obstacles:
-  - {fileID: 4426981986048087617, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
+  - {fileID: 3371100915924836937, guid: b7fc324dd10a9f24e844ab4c28a0a0da, type: 3}
+  - {fileID: 5778202543868156678, guid: 969b0801355c5b14c875969f0cb7aded, type: 3}
+  - {fileID: 859437644137818341, guid: eb8d1f4363828664594b23844aaf8017, type: 3}
+  - {fileID: 2053385479285643555, guid: 08194decbc103c14597ba34400de46b0, type: 3}
+  - {fileID: 5625004071440861180, guid: a8906d7ec83e4f64d9be71de53dc955d, type: 3}
+  - {fileID: 6752665820243387972, guid: b33557220adca5c4488a0519e84c4e2e, type: 3}
+  - {fileID: 6059459925139993341, guid: d4eb8119fad999e468400cb2c5956ae1, type: 3}
   leftSide: 0
   bottles:
   - {fileID: 4426981986048087617, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
   stools: []
   foods: []
+  heavys: []
 --- !u!1001 &1678209678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1051,6 +1073,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 862729f781416eb87aa80b9d75e80294, type: 3}
+--- !u!1001 &1790442299
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 435036731302134240, guid: f7109bdcc1e869d89a602ad15ca213f9, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 435036731302134240, guid: f7109bdcc1e869d89a602ad15ca213f9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 435036731302134240, guid: f7109bdcc1e869d89a602ad15ca213f9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 435036731302134240, guid: f7109bdcc1e869d89a602ad15ca213f9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 435036731302134240, guid: f7109bdcc1e869d89a602ad15ca213f9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 435036731302134240, guid: f7109bdcc1e869d89a602ad15ca213f9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 435036731302134240, guid: f7109bdcc1e869d89a602ad15ca213f9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 435036731302134240, guid: f7109bdcc1e869d89a602ad15ca213f9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 435036731302134240, guid: f7109bdcc1e869d89a602ad15ca213f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 435036731302134240, guid: f7109bdcc1e869d89a602ad15ca213f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 435036731302134240, guid: f7109bdcc1e869d89a602ad15ca213f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1005728249109304763, guid: f7109bdcc1e869d89a602ad15ca213f9, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f7109bdcc1e869d89a602ad15ca213f9, type: 3}
 --- !u!1 &1872547343
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,6 +1213,10 @@ PrefabInstance:
     - target: {fileID: 1784472726484839683, guid: 73abe8f8111005fd89484ae80c9154b5, type: 3}
       propertyPath: m_Name
       value: IntroCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1784472726484839683, guid: 73abe8f8111005fd89484ae80c9154b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2394161977254880293, guid: 73abe8f8111005fd89484ae80c9154b5, type: 3}
       propertyPath: m_Pivot.x
@@ -1386,10 +1473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07fd16f0e6fb22641a2cb592db44a580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bottleCount: 3
-  stoolCount: 0
-  foodCount: 0
-  spawnFrequency: 3
+  spawnFrequency: 2
   obstacleSpawners:
   - {fileID: 598052595}
   - {fileID: 1569455298}

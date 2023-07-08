@@ -10,7 +10,8 @@ public class MouseInteractor : MonoBehaviour
     [Header("Mouse Interact Settings")]
     public MouseInteractData mouseInteractData;
 
-    private Vector3 previousInteractPos;
+    private Vector2 prevMousePos;
+    private Vector2 mouseVelocity;
 
     private Coroutine sampleMousePosCoroutine;
 
@@ -24,7 +25,10 @@ public class MouseInteractor : MonoBehaviour
     public void Update()
     {
         HandleInput();
+    }
 
+    public void FixedUpdate()
+    {
         HandleInteractableMovement();
     }
 
@@ -34,11 +38,15 @@ public class MouseInteractor : MonoBehaviour
         {
             RaycastHit2D hit = Physics2D.Raycast(
                 Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10)),
-                 Vector2.zero); 
+                 Vector2.zero,
+                 100,
+                 LayerMask.GetMask("Interactable")); 
             if (hit.collider != null)
             {
-                print($"Hit {hit.collider.gameObject.name}");
-                IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+                GameObject hitObject = hit.collider.transform.parent.gameObject;
+                print($"Hit {hitObject.name}");
+                
+                IInteractable interactable = hitObject.GetComponent<IInteractable>();
                 if (interactable != null && interactable != currentInteractable)
                 {
                     // Unassign existing interactable if it exists.
@@ -52,6 +60,8 @@ public class MouseInteractor : MonoBehaviour
                     interactable.OnAssigned();
                     currentInteractable = interactable;
                     currentInteractable.OnInteractableDestroyed += OnInteractableDestroyed;
+
+                    currentInteractable.rb.velocity = Vector2.zero;
                 }
             }
         }
@@ -62,14 +72,10 @@ public class MouseInteractor : MonoBehaviour
             {
                 print($"Unassigning interactable {currentInteractable}");
 
-                // Calculate the force to apply to the interactable
-                Vector3 force = Camera.main.ScreenToWorldPoint(Input.mousePosition) - previousInteractPos;
-                force *= mouseInteractData.forcePower;
+                currentInteractable.OnUnassigned();
 
                 // Apply the force
-                currentInteractable.rb.velocity = force;
-
-                currentInteractable.OnUnassigned();
+                currentInteractable.rb.AddForce(mouseVelocity * currentInteractable.rb.mass * mouseInteractData.forcePower, ForceMode2D.Impulse);
                 currentInteractable.OnInteractableDestroyed -= OnInteractableDestroyed;
                 currentInteractable = null;
             }
@@ -83,11 +89,9 @@ public class MouseInteractor : MonoBehaviour
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        // Fix z component to some value
-        mousePos.z = 10f;
 
         // Lerp towards mouse to give it a bit of force to throw
-        currentInteractable.gameObject.transform.position = Vector3.Lerp(currentInteractable.gameObject.transform.position, mousePos, mouseInteractData.mouseLerpSpeed * Time.deltaTime);
+        currentInteractable.rb.MovePosition(Vector2.Lerp(currentInteractable.rb.position, mousePos, mouseInteractData.mouseLerpSpeed * Time.deltaTime));
     }
 
     private void OnInteractableDestroyed()
@@ -103,7 +107,11 @@ public class MouseInteractor : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(mouseInteractData.posSampleRateSeconds);
-            previousInteractPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            prevMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            float mouseX = Input.GetAxisRaw("Mouse X");
+            float mouseY = Input.GetAxisRaw("Mouse Y");
+            mouseVelocity = new Vector2(mouseX, mouseY);
         }
     }
 }

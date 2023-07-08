@@ -98,7 +98,7 @@ public class EnvironmentObject : MonoBehaviour
         // Handle sound playing
         if(damageSounds.Count > 0)
         {
-            AudioManager.Instance.PlayRandomClip(damageSounds);
+            AudioManager.Instance.PlayRandomObjectClip(damageSounds);
         }
     }
 
@@ -109,7 +109,7 @@ public class EnvironmentObject : MonoBehaviour
         // Handle sound playing
         if(destructionSounds.Count > 0)
         {
-            AudioManager.Instance.PlayRandomClip(destructionSounds);
+            AudioManager.Instance.PlayRandomObjectClip(destructionSounds);
         }
         
         if (destroyOnRemove)
