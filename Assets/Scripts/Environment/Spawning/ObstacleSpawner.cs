@@ -6,17 +6,14 @@ public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField] private Transform objectParent;
     [SerializeField] private Vector2 direction;
-    [SerializeField] private float directionVariance;
-    [SerializeField] private float launchVariance;
     [SerializeField] private List<Obstacle> obstacles;
     [SerializeField] private bool leftSide;
 
     public List<Obstacle> bottles = new List<Obstacle>();
     public List<Obstacle> stools = new List<Obstacle>();
     public List<Obstacle> foods = new List<Obstacle>();
+    public List<Obstacle> heavys = new List<Obstacle>();
 
-    private const float BASE_LAUNCH_FORCE = 5;
-    private const float BASE_LAUNCH_TORQUE = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +30,10 @@ public class ObstacleSpawner : MonoBehaviour
                 case ObstacleType.Food:
                     foods.Add(obs);
                     break;
+                case ObstacleType.Heavy:
+                    heavys.Add(obs);
+                    break;
+                    
             }
         }
         AssignEdgePosition();
@@ -80,6 +81,10 @@ public class ObstacleSpawner : MonoBehaviour
                 if(foods.Count == 0) { return SpawnObstacleType(ObstacleType.Default); }
                 obs = Spawn(foods[Random.Range(0, stools.Count)]);
                 break;
+            case ObstacleType.Heavy:
+                if (foods.Count == 0) { return SpawnObstacleType(ObstacleType.Default); }
+                obs = Spawn(heavys[Random.RandomRange(0, heavys.Count)]);
+                break;
             default:
                 //obs = Spawn(obstacles[Random.Range(0, obstacles.Count)]);
                 Debug.Log("Attempting to spawn unregistered object type: " + type);
@@ -95,12 +100,12 @@ public class ObstacleSpawner : MonoBehaviour
         Obstacle obs =  Instantiate(obsPrefab, objectParent);
         Rigidbody2D rigidBody = obs.GetComponent<Rigidbody2D>();
 
-        Vector2 dir = Quaternion.AngleAxis(Random.Range(-directionVariance, directionVariance), Vector3.forward) *direction;
+        Vector2 dir = Quaternion.AngleAxis(Random.Range(-SpawnConstants.LAUNCH_ANGLE_VARIANCE, SpawnConstants.LAUNCH_ANGLE_VARIANCE), Vector3.forward) *direction;
         //May need to scale applied forces based on weight
         rigidBody.position = transform.position;
-        rigidBody.AddTorque(Random.Range(-BASE_LAUNCH_TORQUE, BASE_LAUNCH_TORQUE));
+        rigidBody.AddTorque(Random.Range(-SpawnConstants.LAUNCH_BASE_TORQUE, SpawnConstants.LAUNCH_BASE_TORQUE));
         //rigidBody.AddForce(dir * (BASE_LAUNCH_FORCE + Random.Range(0, launchVariance)));
-        rigidBody.velocity = dir * (BASE_LAUNCH_FORCE + Random.Range(0, launchVariance));
+        rigidBody.velocity = dir * (SpawnConstants.LAUNCH_BASE_SPEED + Random.Range(0, SpawnConstants.LAUNCH_SPEED_VARIANCE));
         return obs;
     }
     
