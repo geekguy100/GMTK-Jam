@@ -3,11 +3,14 @@ using UnityEngine;
 
 namespace EnemyAI
 {
+    [RequireComponent(typeof(TextSetter))]
     public class EnemyStateManager : MonoBehaviour, IEnemyState
     {
         private bool HasCurrentState => !ReferenceEquals(currentState, null);
         private EnemyStateBase currentState;
         private Dictionary<string, EnemyStateBase> states;
+
+        private TextSetter textSetter;
 
         private void Awake()
         {
@@ -18,6 +21,8 @@ namespace EnemyAI
             {
                 states.Add(component.GetStateName(), component);
             }
+
+            textSetter = GetComponent<TextSetter>();
         }
 
         /// <summary>
@@ -82,6 +87,7 @@ namespace EnemyAI
             if (!HasCurrentState)
                 return;
             
+            textSetter.SetText(currentState.GetStateName());
             currentState.OnStateEnter();
         }
 

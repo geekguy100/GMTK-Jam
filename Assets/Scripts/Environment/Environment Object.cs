@@ -55,7 +55,6 @@ public class EnvironmentObject : MonoBehaviour
     protected virtual void CollisionHandler(Collision2D collision)
     {
         float collisionForce = collision.relativeVelocity.magnitude;
-        collision.gameObject.GetComponent<EnvironmentObject>();
         
         switch (collision.gameObject.tag)
         {
@@ -68,11 +67,16 @@ public class EnvironmentObject : MonoBehaviour
         //force too weak to damage health
         collisionForce -= DestructionConstants.DAMAGE_BUFFER;
         if(collisionForce <= 0) { return; }
+
+        string sourceName = collision.gameObject.tag;
+        if (sourceName == "Untagged")
+            sourceName = "Ground";
         
         OnDamaged(new DamageData()
         {
             damage = collisionForce,
-            force = collision.relativeVelocity
+            force = collision.relativeVelocity,
+            sourceName = sourceName
         });
 
         //Debug.Log(name + " hit with a force of " + collisionForce);

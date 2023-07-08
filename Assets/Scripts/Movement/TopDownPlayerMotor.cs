@@ -9,7 +9,7 @@ namespace KpattGames.Movement
 {
     public class TopDownPlayerMotor : PlayerMotor2D
     {
-        public override void Move(Vector2 input)
+        protected override void PerformMove(Vector2 input)
         {
             Vector2 velocity = transform.TransformDirection(input) * (motorData.movementSpeed * Time.deltaTime);
             rb.MovePosition(rb.position + velocity);

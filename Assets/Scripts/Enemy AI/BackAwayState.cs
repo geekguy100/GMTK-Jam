@@ -15,12 +15,8 @@ namespace EnemyAI
         private Vector2 input;
 
         private float timeInState;
-
-        [SerializeField] private Transform leftLedgeCheck;
-        [SerializeField] private Transform rightLedgeCheck;
-        [SerializeField] private float rayLength;
+        
         [SerializeField] private BackAwayStateData data;
-        [SerializeField] private LayerMask groundLayer;
 
         protected override void Awake()
         {
@@ -43,14 +39,6 @@ namespace EnemyAI
             input = (transform.position - opponent.position).normalized;
         }
 
-        private bool NearLedge()
-        {
-            bool groundedOnLeft = Physics2D.Raycast(leftLedgeCheck.position, -leftLedgeCheck.up, rayLength, groundLayer);
-            bool groundedOnRight = Physics2D.Raycast(rightLedgeCheck.position, -rightLedgeCheck.up, rayLength, groundLayer);
-
-            return !groundedOnLeft || !groundedOnRight;
-        }
-
         private void FixedUpdate()
         {
             if (!StateActive) 
@@ -66,11 +54,6 @@ namespace EnemyAI
             else if (timeInState >= data.MaxAllowedTimeInState)
             {
                 print("Time check - fighter has spent " + data.MaxAllowedTimeInState + " seconds backing up.");
-                StateManager.SetState(nameof(PursueDefendCheck));
-            }
-            else if (NearLedge())
-            {
-                print("Near ledge, so no longer backing up.");
                 StateManager.SetState(nameof(PursueDefendCheck));
             }
         }
@@ -91,10 +74,6 @@ namespace EnemyAI
         {
         }
 
-        public override void OnStunned()
-        {
-        }
-        
         public override string GetStateName()
         {
             return nameof(BackAwayState);
@@ -105,13 +84,6 @@ namespace EnemyAI
             UnityEditor.Handles.color = Color.yellow;
             var position = transform.position;
             UnityEditor.Handles.DrawLine(position, position + transform.right * data.MinDistance);
-        }
-
-        private void OnDrawGizmos()
-        {
-            UnityEditor.Handles.color = Color.yellow;
-            UnityEditor.Handles.DrawLine(leftLedgeCheck.position, leftLedgeCheck.position - leftLedgeCheck.up * rayLength);
-            UnityEditor.Handles.DrawLine(rightLedgeCheck.position, rightLedgeCheck.position - rightLedgeCheck.up * rayLength);
         }
     }
 }
