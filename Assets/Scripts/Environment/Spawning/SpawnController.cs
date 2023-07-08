@@ -70,8 +70,8 @@ public class SpawnController : MonoBehaviour
         if (potentialObstacleSpawns.Count > 0)
         {
             ObstacleType obs = potentialObstacleSpawns[Random.Range(0, potentialObstacleSpawns.Count)];
-            Obstacle spawnedObs = obstacleSpawners[Random.Range(0, obstacleSpawners.Count)].SpawnRandomObstacle();
-            if(spawnedObs == null) { }
+            Obstacle spawnedObs = obstacleSpawners[Random.Range(0, obstacleSpawners.Count)].SpawnObstacleType(obs);
+            if(spawnedObs == null) { Debug.Log("Missing obstacle Type: " + obs); return; }
             obstacleStorage[spawnedObs.Type]--;
             spawnedObs.OnObstacleRemove += OnObstacleRemoveListener;
         }

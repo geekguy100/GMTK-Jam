@@ -11,8 +11,8 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private List<Obstacle> obstacles;
     [SerializeField] private bool leftSide;
 
-    private List<Obstacle> bottles = new List<Obstacle>();
-    private List<Obstacle> stools = new List<Obstacle>();
+    public List<Obstacle> bottles = new List<Obstacle>();
+    public List<Obstacle> stools = new List<Obstacle>();
 
     private const float BASE_LAUNCH_FORCE = 20;
     private const float BASE_LAUNCH_TORQUE = 5;
@@ -60,7 +60,7 @@ public class ObstacleSpawner : MonoBehaviour
         return SpawnObstacleType((ObstacleType)Random.Range(0, System.Enum.GetNames(typeof(ObstacleType)).Length));
     }
 
-    private Obstacle SpawnObstacleType(ObstacleType type)
+    public Obstacle SpawnObstacleType(ObstacleType type)
     {
         Obstacle obs;
         switch (type)

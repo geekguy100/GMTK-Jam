@@ -205,6 +205,8 @@ MonoBehaviour:
   obstacles:
   - {fileID: 4426981986048087617, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
   leftSide: 1
+  bottles: []
+  stools: []
 --- !u!1 &654084277
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +464,8 @@ MonoBehaviour:
   obstacles:
   - {fileID: 4426981986048087617, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
   leftSide: 0
+  bottles: []
+  stools: []
 --- !u!1001 &1711335700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -757,8 +761,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07fd16f0e6fb22641a2cb592db44a580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bottleCount: 0
-  stoolCount: 1
+  bottleCount: 2
+  stoolCount: 0
   spawnFrequency: 1
   obstacleSpawners:
   - {fileID: 598052595}
