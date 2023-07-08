@@ -14,6 +14,7 @@ public class ObstacleSpawner : MonoBehaviour
     public List<Obstacle> bottles = new List<Obstacle>();
     public List<Obstacle> stools = new List<Obstacle>();
     public List<Obstacle> foods = new List<Obstacle>();
+    public List<Obstacle> heavys = new List<Obstacle>();
 
     private const float BASE_LAUNCH_FORCE = 5;
     private const float BASE_LAUNCH_TORQUE = 5;
@@ -33,6 +34,10 @@ public class ObstacleSpawner : MonoBehaviour
                 case ObstacleType.Food:
                     foods.Add(obs);
                     break;
+                case ObstacleType.Heavy:
+                    heavys.Add(obs);
+                    break;
+                    
             }
         }
         AssignEdgePosition();
@@ -79,6 +84,10 @@ public class ObstacleSpawner : MonoBehaviour
             case ObstacleType.Food:
                 if(foods.Count == 0) { return SpawnObstacleType(ObstacleType.Default); }
                 obs = Spawn(foods[Random.Range(0, stools.Count)]);
+                break;
+            case ObstacleType.Heavy:
+                if (foods.Count == 0) { return SpawnObstacleType(ObstacleType.Default); }
+                obs = Spawn(heavys[Random.RandomRange(0, heavys.Count)]);
                 break;
             default:
                 //obs = Spawn(obstacles[Random.Range(0, obstacles.Count)]);

@@ -4,13 +4,6 @@ using UnityEngine;
 using System;
 using Random = UnityEngine.Random;
 
-public enum ObstacleType
-{
-    Bottle,
-    Stool,
-    Food,
-    Default
-}
 public class Obstacle : EnvironmentObject
 {
     [SerializeField] private List<DestroyedPiece> destructionAssets;
