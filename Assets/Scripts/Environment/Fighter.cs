@@ -53,10 +53,12 @@ public class Fighter : EnvironmentObject
             {
                 stateManager.SetState(nameof(DazedState));
             }
-            else
-            {
-                regenCoroutine = StartCoroutine(RegenStamina());
-            }   
+            
+            regenCoroutine = StartCoroutine(RegenStamina());
+        }
+        else if (regenCoroutine == null)
+        {
+            regenCoroutine = StartCoroutine(RegenStamina());
         }
     }
 
