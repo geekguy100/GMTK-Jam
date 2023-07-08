@@ -65,6 +65,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6300097219355550163, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
+      propertyPath: destructionSounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6300097219355550163, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
       propertyPath: destructionAssets.Array.data[0]
       value: 
       objectReference: {fileID: 1150900158833572702, guid: 5b11602b25a19a6af9f74e35bca2aa00, type: 3}
@@ -104,6 +108,14 @@ PrefabInstance:
       propertyPath: destructionAssets.Array.data[9]
       value: 
       objectReference: {fileID: 1150900158833572702, guid: 5b11602b25a19a6af9f74e35bca2aa00, type: 3}
+    - target: {fileID: 6300097219355550163, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
+      propertyPath: destructionSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 73b15c7425b4b4a3d9b9f7e911a68e85, type: 3}
+    - target: {fileID: 6300097219355550163, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
+      propertyPath: destructionSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 89edb9732e21ae751bccf2537209c8e2, type: 3}
     - target: {fileID: 6654331739571420700, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
       propertyPath: m_Mass
       value: 0.1

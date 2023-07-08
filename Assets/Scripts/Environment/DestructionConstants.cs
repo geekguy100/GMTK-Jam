@@ -5,6 +5,10 @@ using UnityEngine;
 public struct DestructionConstants
 {
     /// <summary>
+    /// Objects that fall below this height are killed
+    /// </summary>
+    public const float MIN_Y_STAGE_BUFFER = -6f;
+    /// <summary>
     /// Minimum force required to damage an object
     /// </summary>
     public const float DAMAGE_BUFFER = 8f;

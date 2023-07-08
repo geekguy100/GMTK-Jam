@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7726815629489199042
 MonoBehaviour:
@@ -44,6 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45bb56fcf68caef4e929157e87852d87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseLerpSpeed: 0.8
-  forcePower: 5
-  posSampleRateSeconds: 0.1
+  mouseInteractData: {fileID: 11400000, guid: e8c51ebb49d1d9b3495dc878379b13ca, type: 2}
