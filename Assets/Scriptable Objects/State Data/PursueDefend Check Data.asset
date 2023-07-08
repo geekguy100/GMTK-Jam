@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab324e99148437f428b56b8d51fc9847, type: 3}
-  m_Name: Default Motor Data
+  m_Script: {fileID: 11500000, guid: ac02e2301ed58ce439167e085f2862d1, type: 3}
+  m_Name: PursueDefend Check Data
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  airControl: 10
-  canJump: 1
-  jumpHeight: 1
-  maxJumps: 1
-  gravity: -9.81
+  minHealthPercent: 0.5
+  percentForFightingBelowMinHealth: 0.2
+  percentForFightingAboveMinHealth: 0.7

@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab324e99148437f428b56b8d51fc9847, type: 3}
-  m_Name: Default Motor Data
+  m_Script: {fileID: 11500000, guid: 827de51906384454d9cdd4790bb2defa, type: 3}
+  m_Name: Back Away State Data
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  airControl: 10
-  canJump: 1
-  jumpHeight: 1
-  maxJumps: 1
-  gravity: -9.81
+  minDistance: 15
+  maxAllowedTimeInState: 3

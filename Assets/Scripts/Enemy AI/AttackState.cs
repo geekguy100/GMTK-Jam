@@ -42,11 +42,7 @@ namespace EnemyAI
         {
             print(gameObject.name + " stunned while attacking!");
         }
-
-        public override void OnHit(object sender)
-        {
-            print(gameObject.name + " hit while attacking");
-        }
+        
 
         public override string GetStateName()
         {

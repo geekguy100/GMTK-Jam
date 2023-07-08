@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -41,13 +39,18 @@ namespace EnemyAI.Attacks
                 return;
             }
 
+            SetAttack(attack);
+        }
+
+        public void SetAttack(AttackBehaviour attack)
+        {
             currentAttack = attack;
         }
 
         private void SetRandomAttack()
         {
-            int index = UnityEngine.Random.Range(0, NumAttacks);
-            currentAttack = attacks.Values.ElementAt(index);
+            int index = Random.Range(0, NumAttacks);
+            SetAttack(attacks.Values.ElementAt(index));
         }
 
         public void PerformAttack()

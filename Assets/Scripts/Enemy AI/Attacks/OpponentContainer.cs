@@ -1,14 +1,26 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace EnemyAI
 {
     public class OpponentContainer : MonoBehaviour
     {
-        [SerializeField] private Transform opponent;
+        private EnemyStateManager opponentManager;
+        [SerializeField] private EnvironmentObject opponent;
 
-        public Transform GetOpponent()
+        private void Awake()
+        {
+            opponentManager = opponent.GetComponent<EnemyStateManager>();
+        }
+
+        public EnvironmentObject GetOpponent()
         {
             return opponent;
+        }
+
+        public EnemyStateManager GetOpponentStateManager()
+        {
+            return opponentManager;
         }
     }
 }

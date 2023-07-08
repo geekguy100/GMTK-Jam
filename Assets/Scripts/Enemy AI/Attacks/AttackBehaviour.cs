@@ -1,11 +1,12 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace EnemyAI.Attacks
 {
     public abstract class AttackBehaviour : MonoBehaviour
     {
-        public abstract void PerformAttack(object opponent);
+        [SerializeField] protected AttackBehaviourData data;
+        
+        public abstract void PerformAttack(EnvironmentObject opponent);
         public abstract bool IsMidAttack();
         public abstract string GetName();
     }

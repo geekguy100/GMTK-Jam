@@ -21,11 +21,7 @@
         {
             throw new System.NotImplementedException();
         }
-
-        public override void OnHit(object sender)
-        {
-            throw new System.NotImplementedException();
-        }
+        
 
         public override string GetStateName()
         {

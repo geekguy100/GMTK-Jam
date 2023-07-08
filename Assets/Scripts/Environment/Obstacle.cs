@@ -5,17 +5,7 @@ using UnityEngine;
 public class Obstacle : EnvironmentObject
 {
     [SerializeField] private List<DestroyedPiece> destructionAssets;
-
     
-
-    protected override void CollisionHandler(Collision2D collision)
-    {
-        base.CollisionHandler(collision);
-    }
-    protected override void OnDamaged(float damage)
-    {
-        base.OnDamaged(damage);
-    }
     protected override void OnRemove()
     {
         DestroyedPiece piece;

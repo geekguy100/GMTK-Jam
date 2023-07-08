@@ -66,10 +66,10 @@ namespace EnemyAI
                 currentState.OnPursued();
         }
 
-        public void OnHit(object sender)
+        public void OnHit(DamageData damageData)
         {
             if (HasCurrentState)
-                currentState.OnHit(sender);
+                currentState.OnHit(damageData);
         }
 
         public string GetStateName()

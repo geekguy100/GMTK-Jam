@@ -1,4 +1,4 @@
-﻿using System;
+﻿using EnemyAI.Data;
 using KpattGames.Movement;
 using UnityEngine;
 
@@ -13,9 +13,7 @@ namespace EnemyAI
         private Vector2 dir;
         private float currentDefenseTime;
 
-        [SerializeField][Min(1f)] private float frequency;
-        [SerializeField] private float maxMoveDistance;
-        [SerializeField] private float defenseTime;
+        [SerializeField] private DefendStateData data;
 
         protected override void Awake()
         {
@@ -36,16 +34,16 @@ namespace EnemyAI
 
             currentDefenseTime += Time.deltaTime;
 
-            if (currentDefenseTime >= defenseTime)
+            if (currentDefenseTime >= data.TimeInDefense)
             {
-                StateManager.SetState(nameof(PursueState));
+                StateManager.SetState(nameof(PursueBackUpCheck));
                 return;
             }
             
             accumulatedAngle += Time.deltaTime;
             accumulatedAngle %= (Mathf.PI * 2);
 
-            float targetSin = Mathf.Sin(accumulatedAngle * frequency) * maxMoveDistance;
+            float targetSin = Mathf.Sin(accumulatedAngle * data.MovementFrequency) * data.MovementAmplitude;
             motor.Move((Vector2.right * targetSin) / motor.MotorData.movementSpeed);
         }
 
@@ -57,11 +55,7 @@ namespace EnemyAI
         public override void OnStunned()
         {
         }
-
-        public override void OnHit(object sender)
-        {
-            
-        }
+        
 
         public override string GetStateName()
         {

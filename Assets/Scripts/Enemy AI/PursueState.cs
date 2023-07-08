@@ -1,4 +1,5 @@
 ﻿
+using EnemyAI.Data;
 using KpattGames.Movement;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ namespace EnemyAI
         private Transform opponent;
         
         private OpponentContainer opponentContainer;
-        [SerializeField] private float minDistance;
+        [SerializeField] private PursueStateData data;
         
         protected override void Awake()
         {
@@ -23,7 +24,16 @@ namespace EnemyAI
 
         private void Start()
         {
-            opponent = opponentContainer.GetOpponent();
+            opponent = opponentContainer.GetOpponent().transform;
+        }
+
+        /// <summary>
+        /// Inform the opponent that they are being pursued.
+        /// </summary>
+        public override void OnStateEnter()
+        {
+            base.OnStateEnter();
+            opponentContainer.GetOpponentStateManager().OnPursued();
         }
 
         public override void OnStateExit()
@@ -38,7 +48,7 @@ namespace EnemyAI
                 return;
             
             input = (opponent.position - transform.position).normalized;
-            if (Vector2.Distance(transform.position, opponent.position) <= minDistance)
+            if (Vector2.Distance(transform.position, opponent.position) <= data.MinDistance)
             {
                 StateManager.SetState(nameof(AttackState));
             }
@@ -62,11 +72,6 @@ namespace EnemyAI
             print(gameObject.name + " stunned while pursuing");
         }
 
-        public override void OnHit(object sender)
-        {
-            print(gameObject.name + " got hit while pursuing.");
-        }
-
         public override string GetStateName()
         {
             return nameof(PursueState);
@@ -75,7 +80,7 @@ namespace EnemyAI
         private void OnDrawGizmosSelected()
         {
             UnityEditor.Handles.color = Color.yellow;
-            UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.back, minDistance, 1f);
+            UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.back, data.MinDistance, 1f);
         }
     }
 }

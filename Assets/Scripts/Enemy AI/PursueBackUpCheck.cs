@@ -1,10 +1,15 @@
-﻿using EnemyAI.Data;
+/*********************************
+ * Author:          Kyle Grenier
+ * Date Created:    
+ /********************************/
+
+using EnemyAI.Data;
 using UnityEngine;
 
 namespace EnemyAI
 {
     [RequireComponent(typeof(EnvironmentObject))]
-    public class PursueDefendCheck : RngCheck
+    public class PursueBackUpCheck : RngCheck
     {
         private EnvironmentObject environmentObject;
 
@@ -26,14 +31,16 @@ namespace EnemyAI
             return Random.Range(1, 101) / 100f;
         }
         
-        public override string GetStateName()
-        {
-            return nameof(PursueDefendCheck);
-        }
-
+        
+        
         public override void OnPursued()
         {
             throw new System.NotImplementedException();
+        }
+
+        public override string GetStateName()
+        {
+            return nameof(PursueBackUpCheck);
         }
 
         public override void OnStunned()

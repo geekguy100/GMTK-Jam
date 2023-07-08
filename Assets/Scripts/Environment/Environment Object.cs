@@ -13,7 +13,7 @@ public class EnvironmentObject : MonoBehaviour
     [SerializeField] private bool invincible;
 
 
-    private Rigidbody2D rigidBody;
+    protected Rigidbody2D rigidBody;
 
     public event Action OnObjectRemove;
 
@@ -46,14 +46,21 @@ public class EnvironmentObject : MonoBehaviour
     {
         float collisionForce = collision.relativeVelocity.magnitude;
         collision.gameObject.GetComponent<EnvironmentObject>();
-        OnDamaged(collisionForce);
+        OnDamaged(new DamageData()
+        {
+            damage = collisionForce,
+            force = collision.relativeVelocity
+        });
 
-        Debug.Log(name + " hit with a force of " + collisionForce);
+        // Debug.Log(name + " hit with a force of " + collisionForce);
     }
 
-    protected virtual void OnDamaged(float damage)
+    public virtual void OnDamaged(DamageData data)
     {
-        health -= damage;
+        if (invincible)
+            return;
+        
+        health -= data.damage;
     }
 
     protected virtual void OnRemove()
