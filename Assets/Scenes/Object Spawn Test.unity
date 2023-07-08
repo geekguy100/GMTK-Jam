@@ -757,7 +757,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07fd16f0e6fb22641a2cb592db44a580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnFrequency: 3
+  bottleCount: 0
+  stoolCount: 1
+  spawnFrequency: 1
   obstacleSpawners:
   - {fileID: 598052595}
   - {fileID: 1569455298}

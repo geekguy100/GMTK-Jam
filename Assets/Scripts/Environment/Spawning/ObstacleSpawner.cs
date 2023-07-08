@@ -74,7 +74,9 @@ public class ObstacleSpawner : MonoBehaviour
                 obs = Spawn(stools[Random.Range(0, stools.Count)]);
                 break;
             default:
-                obs = Spawn(obstacles[Random.Range(0, obstacles.Count)]);
+                //obs = Spawn(obstacles[Random.Range(0, obstacles.Count)]);
+                Debug.Log("Attempting to spawn unregistered object type: " + type);
+                obs = null;
                 break;
         }
         return obs;

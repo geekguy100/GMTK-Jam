@@ -18,9 +18,20 @@ public class SpawnController : MonoBehaviour
     void Start()
     {
         //Creates a key pair for every ObstacleType
-        foreach(string type in System.Enum.GetNames(typeof(ObstacleType)))
+        string[] obstacleTypeNames = System.Enum.GetNames(typeof(ObstacleType));
+        foreach(string type in obstacleTypeNames)
         {
-            obstacleStorage.Add((ObstacleType)System.Enum.Parse(typeof(ObstacleType), type), 0);
+            switch((ObstacleType)System.Enum.Parse(typeof(ObstacleType), type))
+            {
+                case ObstacleType.Bottle:
+                    obstacleStorage.Add(ObstacleType.Bottle, bottleCount);
+                    break;
+                case ObstacleType.Stool:
+                    obstacleStorage.Add(ObstacleType.Stool, stoolCount);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -40,13 +51,40 @@ public class SpawnController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Spawns a random obstacle while keeping staying within their respective limit counts
+    /// </summary>
+    List<ObstacleType> potentialObstacleSpawns = new List<ObstacleType>();
     private void SpawnRandomObstacle()
     {
-        bool spawned = false;
+        potentialObstacleSpawns.Clear();
 
-        //TODO: Check which obstacles need to be spawned in
-        //(ObstacleType)Random.Range(0, System.Enum.GetNames(typeof(ObstacleType)).Length)
-        obstacleSpawners[Random.Range(0, obstacleSpawners.Count)].SpawnRandomObstacle();
+        foreach(KeyValuePair<ObstacleType,int> obstaclePair in obstacleStorage)
+        {
+            if(obstaclePair.Value > 0)
+            {
+                potentialObstacleSpawns.Add(obstaclePair.Key);
+            }
+        }
+
+        if (potentialObstacleSpawns.Count > 0)
+        {
+            ObstacleType obs = potentialObstacleSpawns[Random.Range(0, potentialObstacleSpawns.Count)];
+            Obstacle spawnedObs = obstacleSpawners[Random.Range(0, obstacleSpawners.Count)].SpawnRandomObstacle();
+            if(spawnedObs == null) { }
+            obstacleStorage[spawnedObs.Type]--;
+            spawnedObs.OnObstacleRemove += OnObstacleRemoveListener;
+        }
+       //obstacleSpawners[Random.Range(0, obstacleSpawners.Count)].SpawnRandomObstacle();
+    }
+
+    /// <summary>
+    /// Handles when an obstacle in the scene is removed
+    /// </summary>
+    /// <param name="obs"></param>
+    private void OnObstacleRemoveListener(Obstacle obs)
+    {
+        obstacleStorage[obs.Type]++;
     }
     private void TestSpawnRandom()
     {
