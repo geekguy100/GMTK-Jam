@@ -19,6 +19,7 @@ public class Fighter : EnvironmentObject
     [SerializeField] private float staminaLostPerHit;
     [SerializeField] private float staminaRegenDelay;
     [SerializeField] private float staminaRegenMultiplier;
+    [SerializeField] private TextSetter textSetter;
 
     private void Awake()
     {
@@ -30,20 +31,32 @@ public class Fighter : EnvironmentObject
     
     public override void OnDamaged(DamageData data)
     {
-        base.OnDamaged(data);
+        // Only decrease health if receiving damage from another Fighter.
+        if (data.sourceName == "Fighter")
+            base.OnDamaged(data);
+        
+        // Applies knockback.
         stateManager.OnHit(data);
-        
-        if (regenCoroutine != null)
-            StopCoroutine(regenCoroutine);
-        
-        stamina -= staminaLostPerHit;
-        if (stamina <= 0)
+
+        if (stamina > 0)
         {
-            stateManager.SetState(nameof(DazedState));
-        }
-        else
-        {
-            regenCoroutine = StartCoroutine(RegenStamina());
+            Debug.Log(gameObject.name + " STAMINA GREATER THAN 0", gameObject);
+            if (regenCoroutine != null)
+            {
+                StopCoroutine(regenCoroutine);
+                regenCoroutine = null;
+            }
+            
+            stamina -= staminaLostPerHit;
+            textSetter.SetStaminaText("Stamina: " + stamina);
+            if (stamina <= 0)
+            {
+                stateManager.SetState(nameof(DazedState));
+            }
+            else
+            {
+                regenCoroutine = StartCoroutine(RegenStamina());
+            }   
         }
     }
 
@@ -55,7 +68,11 @@ public class Fighter : EnvironmentObject
             stamina += staminaRegenMultiplier * Time.deltaTime;
             stamina = Mathf.Clamp(stamina, 0, maxStamina);
             
+            textSetter.SetStaminaText("Stamina: " + Mathf.Floor(stamina));
+
             yield return null;
         }
+
+        regenCoroutine = null;
     }
 }

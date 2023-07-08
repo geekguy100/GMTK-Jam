@@ -468,6 +468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   motorData: {fileID: 11400000, guid: efdd70e106aaf7d4c911f259b027fcf9, type: 2}
   activationTime: 1
+  smoothTime: 0.5
 --- !u!114 &688714236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -590,8 +591,8 @@ MonoBehaviour:
   invincible: 1
   maxStamina: 100
   staminaLostPerHit: 20
-  staminaRegenDelay: 1
-  staminaRegenMultiplier: 30
+  staminaRegenDelay: 0.5
+  staminaRegenMultiplier: 50
 --- !u!60 &688714246
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -652,7 +653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5c759faf5746eb9910c8fc87faf70f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recoveryTime: 3
+  recoveryTime: 0.5
 --- !u!114 &688714248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1642,8 +1643,8 @@ MonoBehaviour:
   invincible: 1
   maxStamina: 100
   staminaLostPerHit: 20
-  staminaRegenDelay: 1
-  staminaRegenMultiplier: 30
+  staminaRegenDelay: 0.5
+  staminaRegenMultiplier: 50
 --- !u!114 &1532995170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1789,6 +1790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   motorData: {fileID: 11400000, guid: efdd70e106aaf7d4c911f259b027fcf9, type: 2}
   activationTime: 1
+  smoothTime: 0.5
 --- !u!60 &1532995181
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1896,7 +1898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5c759faf5746eb9910c8fc87faf70f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recoveryTime: 3
+  recoveryTime: 0.5
 --- !u!114 &1532995185
 MonoBehaviour:
   m_ObjectHideFlags: 0
