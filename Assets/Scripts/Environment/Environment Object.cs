@@ -9,6 +9,7 @@ using System.Linq;
 /// </summary>
 public class EnvironmentObject : MonoBehaviour
 {
+    public float MaxHealth { get; private set; }
     [SerializeField] private float health;
     [SerializeField] private bool invincible;
 
@@ -18,13 +19,14 @@ public class EnvironmentObject : MonoBehaviour
     [SerializeField] private List<AudioClip> destructionSounds = new List<AudioClip>();
 
 
-    private Rigidbody2D rigidBody;
+    protected Rigidbody2D rigidBody;
 
     public event Action OnObjectRemove;
 
     // Start is called before the first frame update
     void Start()
     {
+        MaxHealth = health;
         rigidBody = GetComponent<Rigidbody2D>();
     }
 
@@ -41,7 +43,11 @@ public class EnvironmentObject : MonoBehaviour
         CollisionHandler(collision);
     }
 
-
+    public float GetHealthPercent()
+    {
+        return (health / MaxHealth);
+    }
+    
     protected virtual void CollisionHandler(Collision2D collision)
     {
         float collisionForce = collision.relativeVelocity.magnitude;
@@ -55,15 +61,24 @@ public class EnvironmentObject : MonoBehaviour
             default:
                 break;
         }
+        //force too weak to damage health
+        if(collisionForce < DestructionConstants.DAMAGE_BUFFER) { return; }
         
-        OnDamaged(collisionForce);
+        OnDamaged(new DamageData()
+        {
+            damage = collisionForce,
+            force = collision.relativeVelocity
+        });
 
         //Debug.Log(name + " hit with a force of " + collisionForce);
     }
 
-    protected virtual void OnDamaged(float damage)
+    public virtual void OnDamaged(DamageData data)
     {
-        health -= damage;
+        if (invincible)
+            return;
+        
+        health -= data.damage;
 
         // Handle sound playing
         if(damageSounds.Count > 0)
