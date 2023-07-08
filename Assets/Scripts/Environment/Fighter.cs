@@ -1,30 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
+using EnemyAI;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(EnemyStateManager))]
 public class Fighter : EnvironmentObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private EnemyStateManager stateManager;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        stateManager = GetComponent<EnemyStateManager>();
     }
-    protected override void CollisionHandler(Collision2D collision)
+    
+    public override void OnDamaged(DamageData data)
     {
-        base.CollisionHandler(collision);
-    }
-    protected override void OnDamaged(float damage)
-    {
-        base.OnDamaged(damage);
-    }
-    protected override void OnRemove()
-    {
-        base.OnRemove();
+        base.OnDamaged(data);
+        stateManager.OnHit(data);
     }
 }

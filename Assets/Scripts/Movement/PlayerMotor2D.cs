@@ -13,6 +13,7 @@ namespace KpattGames.Movement
     {
         protected Rigidbody2D rb;
 
+        public MotorData MotorData => motorData;
         [SerializeField] protected MotorData motorData;
 
         protected virtual void Awake()
