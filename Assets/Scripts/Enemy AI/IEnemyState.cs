@@ -3,7 +3,7 @@
     public interface IEnemyState : IState
     {
         void OnPursued();
-        void OnHit(DamageData damageData);
+        void OnHit(ref DamageData damageData);
         string GetStateName();
     }
 

@@ -22,7 +22,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3047843699924100991, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
       propertyPath: m_Name
-      value: Stool_v1_Base
+      value: StoolBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 3047843699924100991, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
+      propertyPath: m_TagString
+      value: Hazard
       objectReference: {fileID: 0}
     - target: {fileID: 6027291601114443676, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
       propertyPath: m_RootOrder

@@ -52,6 +52,12 @@ namespace EnemyAI
             
         }
 
+        public override void OnHit(ref DamageData damageData)
+        {
+            damageData.damage -= damageData.damage * (1-data.PercentDamageBlockedWhileDefending);
+            base.OnHit(ref damageData);
+        }
+
 
         public override string GetStateName()
         {
