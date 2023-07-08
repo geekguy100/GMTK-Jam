@@ -33,6 +33,10 @@ public class EnvironmentObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.y < DestructionConstants.MIN_Y_STAGE_BUFFER)
+        {
+            health = -1f;
+        }
         if(health <= 0)
         {
             OnRemove();
