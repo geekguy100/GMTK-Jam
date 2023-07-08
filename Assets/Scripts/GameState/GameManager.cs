@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    [Header("Fighters")]
+    public Fighter fighter1;
+    public Fighter fighter2;
+
+
     [Header("Game State")]
     public TimeData timeData;
-    [SerializeField] private float timeRemainingSeconds = 0;
+    [SerializeField] public float timeRemainingSeconds = 0;
     [SerializeField] private bool isPaused = false;
 
 
@@ -51,7 +56,11 @@ public class GameManager : Singleton<GameManager>
         if(isPaused)
             return;
 
-        timeRemainingSeconds -= Time.deltaTime * timeData.timeScale;
+        // Subtract the time passed from the time remaining.
+        timeRemainingSeconds -= Time.deltaTime;
+
+        // Clamp the time remaining so we're never out of the time range.
+        timeRemainingSeconds = Mathf.Clamp(timeRemainingSeconds, 0, timeData.totalGameTimeSeconds);
     }
 
     // TODO
@@ -60,10 +69,16 @@ public class GameManager : Singleton<GameManager>
         // Check if time is up
         if(timeRemainingSeconds <= 0)
         {
+            // Win!
+            isPaused = true;
         }
 
         // Check if any of figherts are dead
+        if(fighter1.GetHealthPercent() <= 0 || fighter2.GetHealthPercent() <= 0)
+        {
+            // Lose!
+            isPaused = true;
+        }
     }
-
 
 }
