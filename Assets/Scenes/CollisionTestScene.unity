@@ -131,9 +131,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4633535588716073197, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
-      propertyPath: m_Name
-      value: Bottle (5)
+    - target: {fileID: 6300097219355550163, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
+      propertyPath: health
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4153585927915116558, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
       propertyPath: m_RootOrder
@@ -179,9 +179,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6300097219355550163, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
-      propertyPath: health
-      value: 50
+    - target: {fileID: 4633535588716073197, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
+      propertyPath: m_Name
+      value: Bottle (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -198,9 +198,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4633535588716073197, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
-      propertyPath: m_Name
-      value: Bottle (3)
+    - target: {fileID: 6300097219355550163, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
+      propertyPath: health
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4153585927915116558, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
       propertyPath: m_RootOrder
@@ -246,9 +246,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6300097219355550163, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
-      propertyPath: health
-      value: 50
+    - target: {fileID: 4633535588716073197, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
+      propertyPath: m_Name
+      value: Bottle (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -265,9 +265,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4633535588716073197, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
-      propertyPath: m_Name
-      value: Bottle (2)
+    - target: {fileID: 6300097219355550163, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
+      propertyPath: health
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4153585927915116558, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
       propertyPath: m_RootOrder
@@ -313,9 +313,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6300097219355550163, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
-      propertyPath: health
-      value: 50
+    - target: {fileID: 4633535588716073197, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
+      propertyPath: m_Name
+      value: Bottle (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -505,9 +505,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4633535588716073197, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
-      propertyPath: m_Name
-      value: Bottle (7)
+    - target: {fileID: 6300097219355550163, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
+      propertyPath: health
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4153585927915116558, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
       propertyPath: m_RootOrder
@@ -553,9 +553,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6300097219355550163, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
-      propertyPath: health
-      value: 50
+    - target: {fileID: 4633535588716073197, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
+      propertyPath: m_Name
+      value: Bottle (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -572,9 +572,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4633535588716073197, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
-      propertyPath: m_Name
-      value: Bottle (6)
+    - target: {fileID: 6300097219355550163, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654331739571420700, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
+      propertyPath: m_Mass
+      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 4153585927915116558, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
       propertyPath: m_RootOrder
@@ -620,13 +624,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6300097219355550163, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
-      propertyPath: health
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 6654331739571420700, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
-      propertyPath: m_Mass
-      value: 0.0001
+    - target: {fileID: 4633535588716073197, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
+      propertyPath: m_Name
+      value: Bottle (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -643,9 +643,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4633535588716073197, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
-      propertyPath: m_Name
-      value: Bottle (4)
+    - target: {fileID: 6300097219355550163, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654331739571420700, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
+      propertyPath: m_Mass
+      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 4153585927915116558, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
       propertyPath: m_RootOrder
@@ -691,13 +695,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6300097219355550163, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
-      propertyPath: health
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 6654331739571420700, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
-      propertyPath: m_Mass
-      value: 0.0001
+    - target: {fileID: 4633535588716073197, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
+      propertyPath: m_Name
+      value: Bottle (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -746,9 +746,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4633535588716073197, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
-      propertyPath: m_Name
-      value: Bottle (8)
+    - target: {fileID: 6300097219355550163, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
+      propertyPath: health
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4153585927915116558, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
       propertyPath: m_RootOrder
@@ -794,9 +794,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6300097219355550163, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
-      propertyPath: health
-      value: 50
+    - target: {fileID: 4633535588716073197, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
+      propertyPath: m_Name
+      value: Bottle (8)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -987,9 +987,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4633535588716073197, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
-      propertyPath: m_Name
-      value: Bottle (1)
+    - target: {fileID: 6300097219355550163, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
+      propertyPath: health
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4153585927915116558, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
       propertyPath: m_RootOrder
@@ -1035,9 +1035,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6300097219355550163, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
-      propertyPath: health
-      value: 50
+    - target: {fileID: 4633535588716073197, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
+      propertyPath: m_Name
+      value: Bottle (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -1102,6 +1102,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7726815629489199042, guid: 862729f781416eb87aa80b9d75e80294, type: 3}
+      propertyPath: mouseLerpSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7726815629489199042, guid: 862729f781416eb87aa80b9d75e80294, type: 3}
+      propertyPath: posSampleRateSeconds
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1115,9 +1123,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4633535588716073197, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
-      propertyPath: m_Name
-      value: Bottle
+    - target: {fileID: 6300097219355550163, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654331739571420700, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
+      propertyPath: m_Mass
+      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 4153585927915116558, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
       propertyPath: m_RootOrder
@@ -1163,13 +1175,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6300097219355550163, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
-      propertyPath: health
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 6654331739571420700, guid: de60def0928a8eb45bf0be91154f77a2, type: 3}
-      propertyPath: m_Mass
-      value: 0.0001
+    - target: {fileID: 4633535588716073197, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
+      propertyPath: m_Name
+      value: Bottle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

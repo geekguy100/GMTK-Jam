@@ -55,6 +55,7 @@ public class MouseInteractor : MonoBehaviour
                     }
 
                     interactable.Interact();
+                    interactable.OnAssigned();
                     currentInteractable = interactable;
                     currentInteractable.OnInteractableDestroyed += OnInteractableDestroyed;
                 }
@@ -67,13 +68,12 @@ public class MouseInteractor : MonoBehaviour
             {
                 print($"Unassigning interactable {currentInteractable}");
 
-                // Calculate the force to apply to the interactabl
-                Vector3 force = currentInteractable.gameObject.transform.position - previousInteractPos;
+                // Calculate the force to apply to the interactable
+                Vector3 force = Camera.main.ScreenToWorldPoint(Input.mousePosition) - previousInteractPos;
                 force *= forcePower;
 
                 // Apply the force
-                // currentInteractable.rigidbody2D.AddForce(force, ForceMode2D.Impulse);
-                currentInteractable.rigidbody2D.velocity = force;
+                currentInteractable.rb.velocity = force;
 
                 currentInteractable.OnUnassigned();
                 currentInteractable.OnInteractableDestroyed -= OnInteractableDestroyed;
@@ -93,7 +93,7 @@ public class MouseInteractor : MonoBehaviour
         mousePos.z = 10f;
 
         // Lerp towards mouse to give it a bit of force to throw
-        currentInteractable.gameObject.transform.position = Vector3.Lerp(currentInteractable.gameObject.transform.position, mousePos, mouseLerpSpeed);
+        currentInteractable.gameObject.transform.position = Vector3.Lerp(currentInteractable.gameObject.transform.position, mousePos, mouseLerpSpeed * Time.deltaTime);
     }
 
     private void OnInteractableDestroyed()
