@@ -23,7 +23,7 @@ namespace EnemyAI
 
         public abstract void OnPursued();
 
-        public void OnHit(DamageData damageData)
+        public virtual void OnHit(ref DamageData damageData)
         {
             damageData.force.y = 0;
             damageData.force.x = Mathf.Clamp(damageData.force.x, -10, 10f);

@@ -8,7 +8,7 @@ namespace EnemyAI.Attacks
         
         public override void PerformAttack(EnvironmentObject opponent)
         {
-            Debug.Log(gameObject.name + " Punches");
+            print(gameObject.name + " Punches");
             
             timeOfAttack = Time.time;
             

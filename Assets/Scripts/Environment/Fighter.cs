@@ -20,6 +20,7 @@ public class Fighter : EnvironmentObject
     [SerializeField] private float staminaRegenDelay;
     [SerializeField] private float staminaRegenMultiplier;
     [SerializeField] private TextSetter textSetter;
+    [SerializeField] private bool hazardsReduceStamina = true;
 
     private void Awake()
     {
@@ -31,29 +32,44 @@ public class Fighter : EnvironmentObject
     
     public override void OnDamaged(DamageData data)
     {
+        // Ignore all for Ground.
+        if (data.sourceName == "Ground")
+            return;
+        
+        // Applies knockback and reduces damage if in Defend state.
+        stateManager.OnHit(ref data);
+        
         // Only decrease health if receiving damage from another Fighter.
         if (data.sourceName == "Fighter")
+        {
             base.OnDamaged(data);
+        }
+        else
+        {
+            Debug.Log(gameObject.name + " hit by " + data.sourceName);
+        }
         
-        // Applies knockback.
-        stateManager.OnHit(data);
-
         if (stamina > 0)
         {
-            if (regenCoroutine != null)
+            bool reduceStamina = data.sourceName != "Hazard" || (hazardsReduceStamina && data.sourceName == "Hazard");
+            
+            if (reduceStamina && regenCoroutine != null)
             {
                 StopCoroutine(regenCoroutine);
                 regenCoroutine = null;
             }
             
-            stamina -= staminaLostPerHit;
-            textSetter.SetStaminaText("Stamina: " + stamina);
+            if (reduceStamina)
+                stamina -= staminaLostPerHit;
+            
+            textSetter.SetStaminaText("Stamina: " + Mathf.Floor(stamina));
             if (stamina <= 0)
             {
                 stateManager.SetState(nameof(DazedState));
             }
             
-            regenCoroutine = StartCoroutine(RegenStamina());
+            if (reduceStamina)
+                regenCoroutine = StartCoroutine(RegenStamina());
         }
         else if (regenCoroutine == null)
         {

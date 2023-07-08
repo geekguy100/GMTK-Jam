@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
+using TMPro;
 
 /// <summary>
 /// Attached to any world object
@@ -12,6 +13,8 @@ public class EnvironmentObject : MonoBehaviour
     public float MaxHealth { get; private set; }
     [SerializeField] private float health;
     [SerializeField] private bool invincible;
+    [SerializeField] private bool destroyOnRemove = true;
+    [SerializeField] private TextMeshProUGUI healthText;
 
 
     [Header("Audio")]
@@ -37,6 +40,7 @@ public class EnvironmentObject : MonoBehaviour
         {
             health = -1f;
         }
+        
         if(health <= 0)
         {
             OnRemove();
@@ -65,12 +69,11 @@ public class EnvironmentObject : MonoBehaviour
                 break;
         }
         //force too weak to damage health
-        if(collisionForce < DestructionConstants.DAMAGE_BUFFER) { return; }
+        collisionForce -= DestructionConstants.DAMAGE_BUFFER;
+        if(collisionForce <= 0) { return; }
 
         string sourceName = collision.gameObject.tag;
-        if (sourceName == "Untagged")
-            sourceName = "Ground";
-        
+
         OnDamaged(new DamageData()
         {
             damage = collisionForce,
@@ -87,6 +90,10 @@ public class EnvironmentObject : MonoBehaviour
             return;
         
         health -= data.damage;
+        if (!ReferenceEquals(healthText, null))
+        {
+            healthText.text = "HP: " + Mathf.Floor(health);
+        }
 
         // Handle sound playing
         if(damageSounds.Count > 0)
@@ -104,6 +111,8 @@ public class EnvironmentObject : MonoBehaviour
         {
             AudioManager.Instance.PlayRandomClip(destructionSounds);
         }
-        Destroy(gameObject);
+        
+        if (destroyOnRemove)
+            Destroy(gameObject);
     }
 }

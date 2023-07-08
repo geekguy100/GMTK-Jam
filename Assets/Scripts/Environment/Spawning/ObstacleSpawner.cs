@@ -13,8 +13,9 @@ public class ObstacleSpawner : MonoBehaviour
 
     public List<Obstacle> bottles = new List<Obstacle>();
     public List<Obstacle> stools = new List<Obstacle>();
+    public List<Obstacle> foods = new List<Obstacle>();
 
-    private const float BASE_LAUNCH_FORCE = 20;
+    private const float BASE_LAUNCH_FORCE = 5;
     private const float BASE_LAUNCH_TORQUE = 5;
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,9 @@ public class ObstacleSpawner : MonoBehaviour
                 case ObstacleType.Stool:
                     stools.Add(obs);
                     break;
-
+                case ObstacleType.Food:
+                    foods.Add(obs);
+                    break;
             }
         }
         AssignEdgePosition();
@@ -73,6 +76,10 @@ public class ObstacleSpawner : MonoBehaviour
                 if(stools.Count == 0) { return SpawnObstacleType(ObstacleType.Default); }
                 obs = Spawn(stools[Random.Range(0, stools.Count)]);
                 break;
+            case ObstacleType.Food:
+                if(foods.Count == 0) { return SpawnObstacleType(ObstacleType.Default); }
+                obs = Spawn(foods[Random.Range(0, stools.Count)]);
+                break;
             default:
                 //obs = Spawn(obstacles[Random.Range(0, obstacles.Count)]);
                 Debug.Log("Attempting to spawn unregistered object type: " + type);
@@ -92,8 +99,8 @@ public class ObstacleSpawner : MonoBehaviour
         //May need to scale applied forces based on weight
         rigidBody.position = transform.position;
         rigidBody.AddTorque(Random.Range(-BASE_LAUNCH_TORQUE, BASE_LAUNCH_TORQUE));
-        rigidBody.AddForce(dir * (BASE_LAUNCH_FORCE + Random.Range(0, launchVariance)));
-
+        //rigidBody.AddForce(dir * (BASE_LAUNCH_FORCE + Random.Range(0, launchVariance)));
+        rigidBody.velocity = dir * (BASE_LAUNCH_FORCE + Random.Range(0, launchVariance));
         return obs;
     }
     
