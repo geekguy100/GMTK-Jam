@@ -4,6 +4,8 @@ using UnityEngine;
 
 public struct DestructionConstants
 {
+    public const float DAMAGE_MODIFIER = .2f;
+
     public const float MIN_X_DESTRUCTION_DEVIATION = -500;
     public const float MAX_X_DESTRUCTION_DEVIATION = 500;
     public const float MIN_Y_DESTRUCTION_DEVIATION = 100;
