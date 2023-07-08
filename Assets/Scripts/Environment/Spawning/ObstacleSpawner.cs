@@ -9,14 +9,30 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private float directionVariance;
     [SerializeField] private float launchVariance;
     [SerializeField] private List<Obstacle> obstacles;
+    [SerializeField] private bool leftSide;
 
+    private List<Obstacle> bottles = new List<Obstacle>();
+    private List<Obstacle> stools = new List<Obstacle>();
 
     private const float BASE_LAUNCH_FORCE = 20;
     private const float BASE_LAUNCH_TORQUE = 5;
     // Start is called before the first frame update
     void Start()
     {
-        //transform = Screen.Wid
+        foreach(Obstacle obs in obstacles)
+        {
+            switch (obs.Type)
+            {
+                case ObstacleType.Bottle:
+                    bottles.Add(obs);
+                    break;
+                case ObstacleType.Stool:
+                    stools.Add(obs);
+                    break;
+
+            }
+        }
+        AssignEdgePosition();
     }
 
     // Update is called once per frame
@@ -25,12 +41,47 @@ public class ObstacleSpawner : MonoBehaviour
         
     }
 
-    public void SpawnRandomObstacle()
+    //TODO: Scale launch force based on screen size
+    private void AssignEdgePosition()
     {
-        Spawn(obstacles[Random.Range(0, obstacles.Count)]);
+        if (leftSide)
+        {
+            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height * 3f/4f, 0));
+            transform.Translate(new Vector3(-.5f, 0, 0));
+        }
+        else
+        {
+            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height * 3f/4f, 0));
+            transform.Translate(new Vector3(.5f, 0, 0));
+        }
+    }
+    public Obstacle SpawnRandomObstacle()
+    {
+        return SpawnObstacleType((ObstacleType)Random.Range(0, System.Enum.GetNames(typeof(ObstacleType)).Length));
     }
 
-    private void Spawn(Obstacle obsPrefab)
+    private Obstacle SpawnObstacleType(ObstacleType type)
+    {
+        Obstacle obs;
+        switch (type)
+        {
+            case ObstacleType.Bottle:
+                if (bottles.Count == 0) { return SpawnObstacleType(ObstacleType.Default); }
+                obs = Spawn(bottles[Random.Range(0, bottles.Count)]);
+                break;
+            case ObstacleType.Stool:
+                if(stools.Count == 0) { return SpawnObstacleType(ObstacleType.Default); }
+                obs = Spawn(stools[Random.Range(0, stools.Count)]);
+                break;
+            default:
+                obs = Spawn(obstacles[Random.Range(0, obstacles.Count)]);
+                break;
+        }
+        return obs;
+    }
+
+
+    private Obstacle Spawn(Obstacle obsPrefab)
     {
         Obstacle obs =  Instantiate(obsPrefab, objectParent);
         Rigidbody2D rigidBody = obs.GetComponent<Rigidbody2D>();
@@ -41,6 +92,7 @@ public class ObstacleSpawner : MonoBehaviour
         rigidBody.AddTorque(Random.Range(-BASE_LAUNCH_TORQUE, BASE_LAUNCH_TORQUE));
         rigidBody.AddForce(dir * (BASE_LAUNCH_FORCE + Random.Range(0, launchVariance)));
 
+        return obs;
     }
     
 }
