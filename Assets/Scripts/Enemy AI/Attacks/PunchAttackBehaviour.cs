@@ -15,7 +15,8 @@ namespace EnemyAI.Attacks
             opponent.OnDamaged(new DamageData()
             {
                 damage = data.Damage,
-                force = (opponent.transform.position - transform.position).normalized * data.Knockback
+                force = (opponent.transform.position - transform.position).normalized * data.Knockback,
+                sourceName = opponent.gameObject.tag
             });
         }
 
