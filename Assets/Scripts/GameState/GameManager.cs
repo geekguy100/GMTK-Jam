@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,10 @@ public class GameManager : Singleton<GameManager>
     public TimeData timeData;
     [SerializeField] public float timeRemainingSeconds = 0;
     [SerializeField] private bool isPaused = false;
+    [SerializeField] private bool isGameOver = false;
+
+    public event Action OnGameStart;
+    public event Action OnGameEnd;
 
 
     /// <summary>
@@ -39,6 +44,8 @@ public class GameManager : Singleton<GameManager>
     {
         timeRemainingSeconds = timeData.totalGameTimeSeconds;
 
+        isPaused = false;
+
         // Ensure the game starts with 1.0 time scale.
         timeData.timeScale = 1.0f;
     }
@@ -63,14 +70,20 @@ public class GameManager : Singleton<GameManager>
         timeRemainingSeconds = Mathf.Clamp(timeRemainingSeconds, 0, timeData.totalGameTimeSeconds);
     }
 
-    // TODO
     void HandleCheckForGameOver()
     {
+        if(isGameOver)
+            return;
+
         // Check if time is up
         if(timeRemainingSeconds <= 0)
         {
             // Win!
             isPaused = true;
+            isGameOver = true;
+
+            OnGameEnd?.Invoke();
+            return;
         }
 
         // Check if any of figherts are dead
@@ -78,6 +91,10 @@ public class GameManager : Singleton<GameManager>
         {
             // Lose!
             isPaused = true;
+            isGameOver = true;
+
+            OnGameEnd?.Invoke();
+            return;
         }
     }
 
