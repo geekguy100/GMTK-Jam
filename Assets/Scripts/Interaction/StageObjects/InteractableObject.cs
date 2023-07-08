@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class InteractableObject : MonoBehaviour, IInteractable
 {
-    Rigidbody2D IInteractable.rigidbody2D => GetComponent<Rigidbody2D>();
+    public Rigidbody2D rb => GetComponent<Rigidbody2D>();
 
     public event Action OnInteractableDestroyed;
 
@@ -12,15 +12,14 @@ public class InteractableObject : MonoBehaviour, IInteractable
     {
         Debug.Log("Interacting with " + gameObject.name);
     }
-
     public virtual void OnAssigned()
     {
-
+        rb.gravityScale = 0;
     }
 
     public virtual void OnUnassigned()
     {
-
+        rb.gravityScale = 1;
     }
 
     void OnDestroy()
