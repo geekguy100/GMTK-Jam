@@ -392,6 +392,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 129004520872531300, guid: eed66486c23af6f469de3e3038fa87dc, type: 3}
+      propertyPath: groundCheckDistance
+      value: 1.19
+      objectReference: {fileID: 0}
     - target: {fileID: 4146014647003360119, guid: eed66486c23af6f469de3e3038fa87dc, type: 3}
       propertyPath: opponent
       value: 
@@ -462,7 +466,7 @@ GameObject:
   - component: {fileID: 1535053322}
   - component: {fileID: 1535053320}
   - component: {fileID: 1535053319}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,6 +689,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 129004520872531300, guid: eed66486c23af6f469de3e3038fa87dc, type: 3}
+      propertyPath: groundCheckDistance
+      value: 1.19
+      objectReference: {fileID: 0}
     - target: {fileID: 1330307884006351223, guid: eed66486c23af6f469de3e3038fa87dc, type: 3}
       propertyPath: m_Color.b
       value: 0

@@ -21,12 +21,12 @@ namespace EnemyAI
         {
             base.OnStateEnter();
             
-            // Don't attack the enemy if they are knocked down.
-            if (opponentContainer.GetOpponentStateManager().GetStateName() == nameof(DazedState))
-            {
-                StateManager.SetState(nameof(BackAwayState));
-                return;
-            }
+            // // Don't attack the enemy if they are knocked down.
+            // if (opponentContainer.GetOpponentStateManager().GetStateName() == nameof(DazedState))
+            // {
+            //     StateManager.SetState(nameof(BackAwayState));
+            //     return;
+            // }
             
             StartCoroutine(Attack());
         }

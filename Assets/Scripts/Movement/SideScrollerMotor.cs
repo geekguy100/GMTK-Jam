@@ -2,6 +2,8 @@
  * Author:          Kyle Grenier
  * Date Created:    
  /********************************/
+
+using System;
 using UnityEngine;
 
 namespace KpattGames.Movement
@@ -11,10 +13,15 @@ namespace KpattGames.Movement
         private Vector2 cachedVel;
 
         [SerializeField] private float smoothTime;
+        [SerializeField] private float groundCheckDistance;
+        [SerializeField] private LayerMask whatIsGround;
         
-        // Prevent movement in air
         protected override void PerformMove(Vector2 input)
         {
+            // If we are NOT grounded, do not move the player.
+            if (!Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround))
+                return;
+            
             Vector2 targetVel = input * motorData.movementSpeed;
             targetVel.y = rb.velocity.y;
             
@@ -24,6 +31,11 @@ namespace KpattGames.Movement
         public override void Rotate(float delta)
         {
             throw new System.NotImplementedException();
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Debug.DrawRay(transform.position, Vector2.down * groundCheckDistance, Color.yellow);
         }
     }
 }

@@ -40,7 +40,6 @@ public class Fighter : EnvironmentObject
 
         if (stamina > 0)
         {
-            Debug.Log(gameObject.name + " STAMINA GREATER THAN 0", gameObject);
             if (regenCoroutine != null)
             {
                 StopCoroutine(regenCoroutine);
