@@ -66,7 +66,8 @@ public class EnvironmentObject : MonoBehaviour
                 break;
         }
         //force too weak to damage health
-        if(collisionForce < DestructionConstants.DAMAGE_BUFFER) { return; }
+        collisionForce -= DestructionConstants.DAMAGE_BUFFER;
+        if(collisionForce <= 0) { return; }
         
         OnDamaged(new DamageData()
         {

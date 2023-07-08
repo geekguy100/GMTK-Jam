@@ -6,6 +6,7 @@ public class SpawnController : MonoBehaviour
 {
     [SerializeField] private int bottleCount;
     [SerializeField] private int stoolCount;
+    [SerializeField] private int foodCount;
     [SerializeField] private float spawnFrequency;
     [SerializeField] private List<ObstacleSpawner> obstacleSpawners;
 
@@ -28,6 +29,9 @@ public class SpawnController : MonoBehaviour
                     break;
                 case ObstacleType.Stool:
                     obstacleStorage.Add(ObstacleType.Stool, stoolCount);
+                    break;
+                case ObstacleType.Food:
+                    obstacleStorage.Add(ObstacleType.Food, foodCount);
                     break;
                 default:
                     break;
