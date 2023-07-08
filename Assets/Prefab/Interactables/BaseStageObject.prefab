@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1688507153750207147}
   m_Layer: 0
   m_Name: BaseStageObject
-  m_TagString: Untagged
+  m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,7 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   invincible: 0
-  audioSource: {fileID: 0}
+  destroyOnRemove: 1
+  healthText: {fileID: 0}
   damageSounds: []
   destructionSounds: []
   destructionAssets:
@@ -116,6 +117,7 @@ MonoBehaviour:
   - {fileID: 1716747850403598206, guid: 27a26b2a6dee0b948a083ce9b72ed74e, type: 3}
   - {fileID: 1716747850403598206, guid: 27a26b2a6dee0b948a083ce9b72ed74e, type: 3}
   - {fileID: 1716747850403598206, guid: 27a26b2a6dee0b948a083ce9b72ed74e, type: 3}
+  type: 0
 --- !u!61 &3399455575211976038
 BoxCollider2D:
   m_ObjectHideFlags: 0

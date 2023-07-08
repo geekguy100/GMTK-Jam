@@ -112,6 +112,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bottle_v1_Base
       objectReference: {fileID: 0}
+    - target: {fileID: 4633535588716073197, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
+      propertyPath: m_TagString
+      value: Hazard
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

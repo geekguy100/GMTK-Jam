@@ -12,9 +12,11 @@ namespace EnemyAI.Data
         public float MovementFrequency => movementFrequency;
         public float MovementAmplitude => movementAmplitude;
         public float TimeInDefense => timeInDefense;
+        public float PercentDamageBlockedWhileDefending => percentDamageBlockedWhileDefending;
 
         [SerializeField] private float movementFrequency;
         [SerializeField] private float movementAmplitude;
         [SerializeField] private float timeInDefense;
+        [SerializeField][Range(0,1)] private float percentDamageBlockedWhileDefending;
     }
 }

@@ -15,3 +15,4 @@ MonoBehaviour:
   movementFrequency: 5
   movementAmplitude: 5
   timeInDefense: 3
+  percentDamageBlockedWhileDefending: 0.747

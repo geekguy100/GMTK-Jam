@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Debris
+  - Fighter
+  - Ground
+  - Hazard
   layers:
   - Default
   - TransparentFX
