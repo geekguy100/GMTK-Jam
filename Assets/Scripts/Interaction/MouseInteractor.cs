@@ -7,16 +7,10 @@ using UnityEngine;
 
 public class MouseInteractor : MonoBehaviour
 {
+    [Header("Mouse Interact Settings")]
+    public MouseInteractData mouseInteractData;
 
-    [Header("Current Mouse Settings")]
-    public float mouseLerpSpeed = 0.1f;
-    public float forcePower = 100f;
     private Vector3 previousInteractPos;
-
-    /// <summary>
-    /// The rate at which the mouse position is sampled.
-    /// </summary>
-    public float posSampleRateSeconds = 0.1f;
 
     private Coroutine sampleMousePosCoroutine;
 
@@ -70,7 +64,7 @@ public class MouseInteractor : MonoBehaviour
 
                 // Calculate the force to apply to the interactable
                 Vector3 force = Camera.main.ScreenToWorldPoint(Input.mousePosition) - previousInteractPos;
-                force *= forcePower;
+                force *= mouseInteractData.forcePower;
 
                 // Apply the force
                 currentInteractable.rb.velocity = force;
@@ -93,7 +87,7 @@ public class MouseInteractor : MonoBehaviour
         mousePos.z = 10f;
 
         // Lerp towards mouse to give it a bit of force to throw
-        currentInteractable.gameObject.transform.position = Vector3.Lerp(currentInteractable.gameObject.transform.position, mousePos, mouseLerpSpeed * Time.deltaTime);
+        currentInteractable.gameObject.transform.position = Vector3.Lerp(currentInteractable.gameObject.transform.position, mousePos, mouseInteractData.mouseLerpSpeed * Time.deltaTime);
     }
 
     private void OnInteractableDestroyed()
@@ -101,12 +95,14 @@ public class MouseInteractor : MonoBehaviour
         currentInteractable = null;
     }
 
+    /// <summary>
+    /// Samples the previous mouse position every mouseInteractData.posSampleRateSeconds seconds. This previous position is used to calculate the force to apply to the interactable.
+    /// </summary>
     private IEnumerator SampleMousePosition()
     {
         while (true)
         {
-            yield return new WaitForSeconds(posSampleRateSeconds);
-            // previousInteractPos = currentInteractable.gameObject.transform.position;
+            yield return new WaitForSeconds(mouseInteractData.posSampleRateSeconds);
             previousInteractPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
     }

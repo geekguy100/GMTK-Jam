@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 /// <summary>
 /// Attached to any world object
@@ -11,6 +12,11 @@ public class EnvironmentObject : MonoBehaviour
     public float MaxHealth { get; private set; }
     [SerializeField] private float health;
     [SerializeField] private bool invincible;
+
+
+    [Header("Audio")]
+    [SerializeField] private List<AudioClip> damageSounds = new List<AudioClip>();
+    [SerializeField] private List<AudioClip> destructionSounds = new List<AudioClip>();
 
 
     protected Rigidbody2D rigidBody;
@@ -77,11 +83,23 @@ public class EnvironmentObject : MonoBehaviour
             return;
         
         health -= data.damage;
+
+        // Handle sound playing
+        if(damageSounds.Count > 0)
+        {
+            AudioManager.Instance.PlayRandomClip(damageSounds);
+        }
     }
 
     protected virtual void OnRemove()
     {
         OnObjectRemove?.Invoke();
+
+        // Handle sound playing
+        if(destructionSounds.Count > 0)
+        {
+            AudioManager.Instance.PlayRandomClip(destructionSounds);
+        }
         Destroy(gameObject);
     }
 }
