@@ -1,11 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using Random = UnityEngine.Random;
 
+public enum ObstacleType
+{
+    Bottle,
+    Stool,
+    Default
+}
 public class Obstacle : EnvironmentObject
 {
     [SerializeField] private List<DestroyedPiece> destructionAssets;
-    
+    [SerializeField] private ObstacleType type;
+
+    public event Action<Obstacle> OnObstacleRemove;
+    public ObstacleType Type => type;
     protected override void OnRemove()
     {
         DestroyedPiece piece;
@@ -24,6 +35,7 @@ public class Obstacle : EnvironmentObject
             rigidBody.AddTorque(Random.Range(DestructionConstants.MIN_DESTRUCTION_TORQUE, DestructionConstants.MAX_DESTRUCTION_TORQUE));
         }
 
+        OnObstacleRemove?.Invoke(this);
         base.OnRemove();
     }
 }
