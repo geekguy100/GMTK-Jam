@@ -8,7 +8,7 @@ namespace KpattGames.Movement
 {
     public class SideScrollerMotor : PlayerMotor2D
     {
-        public override void Move(Vector2 input)
+        protected override void PerformMove(Vector2 input)
         {
             Vector2 vel = input * motorData.movementSpeed;
             vel.y = rb.velocity.y;

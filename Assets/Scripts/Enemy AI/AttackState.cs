@@ -4,20 +4,30 @@ using UnityEngine;
 
 namespace EnemyAI
 {
-    [RequireComponent(typeof(AttackBehaviourManager))]
+    [RequireComponent(typeof(AttackBehaviourManager), typeof(OpponentContainer))]
     public class AttackState : EnemyStateBase
     {
         private AttackBehaviourManager attackManager;
+        private OpponentContainer opponentContainer;
 
         protected override void Awake()
         {
             base.Awake();
             attackManager = GetComponent<AttackBehaviourManager>();
+            opponentContainer = GetComponent<OpponentContainer>();
         }
 
         public override void OnStateEnter()
         {
             base.OnStateEnter();
+            
+            // Don't attack the enemy if they are knocked down.
+            if (opponentContainer.GetOpponentStateManager().GetStateName() == nameof(DazedState))
+            {
+                StateManager.SetState(nameof(BackAwayState));
+                return;
+            }
+            
             StartCoroutine(Attack());
         }
         
@@ -37,12 +47,6 @@ namespace EnemyAI
         {
             print(gameObject.name + " is being pursued while attacking.");
         }
-
-        public override void OnStunned()
-        {
-            print(gameObject.name + " stunned while attacking!");
-        }
-        
 
         public override string GetStateName()
         {

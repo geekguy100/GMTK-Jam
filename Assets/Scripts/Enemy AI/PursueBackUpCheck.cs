@@ -31,8 +31,6 @@ namespace EnemyAI
             return Random.Range(1, 101) / 100f;
         }
         
-        
-        
         public override void OnPursued()
         {
             throw new System.NotImplementedException();
@@ -41,11 +39,6 @@ namespace EnemyAI
         public override string GetStateName()
         {
             return nameof(PursueBackUpCheck);
-        }
-
-        public override void OnStunned()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

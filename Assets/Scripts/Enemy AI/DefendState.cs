@@ -52,10 +52,6 @@ namespace EnemyAI
             
         }
 
-        public override void OnStunned()
-        {
-        }
-        
 
         public override string GetStateName()
         {

@@ -66,12 +66,7 @@ namespace EnemyAI
         {
             print(gameObject.name + " is being pursued while he is pursuing.");
         }
-
-        public override void OnStunned()
-        {
-            print(gameObject.name + " stunned while pursuing");
-        }
-
+        
         public override string GetStateName()
         {
             return nameof(PursueState);

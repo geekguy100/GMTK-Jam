@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Defend State Data
   m_EditorClassIdentifier: 
   movementFrequency: 5
-  movementAmplitude: 2
+  movementAmplitude: 1
   timeInDefense: 3

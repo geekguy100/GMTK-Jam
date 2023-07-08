@@ -28,7 +28,6 @@ namespace EnemyAI
             rb.AddForce(damageData.force, ForceMode2D.Impulse);
         }
         
-        public abstract void OnStunned();
         public abstract string GetStateName();
 
         public virtual void OnStateEnter()
