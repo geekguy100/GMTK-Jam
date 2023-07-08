@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class DestroyedPiece : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class DestroyedPiece : MonoBehaviour
 
     private SpriteRenderer sprite = null;
     private float timeElapsed = 0;
+    private bool startFadeOut = false;
 
     private void Start()
     {
@@ -17,11 +19,15 @@ public class DestroyedPiece : MonoBehaviour
     private void Update()
     {
         timeElapsed += Time.deltaTime;
-        if(timeElapsed >= duration)
+        if(timeElapsed >= duration && !startFadeOut)
         {
-            Destroy(gameObject);
+            startFadeOut = true;
+            FadeOut();
         }
     }
 
-
+    private void FadeOut()
+    {
+        sprite.DOFade(0, .5f).OnComplete(delegate { Destroy(gameObject); });
+    }
 }

@@ -4,10 +4,25 @@ using UnityEngine;
 
 public struct DestructionConstants
 {
-    public const float MIN_X_DESTRUCTION_DEVIATION = -500;
-    public const float MAX_X_DESTRUCTION_DEVIATION = 500;
-    public const float MIN_Y_DESTRUCTION_DEVIATION = 100;
-    public const float MAX_Y_DESTRUCTION_DEVIATION = 300;
-    public const float MIN_DESTRUCTION_TORQUE = -5f;
-    public const float MAX_DESTRUCTION_TORQUE = 50f;
+    /// <summary>
+    /// Minimum force required to damage an object
+    /// </summary>
+    public const float DAMAGE_BUFFER = 8f;
+    /// <summary>
+    /// Debris Damage reduction modifer
+    /// </summary>
+    public const float DAMAGE_MODIFIER = .2f; 
+
+
+    /// <summary>
+    /// Debris spawning force modifiersf
+    /// </summary>
+    public const float MIN_X_DESTRUCTION_DEVIATION = -5;
+    public const float MAX_X_DESTRUCTION_DEVIATION = 5;
+    public const float MIN_Y_DESTRUCTION_DEVIATION = 1;
+    public const float MAX_Y_DESTRUCTION_DEVIATION = 3;
+    public const float MIN_DESTRUCTION_TORQUE = -1f;
+    public const float MAX_DESTRUCTION_TORQUE = 1f;
+
+    
 }

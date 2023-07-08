@@ -46,13 +46,25 @@ public class EnvironmentObject : MonoBehaviour
     {
         float collisionForce = collision.relativeVelocity.magnitude;
         collision.gameObject.GetComponent<EnvironmentObject>();
+        
+        switch (collision.gameObject.tag)
+        {
+            case "Debris":
+                collisionForce *= DestructionConstants.DAMAGE_MODIFIER;
+                break;
+            default:
+                break;
+        }
+        //force too weak to damage health
+        if(collisionForce < DestructionConstants.DAMAGE_BUFFER) { return; }
+        
         OnDamaged(new DamageData()
         {
             damage = collisionForce,
             force = collision.relativeVelocity
         });
 
-        // Debug.Log(name + " hit with a force of " + collisionForce);
+        //Debug.Log(name + " hit with a force of " + collisionForce);
     }
 
     public virtual void OnDamaged(DamageData data)
