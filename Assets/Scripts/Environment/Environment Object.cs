@@ -13,7 +13,6 @@ public class EnvironmentObject : MonoBehaviour
 
 
     private Rigidbody2D rigidBody;
-
     public event Action OnObjectRemove;
 
     // Start is called before the first frame update
@@ -49,7 +48,8 @@ public class EnvironmentObject : MonoBehaviour
             default:
                 break;
         }
-        
+        //force too weak to damage health
+        if(collisionForce < DestructionConstants.DAMAGE_BUFFER) { return; }
         OnDamaged(collisionForce);
 
         //Debug.Log(name + " hit with a force of " + collisionForce);
