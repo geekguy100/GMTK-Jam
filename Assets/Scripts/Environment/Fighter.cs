@@ -38,7 +38,7 @@ public class Fighter : EnvironmentObject
         
         // Reduces damage taken if in Defend state.
         stateManager.OnHit(ref data);
-        
+
         // Only decrease health if receiving damage from another Fighter.
         if (data.sourceName == "Fighter")
         {
@@ -48,10 +48,25 @@ public class Fighter : EnvironmentObject
         // perform the behaviours when hit.
         else
         {
-            base.PerformBehaviours(data);
+            if(data.sourceObject.GetComponent<Rigidbody2D>().velocity.magnitude > 15)
+            {
+                base.PerformBehaviours(data);
+            }
+            /*
+            float mag = data.force.magnitude;
+            
+            mag -= DestructionConstants.MIN_DAMAGE_BUFFER;
+
+            data.damage = mag;
+
+            if (mag > 0)
+            {
+                base.PerformBehaviours(data);
+            }
+            */
         }
-        
-        
+
+
         if (stamina > 0)
         {
             bool reduceStamina = data.sourceName != "Hazard" || (hazardsReduceStamina && data.sourceName == "Hazard");

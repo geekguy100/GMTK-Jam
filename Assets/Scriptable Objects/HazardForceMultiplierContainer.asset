@@ -17,7 +17,7 @@ MonoBehaviour:
     multiplier: 0
   bottleMultiplier:
     resetVelocity: 1
-    multiplier: 10
+    multiplier: 25
   fighterMultiplier:
     resetVelocity: 0
     multiplier: 2

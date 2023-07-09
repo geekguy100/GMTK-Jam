@@ -150,7 +150,11 @@ public class SpawnController : MonoBehaviour
     private void OnObstacleRemoveListener(Obstacle obs)
     {
         obstacleStorage[obs.Type]++;
-        obstacleTimers[obs.Type] = GetSpawnCooldownConstant(obs.Type);
+        if(obs.Type == ObstacleType.Stool)
+        {
+            obstacleTimers[obs.Type] = GetSpawnCooldownConstant(obs.Type);
+        }
+       
     }
     private void TestSpawnRandom()
     {

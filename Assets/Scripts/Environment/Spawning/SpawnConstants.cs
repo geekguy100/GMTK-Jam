@@ -12,13 +12,13 @@ public enum ObstacleType
 }
 public struct SpawnConstants
 {
-    public const int INITIAL_BOTTLE_LIMIT = 3;
+    public const int INITIAL_BOTTLE_LIMIT = 5;
     public const int INITIAL_FOOD_LIMIT = 1;
     public const int INITIAL_STOOL_LIMIT = 1;
     public const int INITIAL_HEAVY_LIMIT = 0;
 
-    public const float BOTTLE_SPAWN_COOLDOWN = 2f;
-    public const float FOOD_SPAWN_COOLDOWN = 5f;
+    public const float BOTTLE_SPAWN_COOLDOWN = .5f;
+    public const float FOOD_SPAWN_COOLDOWN = 10f;
     public const float STOOL_SPAWN_COOLDOWN = 20f;
     public const float HEAVY_SPAWN_COOLDOWN = 60f;
 
