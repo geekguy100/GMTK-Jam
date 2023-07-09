@@ -18,8 +18,8 @@ public struct SpawnConstants
     public const int INITIAL_HEAVY_LIMIT = 0;
 
     public const float BOTTLE_SPAWN_COOLDOWN = 1f;
-    public const float FOOD_SPAWN_COOLDOWN = 3f;
-    public const float STOOL_SPAWN_COOLDOWN = 10f;
+    public const float FOOD_SPAWN_COOLDOWN = 10f;
+    public const float STOOL_SPAWN_COOLDOWN = 20f;
     public const float HEAVY_SPAWN_COOLDOWN = 60f;
 
     /// <summary>

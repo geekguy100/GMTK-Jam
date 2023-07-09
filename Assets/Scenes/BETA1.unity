@@ -1232,12 +1232,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4702774d809e264c8d222bf9b0882d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiltCooldown: 0
+  tiltCooldown: 0.5
   tiltAngle: 5
   tiltForce: 5
   fighterOne: {fileID: 1848048262}
   fighterTwo: {fileID: 764564310}
-  pushAwayForce: 1
+  pushAwayForce: 2
 --- !u!1 &1615641751
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,6 +1536,10 @@ PrefabInstance:
       value: SpawnController
       objectReference: {fileID: 0}
     - target: {fileID: 5367477603922090512, guid: e918457fdf6cd7d4c9d641e1c2c14535, type: 3}
+      propertyPath: direction.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5367477603922090512, guid: e918457fdf6cd7d4c9d641e1c2c14535, type: 3}
       propertyPath: direction.y
       value: 0.5
       objectReference: {fileID: 0}
@@ -1543,6 +1547,10 @@ PrefabInstance:
       propertyPath: objectParent
       value: 
       objectReference: {fileID: 162056266}
+    - target: {fileID: 5573263437838441652, guid: e918457fdf6cd7d4c9d641e1c2c14535, type: 3}
+      propertyPath: direction.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5573263437838441652, guid: e918457fdf6cd7d4c9d641e1c2c14535, type: 3}
       propertyPath: direction.y
       value: 0.5
