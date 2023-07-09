@@ -38,6 +38,12 @@ namespace EnemyAI
             timeInState += Time.deltaTime;
             input = (transform.position - opponent.position).normalized;
         }
+        
+        public override void OnHit(ref DamageData damageData)
+        {
+            damageData.damage -= damageData.damage * (1-data.PercentDamageBlockedWhileDefending);
+            base.OnHit(ref damageData);
+        }
 
         private void FixedUpdate()
         {
