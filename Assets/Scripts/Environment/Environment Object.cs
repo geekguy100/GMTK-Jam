@@ -23,6 +23,7 @@ public class EnvironmentObject : MonoBehaviour
 
 
     protected Rigidbody2D rigidBody;
+    private InteractableObject interactable => GetComponent<InteractableObject>();
 
     public event Action OnObjectRemove;
 
@@ -63,15 +64,19 @@ public class EnvironmentObject : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "Debris":
-                collisionForce *= DestructionConstants.DAMAGE_MODIFIER;
+                collisionForce *= DestructionConstants.PIECE_DAMAGE_MODIFIER;
                 break;
             default:
                 break;
         }
         //force too weak to damage health
-        collisionForce -= DestructionConstants.DAMAGE_BUFFER;
+        collisionForce -= DestructionConstants.MIN_DAMAGE_BUFFER;
         if(collisionForce <= 0) { return; }
 
+        if (interactable != null && interactable.IsAssigned)
+        {
+            collisionForce *= DestructionConstants.INTERACT_DAMAGE_REDUCTION_MULTIPLIER;
+        }
         string sourceName = collision.gameObject.tag;
         
         Vector2 appliedForce = collision.relativeVelocity;
@@ -95,8 +100,18 @@ public class EnvironmentObject : MonoBehaviour
     {
         if (invincible)
             return;
+
+        switch (data.sourceName)
+        {
+            case "Ground":
+                health -= data.damage * DestructionConstants.GROUND_DAMAGE_MULTIPLIER;
+                Debug.Log("DAMAGE TO GROUND: " + data.damage);
+                break;
+            default:
+                health -= data.damage;
+                break;
+        }
         
-        health -= data.damage;
         if (!ReferenceEquals(healthText, null))
         {
             healthText.text = "HP: " + Mathf.Floor(health);

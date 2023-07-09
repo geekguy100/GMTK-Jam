@@ -91,13 +91,13 @@ AnimatorController:
   m_Name: GameOverController
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: GameWon
+  - m_Name: GameWin
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: GameLost
+  - m_Name: GameLose
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -125,7 +125,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: GameWon
+    m_ConditionEvent: GameWin
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4275265359710533103}
@@ -150,7 +150,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: GameLost
+    m_ConditionEvent: GameLose
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4612684547565711413}
