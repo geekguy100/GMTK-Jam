@@ -36,7 +36,7 @@ public class Fighter : EnvironmentObject
         if (data.sourceName == "Ground")
             return;
         
-        // Applies knockback and reduces damage if in Defend state.
+        // Applies knockback. Also reduces damage taken if in Defend state.
         stateManager.OnHit(ref data);
         
         // Only decrease health if receiving damage from another Fighter.

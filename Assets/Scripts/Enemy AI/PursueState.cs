@@ -62,12 +62,16 @@ namespace EnemyAI
         /// <param name="other">The Collider which entered the trigger.</param>
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.CompareTag("Hazard"))
+            if (other.gameObject.CompareTag("Stool"))
             {
-                if (other.gameObject.TryGetComponent(out Obstacle obstacle) && obstacle.Type == ObstacleType.Stool)
+                PursuedStool = other.gameObject.GetComponent<Obstacle>();
+
+                if (!TransformHelper.IsObjectBehind(transform, opponent.transform, PursuedStool.transform))
                 {
-                    PursuedStool = obstacle;
-                    StateManager.SetState(nameof(AttackStoolState));
+                    var state = StateManager.GetState<AttackStoolState>(nameof(AttackStoolState));
+                    state.SetStool(PursuedStool);
+
+                    StateManager.SetState(state);
                 }
             }
         }

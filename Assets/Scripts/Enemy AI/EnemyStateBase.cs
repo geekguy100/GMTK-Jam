@@ -14,7 +14,7 @@ namespace EnemyAI
         private Rigidbody2D rb;
         protected bool StateActive { get; private set; }
         protected EnemyStateManager StateManager { get; private set; }
-        protected static Obstacle PursuedStool { get; set; }
+        protected Obstacle PursuedStool { get; set; }
 
         protected virtual void Awake()
         {
@@ -26,8 +26,11 @@ namespace EnemyAI
 
         public virtual void OnHit(ref DamageData damageData)
         {
+            if (damageData.sourceName == "Stool")
+                return;
+            
             damageData.force.y = 0;
-            damageData.force.x = Mathf.Clamp(damageData.force.x, -10, 10f);
+            damageData.force.x = Mathf.Clamp(damageData.force.x, -10f, 10f);
             rb.AddForce(damageData.force, ForceMode2D.Impulse);
         }
         
