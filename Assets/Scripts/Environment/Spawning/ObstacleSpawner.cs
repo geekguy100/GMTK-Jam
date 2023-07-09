@@ -50,12 +50,12 @@ public class ObstacleSpawner : MonoBehaviour
     {
         if (leftSide)
         {
-            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height * 1f/4f, 0));
+            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height * 2f/4f, 0));
             transform.Translate(new Vector3(-.5f, 0, 0));
         }
         else
         {
-            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height * 1f/4f, 0));
+            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height * 2f/4f, 0));
             transform.Translate(new Vector3(.5f, 0, 0));
         }
     }

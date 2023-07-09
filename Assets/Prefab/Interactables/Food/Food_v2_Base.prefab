@@ -9,16 +9,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1043287611317413378, guid: bdfcf3d6ae5dfa749b3dedd26a151e7f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f0df3c5b643cf834d929f1d8078cec43, type: 3}
+    - target: {fileID: 1043287611317413378, guid: bdfcf3d6ae5dfa749b3dedd26a151e7f, type: 3}
       propertyPath: m_Color.b
-      value: 0.16470589
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1043287611317413378, guid: bdfcf3d6ae5dfa749b3dedd26a151e7f, type: 3}
       propertyPath: m_Color.g
-      value: 0.14901961
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1043287611317413378, guid: bdfcf3d6ae5dfa749b3dedd26a151e7f, type: 3}
       propertyPath: m_Color.r
-      value: 0.8313726
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3147702845775904582, guid: bdfcf3d6ae5dfa749b3dedd26a151e7f, type: 3}
       propertyPath: m_Name
@@ -28,17 +32,57 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Hazard
       objectReference: {fileID: 0}
+    - target: {fileID: 3373113006072085855, guid: bdfcf3d6ae5dfa749b3dedd26a151e7f, type: 3}
+      propertyPath: m_Size.x
+      value: 0.46291333
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373113006072085855, guid: bdfcf3d6ae5dfa749b3dedd26a151e7f, type: 3}
+      propertyPath: m_Size.y
+      value: 0.39572847
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373113006072085855, guid: bdfcf3d6ae5dfa749b3dedd26a151e7f, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.01309967
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373113006072085855, guid: bdfcf3d6ae5dfa749b3dedd26a151e7f, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.007467203
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373113006072085855, guid: bdfcf3d6ae5dfa749b3dedd26a151e7f, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373113006072085855, guid: bdfcf3d6ae5dfa749b3dedd26a151e7f, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572222680049332797, guid: bdfcf3d6ae5dfa749b3dedd26a151e7f, type: 3}
+      propertyPath: m_Size.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572222680049332797, guid: bdfcf3d6ae5dfa749b3dedd26a151e7f, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5868
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572222680049332797, guid: bdfcf3d6ae5dfa749b3dedd26a151e7f, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572222680049332797, guid: bdfcf3d6ae5dfa749b3dedd26a151e7f, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5928922367740426149, guid: bdfcf3d6ae5dfa749b3dedd26a151e7f, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5928922367740426149, guid: bdfcf3d6ae5dfa749b3dedd26a151e7f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5928922367740426149, guid: bdfcf3d6ae5dfa749b3dedd26a151e7f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5928922367740426149, guid: bdfcf3d6ae5dfa749b3dedd26a151e7f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -46,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5928922367740426149, guid: bdfcf3d6ae5dfa749b3dedd26a151e7f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.0669
       objectReference: {fileID: 0}
     - target: {fileID: 5928922367740426149, guid: bdfcf3d6ae5dfa749b3dedd26a151e7f, type: 3}
       propertyPath: m_LocalPosition.z
