@@ -53,9 +53,9 @@ namespace EnemyAI.Attacks
             SetAttack(attacks.Values.ElementAt(index));
         }
 
-        public void PerformAttack()
+        public void PerformAttack(EnvironmentObject target)
         {
-            currentAttack.PerformAttack(opponentContainer.GetOpponent());   
+            currentAttack.PerformAttack(target);
         }
 
         public bool IsMidAttack()
