@@ -28,12 +28,17 @@ namespace EnemyAI
             StartCoroutine(Recover());
         }
 
+        public override void OnStateExit()
+        {
+            base.OnStateExit();
+            fighter.SetMaxStamina();
+        }
+
         private IEnumerator Recover()
         {
             yield return new WaitForSeconds(recoveryTime);
             print(gameObject.name + " has recovered!");
             
-            fighter.SetMaxStamina();
             motor.Activate();
             StateManager.SetState("PursueDefendCheck");
         }
