@@ -18,12 +18,14 @@ public class GameOverUI : MonoBehaviour
     {
         Debug.Log("Triggering Game Win Screen");
         gameOverAnimator.SetTrigger("GameWin");
+        AudioManager.Instance.PlayGameWin();
     }
 
     void OnGameLose()
     {
         Debug.Log("Triggering Game Loses Screen");
         gameOverAnimator.SetTrigger("GameLose");
+        AudioManager.Instance.PlayGameOver();
     }
 
 }
