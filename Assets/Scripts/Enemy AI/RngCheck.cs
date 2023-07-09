@@ -3,6 +3,7 @@
  * Date Created:    
  /********************************/
 
+
 namespace EnemyAI
 {
     public abstract class RngCheck : CheckState
@@ -14,6 +15,10 @@ namespace EnemyAI
         }
 
         protected abstract float PreparePassingPercent();
-        protected abstract float GetRandomPercent();
+
+        protected virtual float GetRandomPercent()
+        {
+            return UnityEngine.Random.Range(1, 101) / 100f;
+        }
     }
 }

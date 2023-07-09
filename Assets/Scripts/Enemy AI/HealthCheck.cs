@@ -3,12 +3,16 @@
 namespace EnemyAI
 {
     [RequireComponent(typeof(OpponentContainer), typeof(EnvironmentObject))]
-    public class HealthCheck : CheckState
+    public class HealthCheck : RngCheck
     {
         private EnvironmentObject leftHandFighter;
         private EnvironmentObject rightHandFighter;
         [SerializeField] private float requiredHealthDiff;
         [SerializeField] private string stateName;
+        [SerializeField] private bool compareHealthDirectly;
+
+        [SerializeField] private float aboveMinPercent;
+        [SerializeField] private float belowMinPercent;
 
         protected override void Awake()
         {
@@ -17,11 +21,21 @@ namespace EnemyAI
             rightHandFighter = GetComponent<OpponentContainer>().GetOpponent();
         }
 
-        protected override bool CheckPass()
+        protected override float PreparePassingPercent()
         {
-            return leftHandFighter.GetHealth() - rightHandFighter.GetHealth() > requiredHealthDiff;
+            float leftHealth = leftHandFighter.GetHealth();
+            float rightHealth = rightHandFighter.GetHealth();
+            
+            if (compareHealthDirectly)
+                return leftHealth > rightHealth ? aboveMinPercent : belowMinPercent;
+            
+            return leftHealth - rightHealth >= requiredHealthDiff ?
+                    aboveMinPercent : belowMinPercent;
         }
         
+        // 40 - 10 = 30
+        // Required diff is 10
+
         public override void OnPursued()
         {
             
