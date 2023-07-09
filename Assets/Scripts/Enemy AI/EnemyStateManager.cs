@@ -40,7 +40,7 @@ namespace EnemyAI
         /// Sets the current state to the state with the provided name.
         /// </summary>
         /// <param name="stateName">The name of the state to set.</param>
-        public void SetState(string stateName)
+        public EnemyStateBase SetState(string stateName)
         {
             if (!states.TryGetValue(stateName, out EnemyStateBase state))
             {
@@ -48,13 +48,13 @@ namespace EnemyAI
                 
                 OnStateExit();
                 currentState = null;
-                return;
+                return null;
             }
 
-            SetState(state);
+            return SetState(state);
         }
 
-        public void SetState(EnemyStateBase state)
+        public EnemyStateBase SetState(EnemyStateBase state)
         {
             if (HasCurrentState)
                 Debug.Log("[StateManager]: " + gameObject.name + " switching from " + currentState.GetStateName() + " to " + state.GetStateName());
@@ -64,6 +64,13 @@ namespace EnemyAI
             OnStateExit();
             currentState = state;
             OnStateEnter();
+
+            return currentState;
+        }
+
+        public T GetState<T>(string stateName) where T : EnemyStateBase
+        {
+            return states[stateName] as T;
         }
 
         /// <summary>

@@ -12,10 +12,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stool_v1_Base
       objectReference: {fileID: 0}
-    - target: {fileID: 3991819058247099920, guid: ae9c73e9dee74164dacfdae1cb6fe6f8, type: 3}
-      propertyPath: m_TagString
-      value: Hazard
-      objectReference: {fileID: 0}
     - target: {fileID: 5352430233696706748, guid: ae9c73e9dee74164dacfdae1cb6fe6f8, type: 3}
       propertyPath: destructionAssets.Array.size
       value: 3

@@ -875,6 +875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageToStool: 5
+  data: {fileID: 11400000, guid: 11ec4e0c54185ca4d91e9832d9ae25b9, type: 2}
 --- !u!1 &7034881727616071280
 GameObject:
   m_ObjectHideFlags: 0
