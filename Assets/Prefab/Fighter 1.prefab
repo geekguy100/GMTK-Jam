@@ -768,8 +768,8 @@ MonoBehaviour:
   destructionSounds: []
   maxStamina: 100
   staminaLostPerHit: 20
-  staminaRegenDelay: 1
-  staminaRegenMultiplier: 3
+  staminaRegenDelay: 0.75
+  staminaRegenMultiplier: 20
   textSetter: {fileID: 2114278310482826957}
   hazardsReduceStamina: 1
 --- !u!114 &8255524109029914577
@@ -784,7 +784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5c759faf5746eb9910c8fc87faf70f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recoveryTime: 1
+  recoveryTime: 2
 --- !u!114 &2114278310482826957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,11 +944,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   passingState: {fileID: 5485349290462529875}
   failingState: {fileID: 6254836376687483016}
+  isLeftFighter: 1
   requiredHealthDiff: 0
   stateName: PursueBackUpCheck
-  compareHealthDirectly: 0
-  aboveMinPercent: 0
-  belowMinPercent: 0
+  compareHealthDirectly: 1
+  aboveMinPercent: 1
+  belowMinPercent: 0.5
 --- !u!114 &4905698208669710102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -963,11 +964,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   passingState: {fileID: 5485349290462529875}
   failingState: {fileID: 9105546905766164510}
+  isLeftFighter: 1
   requiredHealthDiff: 0
   stateName: PursueDefendCheck
-  compareHealthDirectly: 0
-  aboveMinPercent: 0
-  belowMinPercent: 0
+  compareHealthDirectly: 1
+  aboveMinPercent: 1
+  belowMinPercent: 0.5
 --- !u!114 &8554674615689650623
 MonoBehaviour:
   m_ObjectHideFlags: 0
