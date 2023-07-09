@@ -21,4 +21,9 @@ public class MouseInteractData : ScriptableObject
     /// The rate at which the mouse position is sampled.
     /// </summary>
     public float posSampleRateSeconds = 0.1f;
+
+    /// <summary>
+    /// The rate at which an object will follow the mouse
+    /// </summary>
+    public float mouseFollowMultiplier = 10f;
 }

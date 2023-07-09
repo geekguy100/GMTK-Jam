@@ -25,17 +25,17 @@ public struct SpawnConstants
     /// <summary>
     /// Angle Range Away from spawn direction vector (in Deg)
     /// </summary>
-    public const float LAUNCH_ANGLE_VARIANCE = 30;
+    public const float LAUNCH_ANGLE_VARIANCE = 15;
     /// <summary>
     /// Speed Variance added on top of base speed
     /// </summary>
-    public const float LAUNCH_SPEED_VARIANCE = 10;
+    public const float LAUNCH_SPEED_VARIANCE = 8;
     /// <summary>
     /// Initial Launch speed
     /// </summary>
-    public const float LAUNCH_BASE_SPEED = 10;
+    public const float LAUNCH_BASE_SPEED = 25;
     /// <summary>
     /// Random applied torque on spawn
     /// </summary>
-    public const float LAUNCH_BASE_TORQUE = 5;
+    public const float LAUNCH_BASE_TORQUE = 20;
 }
