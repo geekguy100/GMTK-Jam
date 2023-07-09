@@ -120,6 +120,12 @@ namespace EnemyAI
                 currentState.OnHit(ref damageData);
         }
 
+        [ContextMenu("Force Into Idle")]
+        public void ForceIntoIdle()
+        {
+            SetState(nameof(IdleState));
+        }
+
         public string GetStateName()
         {
             return HasCurrentState ? currentState.GetStateName() : "Null";

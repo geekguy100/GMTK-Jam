@@ -14,10 +14,6 @@ public class AudioManager : Singleton<AudioManager>
         // Play ambient audio.
         if(ambientAudioSource != null)
             ambientAudioSource.Play();
-
-        // Play music audio.
-        if(musicAudioSource != null)
-            musicAudioSource.Play();
     }
 
     public void PlayRandomObjectClip(List<AudioClip> clips)
@@ -25,5 +21,10 @@ public class AudioManager : Singleton<AudioManager>
         AudioClip clip = clips[UnityEngine.Random.Range(0, clips.Count)];
         Debug.Log($"Playing clip {clip.name}");
         objectAudioSource.PlayOneShot(clip, 1.0f);
+    }
+
+    public void PlayMusic()
+    {
+        musicAudioSource.Play();
     }
 }
