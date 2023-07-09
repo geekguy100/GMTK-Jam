@@ -12,7 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f54915563c46bc4397f13d484be2d63, type: 3}
   m_Name: HazardForceMultiplierContainer
   m_EditorClassIdentifier: 
-  heavyMultiplier: 0
-  bottleMultiplier: 1
-  foodMultiplier: 0.1
-  stoolMultiplier: 0.1
+  heavyMultiplier:
+    resetVelocity: 1
+    multiplier: 0
+  bottleMultiplier:
+    resetVelocity: 1
+    multiplier: 10
+  fighterMultiplier:
+    resetVelocity: 0
+    multiplier: 2
+  stoolMultiplier:
+    resetVelocity: 1
+    multiplier: 0

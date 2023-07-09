@@ -15,12 +15,13 @@ namespace EnemyAI.Attacks
             // Set the damage to apply to the data's inherent damage if we are not
             // manually setting it.
             damage ??= data.Damage;
-            
+
             opponent.OnDamaged(new DamageData()
             {
                 damage = damage.Value,
                 force = (opponent.transform.position - transform.position).normalized * data.Knockback,
-                sourceName = opponent.gameObject.tag
+                sourceName = gameObject.tag,
+                sourceObject = gameObject
             });
         }
 

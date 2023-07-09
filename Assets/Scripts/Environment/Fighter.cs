@@ -33,10 +33,10 @@ public class Fighter : EnvironmentObject
     public override void OnDamaged(DamageData data)
     {
         // Ignore all for Ground.
-        if (data.sourceName == "Ground")
+        if (data.sourceName == "Ground" || data.sourceName == "Untagged")
             return;
         
-        // Applies knockback. Also reduces damage taken if in Defend state.
+        // Reduces damage taken if in Defend state.
         stateManager.OnHit(ref data);
         
         // Only decrease health if receiving damage from another Fighter.
@@ -44,10 +44,13 @@ public class Fighter : EnvironmentObject
         {
             base.OnDamaged(data);
         }
+        // Even though we do not decrease our fighter's health, we still want to
+        // perform the behaviours when hit.
         else
         {
-            Debug.Log(gameObject.name + " hit by " + data.sourceName);
+            base.PerformBehaviours(data);
         }
+        
         
         if (stamina > 0)
         {
