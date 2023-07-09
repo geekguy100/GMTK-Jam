@@ -36,7 +36,7 @@ public class Fighter : EnvironmentObject
         if (data.sourceName == "Ground" || data.sourceName == "Untagged")
             return;
         
-        // Reduces damage taken if in Defend state.
+        // Reduces damage taken if in Defend or Backaway state.
         stateManager.OnHit(ref data);
 
         // Only decrease health if receiving damage from another Fighter.
