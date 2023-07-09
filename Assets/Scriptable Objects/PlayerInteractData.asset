@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3f022a3aa25f5b1b37e958e7d719cb, type: 3}
   m_Name: PlayerInteractData
   m_EditorClassIdentifier: 
-  mouseLerpSpeed: 5
+  mouseLerpSpeed: 20
   forcePower: 50
   posSampleRateSeconds: 0.05
   mouseFollowMultiplier: 10

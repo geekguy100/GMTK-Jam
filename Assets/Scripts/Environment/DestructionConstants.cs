@@ -11,12 +11,19 @@ public struct DestructionConstants
     /// <summary>
     /// Minimum force required to damage an object
     /// </summary>
-    public const float DAMAGE_BUFFER = 5f;
+    public const float MIN_DAMAGE_BUFFER = 5f;
+    /// <summary>
+    /// Damage Reduction Multiplier applied when the user holds an object
+    /// </summary>
+    public const float INTERACT_DAMAGE_REDUCTION_MULTIPLIER = .5f;
     /// <summary>
     /// Debris Damage reduction modifer
     /// </summary>
-    public const float DAMAGE_MODIFIER = .2f; 
-
+    public const float PIECE_DAMAGE_MODIFIER = 0f;
+    /// <summary>
+    /// Damage Reduction Multipler applied when an object hits the ground
+    /// </summary>
+    public const float GROUND_DAMAGE_MULTIPLIER = .25f;
 
     /// <summary>
     /// Debris spawning force modifiersf

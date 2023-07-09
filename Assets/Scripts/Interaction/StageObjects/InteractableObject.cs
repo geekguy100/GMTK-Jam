@@ -8,6 +8,9 @@ public class InteractableObject : MonoBehaviour, IInteractable
 
     public event Action OnInteractableDestroyed;
 
+    private bool isAssigned = false;
+    public bool IsAssigned => isAssigned;
+
     public virtual void Interact()
     {
         Debug.Log("Interacting with " + gameObject.name);
@@ -15,11 +18,13 @@ public class InteractableObject : MonoBehaviour, IInteractable
     public virtual void OnAssigned()
     {
         rb.gravityScale = 0;
+        isAssigned = true;
     }
 
     public virtual void OnUnassigned()
     {
         rb.gravityScale = 3;
+        isAssigned = false;
     }
 
     void OnDestroy()
