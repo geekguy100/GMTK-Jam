@@ -49,7 +49,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    void Awake()
+    void Start()
     {
         isGameStarted = false;
 
