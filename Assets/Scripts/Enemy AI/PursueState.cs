@@ -1,5 +1,4 @@
 ﻿
-using System;
 using EnemyAI.Data;
 using KpattGames.Movement;
 using UnityEngine;
@@ -115,10 +114,12 @@ namespace EnemyAI
             return nameof(PursueState);
         }
 
+        #if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
             UnityEditor.Handles.color = Color.yellow;
             UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.back, data.MinDistance, 1f);
         }
+        #endif
     }
 }

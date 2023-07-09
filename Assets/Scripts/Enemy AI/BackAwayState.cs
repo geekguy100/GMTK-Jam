@@ -1,5 +1,4 @@
-﻿using System;
-using EnemyAI.Data;
+﻿using EnemyAI.Data;
 using KpattGames.Movement;
 using UnityEngine;
 
@@ -85,11 +84,13 @@ namespace EnemyAI
             return nameof(BackAwayState);
         }
 
+        #if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
             UnityEditor.Handles.color = Color.yellow;
             var position = transform.position;
             UnityEditor.Handles.DrawLine(position, position + transform.right * data.MinDistance);
         }
+        #endif
     }
 }

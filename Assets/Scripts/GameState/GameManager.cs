@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using EnemyAI;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
+    private static int roundNum = 0;
     
     [Header("Fighters")]
     public Fighter fighter1;
@@ -17,6 +19,8 @@ public class GameManager : Singleton<GameManager>
     [Header("Game State")]
     public TimeData timeData;
     [SerializeField] public float timeRemainingSeconds = 0;
+
+    [SerializeField] private TextMeshProUGUI roundText;
 
     public bool isPaused { get; protected set; } = false;
     public bool isGameStarted {get; protected set; } = false;
@@ -52,6 +56,8 @@ public class GameManager : Singleton<GameManager>
 
     void Start()
     {
+        roundNum++;
+        roundText.text = "ROUND " + roundNum;
         isGameStarted = false;
 
         // Initialize the time remaining.
