@@ -545,6 +545,7 @@ GameObject:
   - component: {fileID: 7777112059649128998}
   - component: {fileID: 8255524109029914577}
   - component: {fileID: 2114278310482826957}
+  - component: {fileID: 6328304912699648360}
   m_Layer: 8
   m_Name: Fighter 1
   m_TagString: Fighter
@@ -848,6 +849,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayText: {fileID: 6182569818828598209}
   staminaText: {fileID: 3772172888407420261}
+--- !u!114 &6328304912699648360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6560213350582606394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ef55e37276687941acf23ed755aca15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7034881727616071280
 GameObject:
   m_ObjectHideFlags: 0
