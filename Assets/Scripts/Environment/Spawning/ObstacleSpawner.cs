@@ -36,13 +36,13 @@ public class ObstacleSpawner : MonoBehaviour
                     
             }
         }
-        AssignEdgePosition();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        AssignEdgePosition();
     }
 
     //TODO: Scale launch force based on screen size
@@ -50,13 +50,13 @@ public class ObstacleSpawner : MonoBehaviour
     {
         if (leftSide)
         {
-            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height * 2f/4f, 0));
-            transform.Translate(new Vector3(-.5f, 0, 0));
+            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height * SpawnConstants.LAUNCH_SPAWN_HEIGHT, 0));
+            transform.Translate(new Vector3(-SpawnConstants.LAUNCH_SPAWN_OFFSET, 0, 0));
         }
         else
         {
-            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height * 2f/4f, 0));
-            transform.Translate(new Vector3(.5f, 0, 0));
+            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height * SpawnConstants.LAUNCH_SPAWN_HEIGHT, 0));
+            transform.Translate(new Vector3(SpawnConstants.LAUNCH_SPAWN_OFFSET, 0, 0));
         }
     }
     public Obstacle SpawnRandomObstacle()
@@ -83,7 +83,7 @@ public class ObstacleSpawner : MonoBehaviour
                 break;
             case ObstacleType.Heavy:
                 if (foods.Count == 0) { return SpawnObstacleType(ObstacleType.Default); }
-                obs = Spawn(heavys[Random.RandomRange(0, heavys.Count)]);
+                obs = Spawn(heavys[Random.Range(0, heavys.Count)]);
                 break;
             default:
                 //obs = Spawn(obstacles[Random.Range(0, obstacles.Count)]);

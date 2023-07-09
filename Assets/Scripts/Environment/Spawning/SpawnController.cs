@@ -110,7 +110,6 @@ public class SpawnController : MonoBehaviour
         {
             if(obstaclePair.Value > 0 && obstacleTimers[obstaclePair.Key] <= 0)
             {
-                Debug.Log(obstaclePair.Key + " -- " + obstacleTimers[obstaclePair.Key]);
                 potentialObstacleSpawns.Add(obstaclePair.Key);
             }
         }

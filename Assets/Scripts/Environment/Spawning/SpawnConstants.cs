@@ -15,7 +15,7 @@ public struct SpawnConstants
     public const int INITIAL_BOTTLE_LIMIT = 3;
     public const int INITIAL_FOOD_LIMIT = 1;
     public const int INITIAL_STOOL_LIMIT = 1;
-    public const int INITIAL_HEAVY_LIMIT = 1;
+    public const int INITIAL_HEAVY_LIMIT = 0;
 
     public const float BOTTLE_SPAWN_COOLDOWN = 2f;
     public const float FOOD_SPAWN_COOLDOWN = 5f;
@@ -38,4 +38,12 @@ public struct SpawnConstants
     /// Random applied torque on spawn
     /// </summary>
     public const float LAUNCH_BASE_TORQUE = 20;
+    /// <summary>
+    /// Applies how far up the screen is vertically;
+    /// </summary>
+    public const float LAUNCH_SPAWN_HEIGHT = .35f;
+    /// <summary>
+    /// Applies how far the spawn is away from the screen horizontally.
+    /// </summary>
+    public const float LAUNCH_SPAWN_OFFSET = 1f;
 }
