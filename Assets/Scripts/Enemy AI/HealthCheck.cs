@@ -19,7 +19,7 @@ namespace EnemyAI
 
         protected override bool CheckPass()
         {
-            return leftHandFighter.GetHealth() - rightHandFighter.GetHealth() > requiredHealthDiff;
+            return leftHandFighter.GetHealth() - rightHandFighter.GetHealth() >= requiredHealthDiff;
         }
         
         public override void OnPursued()
