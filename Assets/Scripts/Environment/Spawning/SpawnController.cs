@@ -85,7 +85,6 @@ public class SpawnController : MonoBehaviour
         if (obstacleTimers[ObstacleType.Heavy] > 0)
         {
             obstacleTimers[ObstacleType.Heavy] -= Time.deltaTime;
-            Debug.Log("HEAVY TIMER: " + obstacleTimers[ObstacleType.Heavy]);
         }
     }
 

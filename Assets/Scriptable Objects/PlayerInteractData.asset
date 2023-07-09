@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: PlayerInteractData
   m_EditorClassIdentifier: 
   mouseLerpSpeed: 5
-  forcePower: 10
+  forcePower: 50
   posSampleRateSeconds: 0.05
+  mouseFollowMultiplier: 10

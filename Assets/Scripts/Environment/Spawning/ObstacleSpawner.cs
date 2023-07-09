@@ -9,10 +9,10 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private List<Obstacle> obstacles;
     [SerializeField] private bool leftSide;
 
-    public List<Obstacle> bottles = new List<Obstacle>();
-    public List<Obstacle> stools = new List<Obstacle>();
-    public List<Obstacle> foods = new List<Obstacle>();
-    public List<Obstacle> heavys = new List<Obstacle>();
+    private List<Obstacle> bottles = new List<Obstacle>();
+    private List<Obstacle> stools = new List<Obstacle>();
+    private List<Obstacle> foods = new List<Obstacle>();
+    private List<Obstacle> heavys = new List<Obstacle>();
 
     // Start is called before the first frame update
     void Start()
@@ -50,12 +50,12 @@ public class ObstacleSpawner : MonoBehaviour
     {
         if (leftSide)
         {
-            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height * 3f/4f, 0));
+            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height * 1f/4f, 0));
             transform.Translate(new Vector3(-.5f, 0, 0));
         }
         else
         {
-            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height * 3f/4f, 0));
+            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height * 1f/4f, 0));
             transform.Translate(new Vector3(.5f, 0, 0));
         }
     }
@@ -100,7 +100,7 @@ public class ObstacleSpawner : MonoBehaviour
         Obstacle obs =  Instantiate(obsPrefab, objectParent);
         Rigidbody2D rigidBody = obs.GetComponent<Rigidbody2D>();
 
-        Vector2 dir = Quaternion.AngleAxis(Random.Range(-SpawnConstants.LAUNCH_ANGLE_VARIANCE, SpawnConstants.LAUNCH_ANGLE_VARIANCE), Vector3.forward) *direction;
+        Vector2 dir = Quaternion.AngleAxis(Random.Range(-SpawnConstants.LAUNCH_ANGLE_VARIANCE, SpawnConstants.LAUNCH_ANGLE_VARIANCE), Vector3.forward) * direction.normalized;
         //May need to scale applied forces based on weight
         rigidBody.position = transform.position;
         rigidBody.AddTorque(Random.Range(-SpawnConstants.LAUNCH_BASE_TORQUE, SpawnConstants.LAUNCH_BASE_TORQUE));
