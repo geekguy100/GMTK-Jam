@@ -1437,6 +1437,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7726815629489199042, guid: 862729f781416eb87aa80b9d75e80294, type: 3}
+      propertyPath: maxHoldTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
