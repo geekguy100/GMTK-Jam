@@ -43,7 +43,7 @@ namespace EnemyAI
         
         private void Update()
         {
-            if (!StateActive)
+            if (!StateActive || PursuedStool == null)
                 return;
 
             dir = (PursuedStool.transform.position - transform.position).normalized;

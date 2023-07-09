@@ -7,7 +7,7 @@ namespace EnemyAI
     [RequireComponent(typeof(TextSetter))]
     public class EnemyStateManager : MonoBehaviour, IEnemyState
     {
-        private bool HasCurrentState => !ReferenceEquals(currentState, null);
+        private bool HasCurrentState => currentState != null;
         private EnemyStateBase currentState;
         private Dictionary<string, EnemyStateBase> states;
 
@@ -31,26 +31,27 @@ namespace EnemyAI
             textSetter = GetComponent<TextSetter>();
         }
 
+        private void OnEnable()
+        {
+            GameManager.Instance.OnGameStart += SetGameStartState;
+            GameManager.Instance.OnGameEnd   += SetGameEndState;
+        }
+
+        private void OnDisable()
+        {
+            if (GameManager.Instance == null)
+                return;
+
+            GameManager.Instance.OnGameStart -= SetGameStartState;
+            GameManager.Instance.OnGameEnd -= SetGameEndState;
+        }
+
         /// <summary>
         /// Fighter starts in the Idle state, until the game starts.
         /// </summary>
         private void Start()
         {
-            SetState(nameof(IdleState   ));
-
-            GameManager.Instance.OnGameStart += SetGameStartState;
-            GameManager.Instance.OnGameEnd   += SetGameEndState;
-        }
-
-        private void OnDestroy()
-        {
-            if(GameManager.Quitting || GameManager.Instance == null)
-            {
-                return;
-            }
-
-            GameManager.Instance.OnGameStart -= SetGameStartState;
-            GameManager.Instance.OnGameEnd   -= SetGameEndState;
+            SetState(nameof(IdleState));
         }
 
         /// <summary>

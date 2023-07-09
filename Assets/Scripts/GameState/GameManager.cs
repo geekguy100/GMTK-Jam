@@ -68,9 +68,11 @@ public class GameManager : Singleton<GameManager>
 
         // Reset the time remaining.
         timeRemainingSeconds = timeData.totalGameTimeSeconds;
-
+        
         // Start the game.
         OnGameStart?.Invoke();
+        
+        AudioManager.Instance.PlayMusic();
     }
 
     public void ResetGame()

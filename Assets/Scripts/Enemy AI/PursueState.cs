@@ -48,6 +48,12 @@ namespace EnemyAI
         {
             if (!StateActive)
                 return;
+
+            if (opponent == null)
+            {
+                StateManager.SetState(nameof(IdleState));
+                return;
+            }
             
             input = (opponent.position - transform.position).normalized;
             if (Vector2.Distance(transform.position, opponent.position) <= data.MinDistance)
