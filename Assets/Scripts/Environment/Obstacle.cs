@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class Obstacle : EnvironmentObject
@@ -9,6 +10,14 @@ public class Obstacle : EnvironmentObject
     [SerializeField] private List<DestroyedPiece> destructionAssets;
     [SerializeField] private ObstacleType type;
     [SerializeField] private HazardForceMultiplierContainer forceMultiplierContainer;
+    [SerializeField] private Slider slider;
+
+    protected override void Update()
+    {
+        base.Update();
+        if (!ReferenceEquals(slider, null))
+            slider.value = GetHealthPercent();
+    }
 
     public event Action<Obstacle> OnObstacleRemove;
     public ObstacleType Type => type;

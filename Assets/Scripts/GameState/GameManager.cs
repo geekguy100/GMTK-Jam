@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using EnemyAI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
+    
     [Header("Fighters")]
     public Fighter fighter1;
     public Fighter fighter2;
@@ -25,6 +27,7 @@ public class GameManager : Singleton<GameManager>
     public event Action OnGameEnd;
     public event Action OnGameWin;
     public event Action OnGameLose;
+    public event Action OnGameRestart;
 
 
     /// <summary>
@@ -70,6 +73,11 @@ public class GameManager : Singleton<GameManager>
         OnGameStart?.Invoke();
     }
 
+    public void ResetGame()
+    {
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     void Update()
     {
         // Bail out if game isn't started yet

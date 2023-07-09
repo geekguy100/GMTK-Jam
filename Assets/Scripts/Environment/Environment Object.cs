@@ -40,7 +40,7 @@ public class EnvironmentObject : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if (transform.position.y < DestructionConstants.MIN_Y_STAGE_BUFFER)
         {
