@@ -38,6 +38,11 @@ namespace EnemyAI
 
         private void OnDestroy()
         {
+            if(GameManager.Quitting || GameManager.Instance == null)
+            {
+                return;
+            }
+
             GameManager.Instance.OnGameStart -= SetGameStartState;
             GameManager.Instance.OnGameEnd   -= SetGameEndState;
         }

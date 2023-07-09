@@ -458,11 +458,6 @@ MonoBehaviour:
   - {fileID: 6752665820243387972, guid: b33557220adca5c4488a0519e84c4e2e, type: 3}
   - {fileID: 6059459925139993341, guid: d4eb8119fad999e468400cb2c5956ae1, type: 3}
   leftSide: 1
-  bottles:
-  - {fileID: 4426981986048087617, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
-  stools: []
-  foods: []
-  heavys: []
 --- !u!1 &654084277
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,17 +748,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fighter 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6801011655232466257, guid: eed66486c23af6f469de3e3038fa87dc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801011655232466257, guid: eed66486c23af6f469de3e3038fa87dc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8441801559866780109, guid: eed66486c23af6f469de3e3038fa87dc, type: 3}
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8441801559866780109, guid: eed66486c23af6f469de3e3038fa87dc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.64
+      value: -16.83
       objectReference: {fileID: 0}
     - target: {fileID: 8441801559866780109, guid: eed66486c23af6f469de3e3038fa87dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.4446578
+      value: 1.38
       objectReference: {fileID: 0}
     - target: {fileID: 8441801559866780109, guid: eed66486c23af6f469de3e3038fa87dc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1031,11 +1034,6 @@ MonoBehaviour:
   - {fileID: 6752665820243387972, guid: b33557220adca5c4488a0519e84c4e2e, type: 3}
   - {fileID: 6059459925139993341, guid: d4eb8119fad999e468400cb2c5956ae1, type: 3}
   leftSide: 0
-  bottles:
-  - {fileID: 4426981986048087617, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
-  stools: []
-  foods: []
-  heavys: []
 --- !u!1001 &1678209678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1070,11 +1068,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8441801559866780109, guid: eed66486c23af6f469de3e3038fa87dc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18.92
+      value: 16.35
       objectReference: {fileID: 0}
     - target: {fileID: 8441801559866780109, guid: eed66486c23af6f469de3e3038fa87dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.4446578
+      value: 1.3800001
       objectReference: {fileID: 0}
     - target: {fileID: 8441801559866780109, guid: eed66486c23af6f469de3e3038fa87dc, type: 3}
       propertyPath: m_LocalPosition.z
