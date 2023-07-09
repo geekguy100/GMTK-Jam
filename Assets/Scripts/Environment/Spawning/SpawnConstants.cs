@@ -41,7 +41,7 @@ public struct SpawnConstants
     /// <summary>
     /// Applies how far up the screen is vertically;
     /// </summary>
-    public const float LAUNCH_SPAWN_HEIGHT = .35f;
+    public const float LAUNCH_SPAWN_HEIGHT = .55f;
     /// <summary>
     /// Applies how far the spawn is away from the screen horizontally.
     /// </summary>

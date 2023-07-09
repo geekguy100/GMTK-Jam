@@ -65,6 +65,10 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4426981986048087617, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
+      propertyPath: destructionSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4426981986048087617, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
       propertyPath: destructionAssets.Array.data[0]
       value: 
       objectReference: {fileID: 6315113117143607582, guid: e2531f6ca63428d4d8f68e653da6ce36, type: 3}
@@ -104,6 +108,10 @@ PrefabInstance:
       propertyPath: destructionAssets.Array.data[9]
       value: 
       objectReference: {fileID: 6315113117143607582, guid: 702c06bb6f3f4814fb6f4824a9e9fe74, type: 3}
+    - target: {fileID: 4426981986048087617, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
+      propertyPath: destructionSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: ca7efc850dfc55c458e42f8300c7034e, type: 3}
     - target: {fileID: 4426981986048087617, guid: a00bdbd7eb3f488cc95d29cf28f5499a, type: 3}
       propertyPath: destructionAssets.Array.data[10]
       value: 

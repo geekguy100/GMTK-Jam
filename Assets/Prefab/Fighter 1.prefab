@@ -638,7 +638,7 @@ MonoBehaviour:
   motorData: {fileID: 11400000, guid: efdd70e106aaf7d4c911f259b027fcf9, type: 2}
   activationTime: 1
   smoothTime: 0.5
-  groundCheckDistance: 5
+  groundCheckDistance: 10
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
@@ -849,6 +849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageToStool: 5
+  data: {fileID: 0}
 --- !u!61 &5912568093583916231
 BoxCollider2D:
   m_ObjectHideFlags: 0

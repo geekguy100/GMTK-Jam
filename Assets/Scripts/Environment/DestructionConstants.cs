@@ -32,8 +32,8 @@ public struct DestructionConstants
     public const float MAX_X_DESTRUCTION_DEVIATION = 10f;
     public const float MIN_Y_DESTRUCTION_DEVIATION = 5f;
     public const float MAX_Y_DESTRUCTION_DEVIATION = 10f;
-    public const float MIN_DESTRUCTION_TORQUE = -.5f;
-    public const float MAX_DESTRUCTION_TORQUE = .5f;
+    public const float MIN_DESTRUCTION_TORQUE = -3f;
+    public const float MAX_DESTRUCTION_TORQUE = 3f;
 
     
 }
