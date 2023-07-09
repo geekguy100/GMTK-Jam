@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using EnemyAI;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
@@ -13,9 +14,12 @@ public class GameManager : Singleton<GameManager>
     [Header("Game State")]
     public TimeData timeData;
     [SerializeField] public float timeRemainingSeconds = 0;
-    [SerializeField] private bool isPaused = false;
-    [SerializeField] private bool isGameStarted = false;
-    [SerializeField] private bool isGameOver = false;
+
+    public bool isPaused { get; protected set; } = false;
+    public bool isGameStarted {get; protected set; } = false;
+    public bool isGameOver { get; protected set; } = false;
+
+    public bool isGameActive { get { return isGameStarted && !isPaused && !isGameOver; } }
 
     public event Action OnGameStart;
     public event Action OnGameEnd;
@@ -44,6 +48,9 @@ public class GameManager : Singleton<GameManager>
     {
         isGameStarted = false;
 
+        // Initialize the time remaining.
+        timeRemainingSeconds = timeData.totalGameTimeSeconds;
+
         // Ensure the game starts with 1.0 time scale.
         timeData.timeScale = 1.0f;
     }
@@ -64,7 +71,7 @@ public class GameManager : Singleton<GameManager>
     void Update()
     {
         // Bail out if game isn't started yet
-        if(!isGameStarted)
+        if(!isGameActive)
             return;
         
         HandleGameTime();
@@ -75,7 +82,7 @@ public class GameManager : Singleton<GameManager>
     void HandleGameTime()
     {
         // If the game is paused or hasn't started, don't update the time.
-        if(isPaused || isGameOver)
+        if(!isGameActive)
             return;
 
         // Subtract the time passed from the time remaining.
@@ -87,14 +94,13 @@ public class GameManager : Singleton<GameManager>
 
     void HandleCheckForGameOver()
     {
-        if(isPaused || isGameOver)
+        if(!isGameActive)
             return;
 
         // Check if time is up
         if(timeRemainingSeconds <= 0)
         {
             // Win!
-            isPaused = true;
             isGameOver = true;
 
             OnGameEnd?.Invoke();
@@ -105,7 +111,6 @@ public class GameManager : Singleton<GameManager>
         if(fighter1.GetHealthPercent() <= 0 || fighter2.GetHealthPercent() <= 0)
         {
             // Lose!
-            isPaused = true;
             isGameOver = true;
 
             OnGameEnd?.Invoke();
