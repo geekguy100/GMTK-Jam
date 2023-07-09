@@ -119,6 +119,7 @@ MonoBehaviour:
   - {fileID: 1716747850403598206, guid: 27a26b2a6dee0b948a083ce9b72ed74e, type: 3}
   - {fileID: 1716747850403598206, guid: 27a26b2a6dee0b948a083ce9b72ed74e, type: 3}
   type: 0
+  forceMultiplierContainer: {fileID: 11400000, guid: 75a2ad0150aeb434c87ab8ad6397b3ee, type: 2}
 --- !u!61 &3399455575211976038
 BoxCollider2D:
   m_ObjectHideFlags: 0
