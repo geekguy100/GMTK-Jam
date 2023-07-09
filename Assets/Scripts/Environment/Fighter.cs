@@ -95,6 +95,18 @@ public class Fighter : EnvironmentObject
         }
     }
 
+    public void SetMaxStamina()
+    {
+        stamina = maxStamina;
+        
+        if (regenCoroutine != null)
+        {
+            StopCoroutine(regenCoroutine);
+        }
+        
+        textSetter.SetStaminaText("Stamina: " + Mathf.Floor(stamina));
+    }
+
     private IEnumerator RegenStamina()
     {
         yield return new WaitForSeconds(staminaRegenDelay);
