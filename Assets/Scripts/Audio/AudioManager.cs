@@ -8,6 +8,8 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] private AudioSource objectAudioSource;
     [SerializeField] private AudioSource ambientAudioSource;
     [SerializeField] private AudioSource musicAudioSource;
+    [SerializeField] private AudioSource gameOverAudioSource;
+    [SerializeField] private AudioSource gameWinAudioSource;
 
     void Start()
     {
@@ -19,7 +21,20 @@ public class AudioManager : Singleton<AudioManager>
         if(musicAudioSource != null)
             musicAudioSource.Play();
     }
+    public void PlayGameOver()
+    {
+        gameOverAudioSource.Play();
+    }
 
+    public void PlayGameWin()
+    {
+        gameWinAudioSource.Play();
+    }
+
+    public void StopMusicsAudio()
+    {
+        musicAudioSource.Stop();
+    }
     public void PlayRandomObjectClip(List<AudioClip> clips)
     {
         AudioClip clip = clips[UnityEngine.Random.Range(0, clips.Count)];

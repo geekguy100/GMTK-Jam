@@ -75,7 +75,7 @@ public class GameManager : Singleton<GameManager>
 
     public void ResetGame()
     {
-
+        AudioManager.Instance.StopMusicsAudio();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     void Update()
