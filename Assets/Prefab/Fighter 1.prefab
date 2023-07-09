@@ -74,9 +74,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 297037307, guid: d62cae934deee1c1486db6ada00b58fb, type: 3}
+  m_Sprite: {fileID: -630599210, guid: 77819d775cb4c681babf5a9973d2bbee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -573,6 +573,7 @@ GameObject:
   - component: {fileID: 1205610778023978180}
   - component: {fileID: 1798109067370037433}
   - component: {fileID: 4905698208669710102}
+  - component: {fileID: 8554674615689650623}
   m_Layer: 8
   m_Name: Fighter 1
   m_TagString: Fighter
@@ -945,6 +946,9 @@ MonoBehaviour:
   failingState: {fileID: 6254836376687483016}
   requiredHealthDiff: 0
   stateName: PursueBackUpCheck
+  compareHealthDirectly: 0
+  aboveMinPercent: 0
+  belowMinPercent: 0
 --- !u!114 &4905698208669710102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -961,6 +965,22 @@ MonoBehaviour:
   failingState: {fileID: 9105546905766164510}
   requiredHealthDiff: 0
   stateName: PursueDefendCheck
+  compareHealthDirectly: 0
+  aboveMinPercent: 0
+  belowMinPercent: 0
+--- !u!114 &8554674615689650623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6560213350582606394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50149b1409c3c94b83d899f36977d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5642071552566153071}
 --- !u!1 &7034881727616071280
 GameObject:
   m_ObjectHideFlags: 0

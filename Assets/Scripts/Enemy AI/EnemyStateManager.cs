@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace EnemyAI
@@ -11,6 +12,11 @@ namespace EnemyAI
         private Dictionary<string, EnemyStateBase> states;
 
         private TextSetter textSetter;
+
+        /// <summary>
+        /// Event that is called when the state is entered.
+        /// </summary>
+        public event Action<string> OnStateChanged;
 
         private void Awake()
         {
@@ -74,6 +80,7 @@ namespace EnemyAI
 
             OnStateExit();
             currentState = state;
+            OnStateChanged?.Invoke(currentState.GetStateName());
             OnStateEnter();
 
             return currentState;

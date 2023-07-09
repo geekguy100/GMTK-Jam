@@ -11,8 +11,10 @@ namespace EnemyAI.Data
     {
         public float MinDistance => minDistance;
         public float MaxAllowedTimeInState => maxAllowedTimeInState;
-        
+        public float PercentDamageBlockedWhileDefending => percentDamageBlockedWhileDefending;
+
         [SerializeField] private float minDistance;
         [SerializeField] private float maxAllowedTimeInState;
+        [SerializeField][Range(0,1)] private float percentDamageBlockedWhileDefending;
     }
 }
