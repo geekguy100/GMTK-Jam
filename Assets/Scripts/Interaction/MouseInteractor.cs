@@ -61,7 +61,7 @@ public class MouseInteractor : MonoBehaviour
                     currentInteractable = interactable;
                     currentInteractable.OnInteractableDestroyed += OnInteractableDestroyed;
 
-                    currentInteractable.rb.velocity = Vector2.zero;
+                    //currentInteractable.rb.velocity = Vector2.zero;
                 }
             }
         }
@@ -75,7 +75,9 @@ public class MouseInteractor : MonoBehaviour
                 currentInteractable.OnUnassigned();
 
                 // Apply the force
-                currentInteractable.rb.AddForce(mouseVelocity * currentInteractable.rb.mass * mouseInteractData.forcePower, ForceMode2D.Impulse);
+                //currentInteractable.rb.AddForce(mouseVelocity * currentInteractable.rb.mass * mouseInteractData.forcePower, ForceMode2D.Impulse);
+                //currentInteractable.rb.velocity = mouseVelocity * mouseInteractData.forcePower;
+                //Debug.Log("MOUSE FORCE: " + mouseVelocity * currentInteractable.rb.mass * mouseInteractData.forcePower);
                 currentInteractable.OnInteractableDestroyed -= OnInteractableDestroyed;
                 currentInteractable = null;
             }
@@ -87,11 +89,14 @@ public class MouseInteractor : MonoBehaviour
         if (currentInteractable == null)
             return;
 
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
 
         // Lerp towards mouse to give it a bit of force to throw
-        currentInteractable.rb.MovePosition(Vector2.Lerp(currentInteractable.rb.position, mousePos, mouseInteractData.mouseLerpSpeed * Time.deltaTime));
+        //currentInteractable.rb.MovePosition(Vector2.Lerp(currentInteractable.rb.position, mousePos, mouseInteractData.mouseLerpSpeed * Time.deltaTime));
+        
+        Vector2 targetVelocity = (mousePos - currentInteractable.rb.position) * mouseInteractData.mouseFollowMultiplier;
+        currentInteractable.rb.velocity = Vector2.Lerp(currentInteractable.rb.velocity, targetVelocity, mouseInteractData.mouseLerpSpeed * Time.deltaTime);
     }
 
     private void OnInteractableDestroyed()

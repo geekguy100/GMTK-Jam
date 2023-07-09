@@ -19,7 +19,7 @@ public class InteractableObject : MonoBehaviour, IInteractable
 
     public virtual void OnUnassigned()
     {
-        rb.gravityScale = 1;
+        rb.gravityScale = 3;
     }
 
     void OnDestroy()

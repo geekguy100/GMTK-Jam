@@ -26,12 +26,14 @@ namespace EnemyAI
         }
 
         /// <summary>
-        /// Performs an RNG check to see if the fighter should be in
-        /// an Pursue or Defend state.
+        /// Fighter starts in the Idle state, until the game starts.
         /// </summary>
         private void Start()
         {
-            SetState(nameof(PursueDefendCheck));
+            SetState(nameof(IdleState   ));
+
+            GameManager.Instance.OnGameStart += SetGameStartState;
+            GameManager.Instance.OnGameEnd   += SetGameEndState;
         }
 
         /// <summary>
@@ -62,6 +64,22 @@ namespace EnemyAI
             OnStateExit();
             currentState = state;
             OnStateEnter();
+        }
+
+        /// <summary>
+        /// Called when the game starts to put the fighter in an active Pursue or Defend state.
+        /// </summary>
+        public void SetGameStartState()
+        {
+            SetState(nameof(PursueDefendCheck));
+        }
+
+        /// <summary> 
+        /// Called when the game ends to put the fighter in an inactive Idle state.
+        /// </summary>
+        public void SetGameEndState()
+        {
+            SetState(nameof(IdleState));
         }
 
         #region IEnemyState implementations

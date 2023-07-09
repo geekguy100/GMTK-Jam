@@ -9,6 +9,12 @@ public class SpawnController : MonoBehaviour
 
     private float timeElapsed;
 
+
+    /// <summary>
+    /// Used to delay spawning objects until the game starts
+    /// </summary>
+    public bool isGameActive => GameManager.Instance.isGameActive;
+
     private Dictionary<ObstacleType, float> obstacleTimers = new Dictionary<ObstacleType, float>();
     private Dictionary<ObstacleType, int> obstacleStorage = new Dictionary<ObstacleType, int>();
 
@@ -47,6 +53,10 @@ public class SpawnController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Never spawn objects if the game is not active
+        if (!isGameActive)
+            return;
+
         CalculateTime();
         if(timeElapsed >= spawnFrequency)
         {
@@ -85,7 +95,6 @@ public class SpawnController : MonoBehaviour
         if (obstacleTimers[ObstacleType.Heavy] > 0)
         {
             obstacleTimers[ObstacleType.Heavy] -= Time.deltaTime;
-            Debug.Log("HEAVY TIMER: " + obstacleTimers[ObstacleType.Heavy]);
         }
     }
 

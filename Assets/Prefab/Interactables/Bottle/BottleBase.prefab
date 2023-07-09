@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6300097219355550163, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
       propertyPath: health
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6300097219355550163, guid: 66fc84179eeaa4135842724d64ea342a, type: 3}
       propertyPath: destructionAssets.Array.size
