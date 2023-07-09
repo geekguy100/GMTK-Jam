@@ -103,6 +103,14 @@ namespace EnemyAI
         public void SetGameEndState()
         {
             SetState(nameof(IdleState));
+            
+            Destroy(GetComponent<EnvironmentObject>());
+            foreach (var state in states)
+            {
+                Destroy(state.Value);
+            }
+            
+            Destroy(this);
         }
 
         #region IEnemyState implementations

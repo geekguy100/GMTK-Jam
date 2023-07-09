@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace EnemyAI
 {
-    [RequireComponent(typeof(PlayerMotor2D), typeof(Fighter))]
     public class DazedState : EnemyStateBase
     {
         private PlayerMotor2D motor;

@@ -19,7 +19,8 @@ namespace EnemyAI
 
         void OnDestroy()
         {
-            stateManager.OnStateChanged -= OnStateChanged;
+            if (stateManager != null)
+                stateManager.OnStateChanged -= OnStateChanged;
         }
 
         void OnStateChanged(string stateName)
