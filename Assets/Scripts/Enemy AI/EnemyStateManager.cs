@@ -27,7 +27,7 @@ namespace EnemyAI
 
         /// <summary>
         /// Performs an RNG check to see if the fighter should be in
-        /// an Attack or Defend state.
+        /// an Pursue or Defend state.
         /// </summary>
         private void Start()
         {
