@@ -56,7 +56,7 @@ namespace EnemyAI
                 currentState = null;
                 return;
             }
-            
+
             SetState(state);
         }
 

@@ -9,6 +9,8 @@ public class Obstacle : EnvironmentObject
     [SerializeField] private List<DestroyedPiece> destructionAssets;
     [SerializeField] private ObstacleType type;
 
+    [SerializeField] private HazardForceMultiplierContainer forceMultiplierContainer;
+
     public event Action<Obstacle> OnObstacleRemove;
     public ObstacleType Type => type;
     protected override void OnRemove()
@@ -37,5 +39,10 @@ public class Obstacle : EnvironmentObject
 
         OnObstacleRemove?.Invoke(this);
         base.OnRemove();
+    }
+
+    protected override void ModifyForce(ref Vector2 force)
+    {
+        force *= forceMultiplierContainer.GetMultiplier(this.type);
     }
 }
