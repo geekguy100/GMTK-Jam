@@ -40,10 +40,10 @@ namespace EnemyAI
             base.OnStateEnter();
             StartCoroutine(Attack());
         }
-
+        
         private void Update()
         {
-            if (!StateActive || PursuedStool == null)
+            if (!StateActive)
                 return;
 
             dir = (PursuedStool.transform.position - transform.position).normalized;
@@ -51,7 +51,7 @@ namespace EnemyAI
 
         private void FixedUpdate()
         {
-            if (!StateActive || PursuedStool == null)
+            if (!StateActive)
                 return;
             
             motor.Move(dir);
@@ -60,18 +60,8 @@ namespace EnemyAI
         private IEnumerator Attack()
         {
             // Continually attack the stool until it breaks.
-            while (PursuedStool != null)
+            while (ShouldAttack())
             {
-                if (!InRange())
-                {
-                    yield return new WaitUntil(InRange);
-                }
-
-                if (PursuedStool == null)
-                {
-                    continue;
-                }
-                
                 attackManager.PerformAttack(PursuedStool, damageToStool);
                 yield return new WaitWhile(attackManager.IsMidAttack);   
             }
@@ -79,9 +69,9 @@ namespace EnemyAI
             StateManager.SetState(nameof(PursueBackUpCheck));
         }
 
-        private bool InRange()
+        private bool ShouldAttack()
         {
-            return PursuedStool == null || Vector2.Distance(PursuedStool.transform.position, transform.position) <= data.MinDistance;
+            return PursuedStool != null && Vector2.Distance(PursuedStool.transform.position, transform.position) <= data.MinDistance;
         }
 
         public override void OnPursued()
