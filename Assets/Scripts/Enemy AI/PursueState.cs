@@ -67,6 +67,7 @@ namespace EnemyAI
                 if (other.gameObject.TryGetComponent(out Obstacle obstacle) && obstacle.Type == ObstacleType.Stool)
                 {
                     PursuedStool = obstacle;
+                    StateManager.SetState(nameof(AttackStoolState));
                 }
             }
         }
@@ -77,7 +78,7 @@ namespace EnemyAI
         /// <param name="other">The exiting Collision.</param>
         private void OnCollisionExit2D(Collision2D other)
         {
-            if (other.gameObject == PursuedStool.gameObject)
+            if (PursuedStool != null && other.gameObject == PursuedStool.gameObject)
             {
                 PursuedStool = null;
             }

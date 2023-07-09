@@ -13,6 +13,7 @@ namespace EnemyAI
     public class AttackStoolState : EnemyStateBase
     {
         private AttackBehaviourManager attackManager;
+        [SerializeField] private float damageToStool;
 
         protected override void Awake()
         {
@@ -26,19 +27,12 @@ namespace EnemyAI
             StartCoroutine(Attack());
         }
 
-        public override void OnStateExit()
-        {
-            base.OnStateExit();
-            print(gameObject.name + " no longer breaking the stool!");
-            Debug.Break();
-        }
-
         private IEnumerator Attack()
         {
             // Continually attack the stool until it breaks.
             while (PursuedStool != null)
             {
-                attackManager.PerformAttack(PursuedStool);
+                attackManager.PerformAttack(PursuedStool, damageToStool);
                 yield return new WaitWhile(() => attackManager.IsMidAttack());   
             }
             
