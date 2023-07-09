@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using System.Linq;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Attached to any world object
@@ -21,28 +22,27 @@ public class EnvironmentObject : MonoBehaviour
     [SerializeField] private List<AudioClip> damageSounds = new List<AudioClip>();
     [SerializeField] private List<AudioClip> destructionSounds = new List<AudioClip>();
 
+    private IDamageableBehaviour[] behaviours;
+
 
     protected Rigidbody2D rigidBody;
     private InteractableObject interactable => GetComponent<InteractableObject>();
 
     public event Action OnObjectRemove;
-
+    public event Action<float> OnHealthAdded;
+    
     // Start is called before the first frame update
     void Start()
     {
         MaxHealth = health;
         rigidBody = GetComponent<Rigidbody2D>();
+        behaviours = GetComponents<IDamageableBehaviour>();
     }
 
     // Update is called once per frame
     void Update()
     {
         if (transform.position.y < DestructionConstants.MIN_Y_STAGE_BUFFER)
-        {
-            health = -1f;
-        }
-        
-        if(health <= 0)
         {
             OnRemove();
         }
@@ -56,6 +56,25 @@ public class EnvironmentObject : MonoBehaviour
     {
         return (health / MaxHealth);
     }
+
+    public void AddHealth(float amount)
+    {
+        float prevHealth = health;
+        
+        health += amount;
+        health = Mathf.Clamp(health, 0, MaxHealth);
+
+        // Figure out exactly how much health we wound up adding.
+        // If the player has 95 health and we add 10, we set the amount to 5 
+        // because that's the actual amount we added.
+        float diff = prevHealth - health;
+        if (diff < amount)
+        {
+            amount = diff;
+        }
+        
+        OnHealthAdded?.Invoke(amount);
+    }
     
     protected virtual void CollisionHandler(Collision2D collision)
     {
@@ -66,9 +85,8 @@ public class EnvironmentObject : MonoBehaviour
             case "Debris":
                 collisionForce *= DestructionConstants.PIECE_DAMAGE_MODIFIER;
                 break;
-            default:
-                break;
         }
+        
         //force too weak to damage health
         collisionForce -= DestructionConstants.MIN_DAMAGE_BUFFER;
         if(collisionForce <= 0) { return; }
@@ -77,23 +95,20 @@ public class EnvironmentObject : MonoBehaviour
         {
             collisionForce *= DestructionConstants.INTERACT_DAMAGE_REDUCTION_MULTIPLIER;
         }
+        
         string sourceName = collision.gameObject.tag;
         
         Vector2 appliedForce = collision.relativeVelocity;
-        ModifyForce(ref appliedForce);
 
         OnDamaged(new DamageData()
         {
             damage = collisionForce,
             force = appliedForce,
-            sourceName = sourceName
+            sourceName = sourceName,
+            sourceObject = collision.gameObject
         });
 
         //Debug.Log(name + " hit with a force of " + collisionForce);
-    }
-
-    protected virtual void ModifyForce(ref Vector2 force)
-    {
     }
 
     public virtual void OnDamaged(DamageData data)
@@ -122,9 +137,22 @@ public class EnvironmentObject : MonoBehaviour
         {
             AudioManager.Instance.PlayRandomObjectClip(damageSounds);
         }
+
+        PerformBehaviours(data);
+        
+        if (health <= 0)
+            OnRemove();
     }
 
-    protected virtual void OnRemove()
+    public void PerformBehaviours(DamageData data)
+    {
+        foreach (var behaviour in behaviours)
+        {
+            behaviour.PerformBehaviour(data);
+        }
+    }
+
+    public virtual void OnRemove()
     {
         OnObjectRemove?.Invoke();
 

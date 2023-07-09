@@ -12,7 +12,7 @@ public class Obstacle : EnvironmentObject
 
     public event Action<Obstacle> OnObstacleRemove;
     public ObstacleType Type => type;
-    protected override void OnRemove()
+    public override void OnRemove()
     {
         DestroyedPiece piece;
         Rigidbody2D rigidBody;
@@ -38,10 +38,5 @@ public class Obstacle : EnvironmentObject
 
         OnObstacleRemove?.Invoke(this);
         base.OnRemove();
-    }
-
-    protected override void ModifyForce(ref Vector2 force)
-    {
-        force *= forceMultiplierContainer.GetMultiplier(this.type);
     }
 }

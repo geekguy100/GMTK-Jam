@@ -569,6 +569,10 @@ GameObject:
   - component: {fileID: 6328304912699648360}
   - component: {fileID: 4412252884787792419}
   - component: {fileID: 5912568093583916231}
+  - component: {fileID: 3348662573491201618}
+  - component: {fileID: 1551274623562620088}
+  - component: {fileID: 7929742756417844458}
+  - component: {fileID: 1205610778023978180}
   m_Layer: 8
   m_Name: Fighter 1
   m_TagString: Fighter
@@ -621,7 +625,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &129004520872531300
 MonoBehaviour:
@@ -849,6 +853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageToStool: 5
+  data: {fileID: 11400000, guid: 11ec4e0c54185ca4d91e9832d9ae25b9, type: 2}
 --- !u!61 &5912568093583916231
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -894,6 +899,66 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.36, y: 3.9}
   m_EdgeRadius: 0
+--- !u!114 &3348662573491201618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6560213350582606394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd889d8fedb0a24ab693362c35a52ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  container: {fileID: 11400000, guid: 75a2ad0150aeb434c87ab8ad6397b3ee, type: 2}
+  useNormalizedForce: 1
+  destroySourceObject: 1
+--- !u!114 &1551274623562620088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6560213350582606394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37b9e16c6ef749e187d55b7fcfd11181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  container: {fileID: 11400000, guid: 75a2ad0150aeb434c87ab8ad6397b3ee, type: 2}
+  useNormalizedForce: 0
+  destroySourceObject: 0
+--- !u!114 &7929742756417844458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6560213350582606394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3491ce6d1034786834cdd30feaa8608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  container: {fileID: 11400000, guid: 75a2ad0150aeb434c87ab8ad6397b3ee, type: 2}
+  useNormalizedForce: 0
+  destroySourceObject: 0
+--- !u!114 &1205610778023978180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6560213350582606394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aacaa3d588db47f7adfa02d5e2aef71c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  container: {fileID: 11400000, guid: 75a2ad0150aeb434c87ab8ad6397b3ee, type: 2}
+  useNormalizedForce: 1
+  destroySourceObject: 0
 --- !u!1 &7034881727616071280
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,8 +26,7 @@ namespace EnemyAI
 
         public virtual void OnHit(ref DamageData damageData)
         {
-            if (damageData.sourceName == "Stool")
-                return;
+            return;
             
             damageData.force.y = 0;
             damageData.force.x = Mathf.Clamp(damageData.force.x, -10f, 10f);

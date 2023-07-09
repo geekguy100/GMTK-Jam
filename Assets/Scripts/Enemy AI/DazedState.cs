@@ -20,6 +20,7 @@ namespace EnemyAI
         {
             base.OnStateEnter();
             print(gameObject.name + " is Dazed!");
+            motor.Move(Vector2.zero);
             motor.Deactivate(false);
             StartCoroutine(Recover());
         }

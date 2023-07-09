@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - Hazard
   - Stool
+  - Bottle
   layers:
   - Default
   - TransparentFX
