@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Michsky.MUIP;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class GameUI : MonoBehaviour
 
     [Header("Timer")]
     [SerializeField] private TMP_Text timerText;
-
 
     void Update()
     {

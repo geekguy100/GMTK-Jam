@@ -508,6 +508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9576a3a12a87fdb8683a078049a24d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curtain: {fileID: 0}
   fighter1HealthBar: {fileID: 6396666976736808910}
   fighter2HealthBar: {fileID: 1268763781889922843}
   timerText: {fileID: 5581437579959545729}
