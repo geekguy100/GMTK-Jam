@@ -589,7 +589,7 @@ Transform:
   m_GameObject: {fileID: 6560213350582606394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.5, y: -6.19, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6801011655232466257}
@@ -642,7 +642,7 @@ MonoBehaviour:
   motorData: {fileID: 11400000, guid: efdd70e106aaf7d4c911f259b027fcf9, type: 2}
   activationTime: 1
   smoothTime: 0.5
-  groundCheckDistance: 5
+  groundCheckDistance: 7.5
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
@@ -759,16 +759,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de90b00f14101c4fac99028b0900fc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 300
+  health: 200
   invincible: 0
   destroyOnRemove: 1
   healthText: {fileID: 44621557211108068}
   damageSounds: []
   destructionSounds: []
   maxStamina: 100
-  staminaLostPerHit: 10
-  staminaRegenDelay: 2
-  staminaRegenMultiplier: 20
+  staminaLostPerHit: 20
+  staminaRegenDelay: 1
+  staminaRegenMultiplier: 3
   textSetter: {fileID: 2114278310482826957}
   hazardsReduceStamina: 1
 --- !u!114 &8255524109029914577
@@ -783,7 +783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5c759faf5746eb9910c8fc87faf70f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recoveryTime: 2
+  recoveryTime: 1
 --- !u!114 &2114278310482826957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -822,7 +822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e97194fd0058d40b495317e150e32d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageToStool: 5
+  damageToStool: 10
   data: {fileID: 11400000, guid: 11ec4e0c54185ca4d91e9832d9ae25b9, type: 2}
 --- !u!61 &5912568093583916231
 BoxCollider2D:
@@ -943,8 +943,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   passingState: {fileID: 5485349290462529875}
   failingState: {fileID: 6254836376687483016}
-  leftHandFighter: {fileID: 7777112059649128998}
-  rightHandFighter: {fileID: 0}
   requiredHealthDiff: 0
   stateName: PursueBackUpCheck
 --- !u!114 &4905698208669710102
@@ -961,8 +959,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   passingState: {fileID: 5485349290462529875}
   failingState: {fileID: 9105546905766164510}
-  leftHandFighter: {fileID: 7777112059649128998}
-  rightHandFighter: {fileID: 0}
   requiredHealthDiff: 0
   stateName: PursueDefendCheck
 --- !u!1 &7034881727616071280
