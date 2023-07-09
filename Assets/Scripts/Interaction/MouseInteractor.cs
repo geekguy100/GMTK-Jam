@@ -17,6 +17,9 @@ public class MouseInteractor : MonoBehaviour
 
     public IInteractable currentInteractable;
 
+    private float cachedTime;
+    [SerializeField] private float maxHoldTime;
+
     private void Start()
     {
         sampleMousePosCoroutine = StartCoroutine(SampleMousePosition());
@@ -61,6 +64,8 @@ public class MouseInteractor : MonoBehaviour
                     currentInteractable = interactable;
                     currentInteractable.OnInteractableDestroyed += OnInteractableDestroyed;
 
+                    cachedTime = Time.time;
+
                     //currentInteractable.rb.velocity = Vector2.zero;
                 }
             }
@@ -70,6 +75,7 @@ public class MouseInteractor : MonoBehaviour
             // Unassign existing interactable if it exists.
             if (currentInteractable != null)
             {
+                cachedTime = 0;
                 print($"Unassigning interactable {currentInteractable}");
 
                 currentInteractable.OnUnassigned();
@@ -97,6 +103,24 @@ public class MouseInteractor : MonoBehaviour
         
         Vector2 targetVelocity = (mousePos - currentInteractable.rb.position) * mouseInteractData.mouseFollowMultiplier;
         currentInteractable.rb.velocity = Vector2.Lerp(currentInteractable.rb.velocity, targetVelocity, mouseInteractData.mouseLerpSpeed * Time.deltaTime);
+
+        if (Time.time - cachedTime >= maxHoldTime)
+        {
+            cachedTime = 0;
+            print($"Unassigning interactable {currentInteractable}");
+
+            currentInteractable.OnUnassigned();
+
+            // Apply the force
+            //currentInteractable.rb.AddForce(mouseVelocity * currentInteractable.rb.mass * mouseInteractData.forcePower, ForceMode2D.Impulse);
+            //currentInteractable.rb.velocity = mouseVelocity * mouseInteractData.forcePower;
+            //Debug.Log("MOUSE FORCE: " + mouseVelocity * currentInteractable.rb.mass * mouseInteractData.forcePower);
+            currentInteractable.OnInteractableDestroyed -= OnInteractableDestroyed;
+            
+            currentInteractable.gameObject.GetComponent<EnvironmentObject>().OnRemove();
+
+            currentInteractable = null;
+        }
     }
 
     private void OnInteractableDestroyed()
