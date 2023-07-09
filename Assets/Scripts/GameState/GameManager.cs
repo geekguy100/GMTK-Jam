@@ -23,6 +23,8 @@ public class GameManager : Singleton<GameManager>
 
     public event Action OnGameStart;
     public event Action OnGameEnd;
+    public event Action OnGameWin;
+    public event Action OnGameLose;
 
 
     /// <summary>
@@ -104,6 +106,7 @@ public class GameManager : Singleton<GameManager>
             isGameOver = true;
 
             OnGameEnd?.Invoke();
+            OnGameWin?.Invoke();
             return;
         }
 
@@ -114,6 +117,7 @@ public class GameManager : Singleton<GameManager>
             isGameOver = true;
 
             OnGameEnd?.Invoke();
+            OnGameLose?.Invoke();
             return;
         }
     }

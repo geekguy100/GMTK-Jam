@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TimeData
   m_EditorClassIdentifier: 
   timeScale: 1
-  totalGameTimeSeconds: 90
+  totalGameTimeSeconds: 10
