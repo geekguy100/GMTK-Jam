@@ -110,7 +110,6 @@ public class SpawnController : MonoBehaviour
         {
             if(obstaclePair.Value > 0 && obstacleTimers[obstaclePair.Key] <= 0)
             {
-                Debug.Log(obstaclePair.Key + " -- " + obstacleTimers[obstaclePair.Key]);
                 potentialObstacleSpawns.Add(obstaclePair.Key);
             }
         }
@@ -151,6 +150,7 @@ public class SpawnController : MonoBehaviour
     private void OnObstacleRemoveListener(Obstacle obs)
     {
         obstacleStorage[obs.Type]++;
+        obstacleTimers[obs.Type] = GetSpawnCooldownConstant(obs.Type);
     }
     private void TestSpawnRandom()
     {

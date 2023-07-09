@@ -120,7 +120,7 @@ public class EnvironmentObject : MonoBehaviour
         {
             case "Ground":
                 health -= data.damage * DestructionConstants.GROUND_DAMAGE_MULTIPLIER;
-                Debug.Log("DAMAGE TO GROUND: " + data.damage);
+                //Debug.Log("DAMAGE TO GROUND: " + data.damage);
                 break;
             default:
                 health -= data.damage;
