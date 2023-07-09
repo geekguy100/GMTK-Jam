@@ -508,7 +508,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9576a3a12a87fdb8683a078049a24d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curtain: {fileID: 0}
   fighter1HealthBar: {fileID: 6396666976736808910}
   fighter2HealthBar: {fileID: 1268763781889922843}
   timerText: {fileID: 5581437579959545729}
@@ -733,6 +732,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fighter1Health
       objectReference: {fileID: 0}
+    - target: {fileID: 2661444641832898324, guid: dba1ffaf1df11fa56822d0015f9fa07f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 297037307, guid: d62cae934deee1c1486db6ada00b58fb, type: 3}
+    - target: {fileID: 6271239193262458312, guid: dba1ffaf1df11fa56822d0015f9fa07f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 205.7337
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271239193262458312, guid: dba1ffaf1df11fa56822d0015f9fa07f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 304.0322
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271239193262458312, guid: dba1ffaf1df11fa56822d0015f9fa07f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271239193262458312, guid: dba1ffaf1df11fa56822d0015f9fa07f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271239193262458312, guid: dba1ffaf1df11fa56822d0015f9fa07f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -46.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271239193262458312, guid: dba1ffaf1df11fa56822d0015f9fa07f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -158.3
+      objectReference: {fileID: 0}
     - target: {fileID: 6958073561400179477, guid: dba1ffaf1df11fa56822d0015f9fa07f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -862,9 +889,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fighter2Health
       objectReference: {fileID: 0}
+    - target: {fileID: 2661444641832898324, guid: dba1ffaf1df11fa56822d0015f9fa07f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 299723108, guid: 576d2763b59880922bf8c1c286c06d1d, type: 3}
     - target: {fileID: 2690019402866629450, guid: dba1ffaf1df11fa56822d0015f9fa07f, type: 3}
       propertyPath: m_LocalScale.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271239193262458312, guid: dba1ffaf1df11fa56822d0015f9fa07f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 132.711
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271239193262458312, guid: dba1ffaf1df11fa56822d0015f9fa07f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 279.1784
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271239193262458312, guid: dba1ffaf1df11fa56822d0015f9fa07f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -38.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271239193262458312, guid: dba1ffaf1df11fa56822d0015f9fa07f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -142.7
       objectReference: {fileID: 0}
     - target: {fileID: 6958073561400179477, guid: dba1ffaf1df11fa56822d0015f9fa07f, type: 3}
       propertyPath: m_AnchorMax.x
