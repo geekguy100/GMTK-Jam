@@ -13,6 +13,7 @@ namespace KpattGames.Movement
     public abstract class PlayerMotor2D : MonoBehaviour
     {
         protected Rigidbody2D rb;
+        public Rigidbody2D Rigidbody => rb;
 
         private bool active;
 

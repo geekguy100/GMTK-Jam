@@ -19,7 +19,7 @@ namespace KpattGames.Movement
         protected override void PerformMove(Vector2 input)
         {
             // If we are NOT grounded, do not move the player.
-            if (!Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround))
+            if (!IsGrounded())
                 return;
             
             Vector2 targetVel = input * motorData.movementSpeed;
@@ -28,6 +28,11 @@ namespace KpattGames.Movement
             rb.velocity = Vector2.SmoothDamp(rb.velocity, targetVel, ref cachedVel, smoothTime);
         }
 
+        public bool IsGrounded()
+        {
+            return Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
+        }
+        
         public override void Rotate(float delta)
         {
             throw new System.NotImplementedException();
