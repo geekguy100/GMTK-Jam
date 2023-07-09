@@ -20,7 +20,7 @@ MonoBehaviour:
     multiplier: 25
   fighterMultiplier:
     resetVelocity: 0
-    multiplier: 2
+    multiplier: 0.25
   stoolMultiplier:
     resetVelocity: 1
     multiplier: 0

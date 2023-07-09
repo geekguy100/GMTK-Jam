@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 791b0e577f4b6f777a83332babd1f5be, type: 3}
+    - target: {fileID: 4905698208669710102, guid: eed66486c23af6f469de3e3038fa87dc, type: 3}
+      propertyPath: isLeftFighter
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4905698208669710102, guid: eed66486c23af6f469de3e3038fa87dc, type: 3}
+      propertyPath: compareHealthDirectly
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5642071552566153071, guid: eed66486c23af6f469de3e3038fa87dc, type: 3}
       propertyPath: m_Controller
       value: 
