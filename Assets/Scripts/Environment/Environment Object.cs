@@ -57,6 +57,11 @@ public class EnvironmentObject : MonoBehaviour
         return (health / MaxHealth);
     }
 
+    public float GetHealth()
+    {
+        return health;
+    }
+
     public void AddHealth(float amount)
     {
         float prevHealth = health;

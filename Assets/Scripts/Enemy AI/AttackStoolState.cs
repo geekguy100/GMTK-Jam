@@ -66,7 +66,7 @@ namespace EnemyAI
                 yield return new WaitWhile(attackManager.IsMidAttack);   
             }
             
-            StateManager.SetState(nameof(PursueBackUpCheck));
+            StateManager.SetState("PursueBackUpCheck");
         }
 
         private bool ShouldAttack()

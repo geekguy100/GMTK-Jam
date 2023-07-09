@@ -31,7 +31,7 @@ namespace EnemyAI
             print(gameObject.name + " has recovered!");
             
             motor.Activate();
-            StateManager.SetState(nameof(PursueDefendCheck));
+            StateManager.SetState("PursueDefendCheck");
         }
 
         public override void OnPursued()

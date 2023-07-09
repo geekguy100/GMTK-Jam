@@ -36,7 +36,7 @@ namespace EnemyAI
 
             if (currentDefenseTime >= data.TimeInDefense)
             {
-                StateManager.SetState(nameof(PursueBackUpCheck));
+                StateManager.SetState("PursueBackUpCheck");
                 return;
             }
             

@@ -560,8 +560,6 @@ GameObject:
   - component: {fileID: 2587309322135399811}
   - component: {fileID: 8358568269876513224}
   - component: {fileID: 5485349290462529875}
-  - component: {fileID: 6905291729972397005}
-  - component: {fileID: 9100174400305270393}
   - component: {fileID: 6254836376687483016}
   - component: {fileID: 7777112059649128998}
   - component: {fileID: 8255524109029914577}
@@ -573,6 +571,8 @@ GameObject:
   - component: {fileID: 1551274623562620088}
   - component: {fileID: 7929742756417844458}
   - component: {fileID: 1205610778023978180}
+  - component: {fileID: 1798109067370037433}
+  - component: {fileID: 4905698208669710102}
   m_Layer: 8
   m_Name: Fighter 1
   m_TagString: Fighter
@@ -734,36 +734,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 11ec4e0c54185ca4d91e9832d9ae25b9, type: 2}
---- !u!114 &6905291729972397005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6560213350582606394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67b66a86e3e34506a2cea03e9fe0254e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  passingState: {fileID: 5485349290462529875}
-  failingState: {fileID: 9105546905766164510}
-  data: {fileID: 11400000, guid: bdfd7ef0b8403094ca3b351df6753148, type: 2}
---- !u!114 &9100174400305270393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6560213350582606394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e4d78525e3149e429461d212587169b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  passingState: {fileID: 5485349290462529875}
-  failingState: {fileID: 6254836376687483016}
-  data: {fileID: 11400000, guid: d421a932fd28c7340bceffa5364535e0, type: 2}
 --- !u!114 &6254836376687483016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -959,6 +929,42 @@ MonoBehaviour:
   container: {fileID: 11400000, guid: 75a2ad0150aeb434c87ab8ad6397b3ee, type: 2}
   useNormalizedForce: 1
   destroySourceObject: 0
+--- !u!114 &1798109067370037433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6560213350582606394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c8a2da384534a61a9987aae0adc60f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  passingState: {fileID: 5485349290462529875}
+  failingState: {fileID: 6254836376687483016}
+  leftHandFighter: {fileID: 7777112059649128998}
+  rightHandFighter: {fileID: 0}
+  requiredHealthDiff: 0
+  stateName: PursueBackUpCheck
+--- !u!114 &4905698208669710102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6560213350582606394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c8a2da384534a61a9987aae0adc60f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  passingState: {fileID: 5485349290462529875}
+  failingState: {fileID: 9105546905766164510}
+  leftHandFighter: {fileID: 7777112059649128998}
+  rightHandFighter: {fileID: 0}
+  requiredHealthDiff: 0
+  stateName: PursueDefendCheck
 --- !u!1 &7034881727616071280
 GameObject:
   m_ObjectHideFlags: 0

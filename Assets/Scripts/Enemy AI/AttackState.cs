@@ -32,7 +32,7 @@ namespace EnemyAI
             
             yield return new WaitWhile(() => attackManager.IsMidAttack());
             
-            StateManager.SetState(nameof(PursueDefendCheck));
+            StateManager.SetState("PursueDefendCheck");
         }
 
         public override void OnPursued()

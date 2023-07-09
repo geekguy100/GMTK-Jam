@@ -28,13 +28,15 @@ public class Table : MonoBehaviour
         if(clockwiseCoolDown > 0) { clockwiseCoolDown -= Time.deltaTime; }
         if(counterClockwiseCoodDown > 0) { counterClockwiseCoodDown -= Time.deltaTime; }
 
-        if (Input.GetKeyDown(KeyCode.A) && clockwiseCoolDown <=0)
+        float input = Input.GetAxisRaw("Horizontal");
+        
+        if (input < 0 && clockwiseCoolDown <=0)
         {
             clockwiseCoolDown = tiltCooldown;
             counterClockwiseCoodDown = tiltCooldown;
             StartCoroutine(TiltClockwise());
         }
-        else if (Input.GetKeyDown(KeyCode.D) && counterClockwiseCoodDown <= 0)
+        else if (input > 0 && counterClockwiseCoodDown <= 0)
         {
             clockwiseCoolDown = tiltCooldown;
             counterClockwiseCoodDown = tiltCooldown;

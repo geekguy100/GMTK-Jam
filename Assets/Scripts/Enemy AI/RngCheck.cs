@@ -2,22 +2,12 @@
  * Author:          Kyle Grenier
  * Date Created:    
  /********************************/
-using UnityEngine;
 
 namespace EnemyAI
 {
-    public abstract class RngCheck : EnemyStateBase
+    public abstract class RngCheck : CheckState
     {
-        [SerializeField] private EnemyStateBase passingState;
-        [SerializeField] private EnemyStateBase failingState;
-
-        public override void OnStateEnter()
-        {
-            base.OnStateEnter();
-            StateManager.SetState(CheckRng() ? passingState : failingState);
-        }
-
-        private bool CheckRng()
+        protected override bool CheckPass()
         {
             float passingPercent = PreparePassingPercent();
             return GetRandomPercent() >= (1 - passingPercent);

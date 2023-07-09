@@ -89,7 +89,7 @@ namespace EnemyAI
         /// </summary>
         public void SetGameStartState()
         {
-            SetState(nameof(PursueDefendCheck));
+            SetState("PursueDefendCheck");
         }
 
         /// <summary> 

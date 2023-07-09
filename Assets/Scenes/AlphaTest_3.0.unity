@@ -784,6 +784,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7929742756417844458, guid: eed66486c23af6f469de3e3038fa87dc, type: 3}
+      propertyPath: useNormalizedForce
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8441801559866780109, guid: eed66486c23af6f469de3e3038fa87dc, type: 3}
       propertyPath: m_RootOrder
       value: 4

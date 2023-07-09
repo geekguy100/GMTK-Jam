@@ -49,12 +49,12 @@ namespace EnemyAI
             if (Vector2.Distance(transform.position, opponent.position) >= data.MinDistance)
             {
                 print("Distance check - fighters are " + data.MinDistance + " units apart at least.");
-                StateManager.SetState(nameof(PursueDefendCheck));
+                StateManager.SetState("PursueDefendCheck");
             }
             else if (timeInState >= data.MaxAllowedTimeInState)
             {
                 print("Time check - fighter has spent " + data.MaxAllowedTimeInState + " seconds backing up.");
-                StateManager.SetState(nameof(PursueDefendCheck));
+                StateManager.SetState("PursueDefendCheck");
             }
         }
 
