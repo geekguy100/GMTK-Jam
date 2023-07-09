@@ -8,7 +8,6 @@ public class Obstacle : EnvironmentObject
 {
     [SerializeField] private List<DestroyedPiece> destructionAssets;
     [SerializeField] private ObstacleType type;
-
     [SerializeField] private HazardForceMultiplierContainer forceMultiplierContainer;
 
     public event Action<Obstacle> OnObstacleRemove;
