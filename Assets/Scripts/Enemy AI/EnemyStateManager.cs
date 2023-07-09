@@ -30,13 +30,7 @@ namespace EnemyAI
 
             textSetter = GetComponent<TextSetter>();
         }
-
-        private void OnEnable()
-        {
-            GameManager.Instance.OnGameStart += SetGameStartState;
-            GameManager.Instance.OnGameEnd   += SetGameEndState;
-        }
-
+        
         private void OnDisable()
         {
             if (GameManager.Instance == null)
@@ -51,6 +45,9 @@ namespace EnemyAI
         /// </summary>
         private void Start()
         {
+            GameManager.Instance.OnGameStart += SetGameStartState;
+            GameManager.Instance.OnGameEnd   += SetGameEndState;
+            
             SetState(nameof(IdleState));
         }
 
