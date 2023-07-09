@@ -5,6 +5,8 @@ namespace EnemyAI
     [RequireComponent(typeof(OpponentContainer), typeof(EnvironmentObject))]
     public class HealthCheck : RngCheck
     {
+        [SerializeField] private bool isLeftFighter;
+
         private EnvironmentObject leftHandFighter;
         private EnvironmentObject rightHandFighter;
         [SerializeField] private float requiredHealthDiff;
@@ -25,12 +27,23 @@ namespace EnemyAI
         {
             float leftHealth = leftHandFighter.GetHealth();
             float rightHealth = rightHandFighter.GetHealth();
+            if (isLeftFighter)
+            {
+                if (compareHealthDirectly)
+                    return leftHealth > rightHealth ? aboveMinPercent : belowMinPercent;
+
+                return leftHealth - rightHealth >= requiredHealthDiff ?
+                        aboveMinPercent : belowMinPercent;
+            }
+            else
+            {
+                if (compareHealthDirectly)
+                    return rightHealth > leftHealth ? aboveMinPercent : belowMinPercent;
+
+                return rightHealth - leftHealth >= requiredHealthDiff ?
+                        aboveMinPercent : belowMinPercent;
+            }
             
-            if (compareHealthDirectly)
-                return leftHealth > rightHealth ? aboveMinPercent : belowMinPercent;
-            
-            return leftHealth - rightHealth >= requiredHealthDiff ?
-                    aboveMinPercent : belowMinPercent;
         }
         
         // 40 - 10 = 30

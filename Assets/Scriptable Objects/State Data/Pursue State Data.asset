@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0aef3699ab17e24691edf60198a418e, type: 3}
   m_Name: Pursue State Data
   m_EditorClassIdentifier: 
-  minDistance: 7
+  minDistance: 10.5
