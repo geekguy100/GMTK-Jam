@@ -73,15 +73,22 @@ public class EnvironmentObject : MonoBehaviour
         if(collisionForce <= 0) { return; }
 
         string sourceName = collision.gameObject.tag;
+        
+        Vector2 appliedForce = collision.relativeVelocity;
+        ModifyForce(ref appliedForce);
 
         OnDamaged(new DamageData()
         {
             damage = collisionForce,
-            force = collision.relativeVelocity,
+            force = appliedForce,
             sourceName = sourceName
         });
 
         //Debug.Log(name + " hit with a force of " + collisionForce);
+    }
+
+    protected virtual void ModifyForce(ref Vector2 force)
+    {
     }
 
     public virtual void OnDamaged(DamageData data)

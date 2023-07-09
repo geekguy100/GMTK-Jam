@@ -20,14 +20,6 @@ namespace EnemyAI
         public override void OnStateEnter()
         {
             base.OnStateEnter();
-            
-            // // Don't attack the enemy if they are knocked down.
-            // if (opponentContainer.GetOpponentStateManager().GetStateName() == nameof(DazedState))
-            // {
-            //     StateManager.SetState(nameof(BackAwayState));
-            //     return;
-            // }
-            
             StartCoroutine(Attack());
         }
         
@@ -36,7 +28,7 @@ namespace EnemyAI
             // Perform the attack and wait for it to complete.
             // Once the attack is done, switch back to the PursueDefendCheck state to see
             // if we should continue attacking or go on the defense.
-            attackManager.PerformAttack();
+            attackManager.PerformAttack(opponentContainer.GetOpponent());
             
             yield return new WaitWhile(() => attackManager.IsMidAttack());
             

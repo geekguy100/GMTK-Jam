@@ -1,4 +1,5 @@
 ﻿
+using System;
 using EnemyAI.Data;
 using KpattGames.Movement;
 using UnityEngine;
@@ -11,7 +12,7 @@ namespace EnemyAI
         private PlayerMotor2D motor;
         private Vector2 input;
         private Transform opponent;
-        
+
         private OpponentContainer opponentContainer;
         [SerializeField] private PursueStateData data;
         
@@ -36,11 +37,12 @@ namespace EnemyAI
             opponentContainer.GetOpponentStateManager().OnPursued();
         }
 
-        public override void OnStateExit()
-        {
-            base.OnStateExit();
-            motor.Move(Vector2.zero);
-        }
+        // TODO: May need to add this back.
+        // public override void OnStateExit()
+        // {
+        //     base.OnStateExit();
+        //     motor.Move(Vector2.zero);
+        // }
 
         private void Update()
         {
@@ -51,6 +53,34 @@ namespace EnemyAI
             if (Vector2.Distance(transform.position, opponent.position) <= data.MinDistance)
             {
                 StateManager.SetState(nameof(AttackState));
+            }
+        }
+
+        /// <summary>
+        /// Caches the incoming object if it is a Stool.
+        /// </summary>
+        /// <param name="other">The Collider which entered the trigger.</param>
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.CompareTag("Hazard"))
+            {
+                if (other.gameObject.TryGetComponent(out Obstacle obstacle) && obstacle.Type == ObstacleType.Stool)
+                {
+                    PursuedStool = obstacle;
+                    StateManager.SetState(nameof(AttackStoolState));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Sets the cached Stool to null if it was a part of the exiting Collision.
+        /// </summary>
+        /// <param name="other">The exiting Collision.</param>
+        private void OnCollisionExit2D(Collision2D other)
+        {
+            if (PursuedStool != null && other.gameObject == PursuedStool.gameObject)
+            {
+                PursuedStool = null;
             }
         }
 

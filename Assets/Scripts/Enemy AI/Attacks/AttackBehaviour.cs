@@ -6,7 +6,7 @@ namespace EnemyAI.Attacks
     {
         [SerializeField] protected AttackBehaviourData data;
         
-        public abstract void PerformAttack(EnvironmentObject opponent);
+        public abstract void PerformAttack(EnvironmentObject opponent, float? damage = null);
         public abstract bool IsMidAttack();
         public abstract string GetName();
     }

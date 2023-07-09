@@ -14,6 +14,7 @@ namespace EnemyAI
         private Rigidbody2D rb;
         protected bool StateActive { get; private set; }
         protected EnemyStateManager StateManager { get; private set; }
+        protected static Obstacle PursuedStool { get; set; }
 
         protected virtual void Awake()
         {
