@@ -22,14 +22,24 @@ public class Table : MonoBehaviour
     private const float TABLE_ROTATE_SPEED = .25f;
     private const float TABLE_LIFT_MODIFIER = .1f;
 
+    private bool allowPopping;
+
     private void Start()
     { 
         rigidBody = GetComponent<Rigidbody2D>();
         originalPos = rigidBody.position;
     }
 
+    public void AllowPopping()
+    {
+        allowPopping = true;
+    }
+
     private void Update()
     {
+        if (!allowPopping)
+            return;
+        
         if(clockwiseCoolDown > 0) { clockwiseCoolDown -= Time.deltaTime; }
         if(counterClockwiseCoodDown > 0) { counterClockwiseCoodDown -= Time.deltaTime; }
 

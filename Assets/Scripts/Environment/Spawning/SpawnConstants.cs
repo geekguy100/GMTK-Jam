@@ -37,7 +37,7 @@ public struct SpawnConstants
     /// <summary>
     /// Random applied torque on spawn
     /// </summary>
-    public const float LAUNCH_BASE_TORQUE = 50;
+    public const float LAUNCH_BASE_TORQUE = 500;
     /// <summary>
     /// Applies how far up the screen is vertically;
     /// </summary>

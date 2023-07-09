@@ -620,6 +620,34 @@ PrefabInstance:
       propertyPath: fighter2
       value: 
       objectReference: {fileID: 764564288}
+    - target: {fileID: 6900541675993837543, guid: 73f86b5b536c4333b9657df3630a7940, type: 3}
+      propertyPath: OnGameStart.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6900541675993837543, guid: 73f86b5b536c4333b9657df3630a7940, type: 3}
+      propertyPath: OnGameStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6900541675993837543, guid: 73f86b5b536c4333b9657df3630a7940, type: 3}
+      propertyPath: OnGameStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1535053322}
+    - target: {fileID: 6900541675993837543, guid: 73f86b5b536c4333b9657df3630a7940, type: 3}
+      propertyPath: OnGameStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6900541675993837543, guid: 73f86b5b536c4333b9657df3630a7940, type: 3}
+      propertyPath: OnGameStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AllowPopping
+      objectReference: {fileID: 0}
+    - target: {fileID: 6900541675993837543, guid: 73f86b5b536c4333b9657df3630a7940, type: 3}
+      propertyPath: OnGameStart.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Table, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6900541675993837543, guid: 73f86b5b536c4333b9657df3630a7940, type: 3}
+      propertyPath: OnGameStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

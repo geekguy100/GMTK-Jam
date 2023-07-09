@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,8 +11,17 @@ public class GameOverUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.Instance.OnGameWin += OnGameWin;
-        GameManager.Instance.OnGameLose += OnGameLose;
+        GameManager.Instance.OnGameWin.AddListener(OnGameWin);
+        GameManager.Instance.OnGameLose.AddListener(OnGameLose);
+    }
+
+    private void OnDisable()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnGameWin.RemoveListener(OnGameWin);
+            GameManager.Instance.OnGameLose.RemoveListener(OnGameLose);
+        }
     }
 
     void OnGameWin()

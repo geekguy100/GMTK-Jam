@@ -36,8 +36,8 @@ namespace EnemyAI
             if (GameManager.Instance == null)
                 return;
 
-            GameManager.Instance.OnGameStart -= SetGameStartState;
-            GameManager.Instance.OnGameEnd -= SetGameEndState;
+            GameManager.Instance.OnGameStart.RemoveListener(SetGameStartState);
+            GameManager.Instance.OnGameEnd.RemoveListener(SetGameEndState);
         }
 
         /// <summary>
@@ -45,8 +45,8 @@ namespace EnemyAI
         /// </summary>
         private void Start()
         {
-            GameManager.Instance.OnGameStart += SetGameStartState;
-            GameManager.Instance.OnGameEnd   += SetGameEndState;
+            GameManager.Instance.OnGameStart.AddListener(SetGameStartState);
+            GameManager.Instance.OnGameEnd.AddListener(SetGameEndState);
             
             SetState(nameof(IdleState));
         }
