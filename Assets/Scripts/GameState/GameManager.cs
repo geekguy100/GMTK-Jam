@@ -14,6 +14,7 @@ public class GameManager : Singleton<GameManager>
     public TimeData timeData;
     [SerializeField] public float timeRemainingSeconds = 0;
     [SerializeField] private bool isPaused = false;
+    [SerializeField] private bool isGameStarted = false;
     [SerializeField] private bool isGameOver = false;
 
     public event Action OnGameStart;
@@ -39,19 +40,33 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-
     void Awake()
     {
-        timeRemainingSeconds = timeData.totalGameTimeSeconds;
-
-        isPaused = false;
+        isGameStarted = false;
 
         // Ensure the game starts with 1.0 time scale.
         timeData.timeScale = 1.0f;
     }
 
+    public void StartGame()
+    {
+        isGameStarted = true;
+        isPaused = false;
+        isGameOver = false;
+
+        // Reset the time remaining.
+        timeRemainingSeconds = timeData.totalGameTimeSeconds;
+
+        // Start the game.
+        OnGameStart?.Invoke();
+    }
+
     void Update()
     {
+        // Bail out if game isn't started yet
+        if(!isGameStarted)
+            return;
+        
         HandleGameTime();
 
         HandleCheckForGameOver();
@@ -59,8 +74,8 @@ public class GameManager : Singleton<GameManager>
 
     void HandleGameTime()
     {
-        // If the game is paused, don't update the time.
-        if(isPaused)
+        // If the game is paused or hasn't started, don't update the time.
+        if(isPaused || isGameOver)
             return;
 
         // Subtract the time passed from the time remaining.
@@ -72,7 +87,7 @@ public class GameManager : Singleton<GameManager>
 
     void HandleCheckForGameOver()
     {
-        if(isGameOver)
+        if(isPaused || isGameOver)
             return;
 
         // Check if time is up
