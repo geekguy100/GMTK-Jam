@@ -4,25 +4,33 @@ using UnityEngine;
 
 namespace EnemyAI
 {
-    [RequireComponent(typeof(PlayerMotor2D))]
     public class DazedState : EnemyStateBase
     {
         private PlayerMotor2D motor;
+        private Fighter fighter;
         [SerializeField] private float recoveryTime;
 
         protected override void Awake()
         {
             base.Awake();
             motor = GetComponent<PlayerMotor2D>();
+            fighter = GetComponent<Fighter>();
         }
 
         public override void OnStateEnter()
         {
             base.OnStateEnter();
             print(gameObject.name + " is Dazed!");
+            
             motor.Move(Vector2.zero);
             motor.Deactivate(false);
             StartCoroutine(Recover());
+        }
+
+        public override void OnStateExit()
+        {
+            base.OnStateExit();
+            fighter.SetMaxStamina();
         }
 
         private IEnumerator Recover()

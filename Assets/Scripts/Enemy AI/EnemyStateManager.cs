@@ -7,7 +7,7 @@ namespace EnemyAI
     [RequireComponent(typeof(TextSetter))]
     public class EnemyStateManager : MonoBehaviour, IEnemyState
     {
-        private bool HasCurrentState => !ReferenceEquals(currentState, null);
+        private bool HasCurrentState => currentState != null;
         private EnemyStateBase currentState;
         private Dictionary<string, EnemyStateBase> states;
 
@@ -30,27 +30,25 @@ namespace EnemyAI
 
             textSetter = GetComponent<TextSetter>();
         }
+        
+        private void OnDisable()
+        {
+            if (GameManager.Instance == null)
+                return;
+
+            GameManager.Instance.OnGameStart.RemoveListener(SetGameStartState);
+            GameManager.Instance.OnGameEnd.RemoveListener(SetGameEndState);
+        }
 
         /// <summary>
         /// Fighter starts in the Idle state, until the game starts.
         /// </summary>
         private void Start()
         {
-            SetState(nameof(IdleState   ));
-
-            GameManager.Instance.OnGameStart += SetGameStartState;
-            GameManager.Instance.OnGameEnd   += SetGameEndState;
-        }
-
-        private void OnDestroy()
-        {
-            if(GameManager.Quitting || GameManager.Instance == null)
-            {
-                return;
-            }
-
-            GameManager.Instance.OnGameStart -= SetGameStartState;
-            GameManager.Instance.OnGameEnd   -= SetGameEndState;
+            GameManager.Instance.OnGameStart.AddListener(SetGameStartState);
+            GameManager.Instance.OnGameEnd.AddListener(SetGameEndState);
+            
+            SetState(nameof(IdleState));
         }
 
         /// <summary>
@@ -105,6 +103,14 @@ namespace EnemyAI
         public void SetGameEndState()
         {
             SetState(nameof(IdleState));
+            
+            Destroy(GetComponent<EnvironmentObject>());
+            foreach (var state in states)
+            {
+                Destroy(state.Value);
+            }
+            
+            Destroy(this);
         }
 
         #region IEnemyState implementations
@@ -118,6 +124,12 @@ namespace EnemyAI
         {
             if (HasCurrentState)
                 currentState.OnHit(ref damageData);
+        }
+
+        [ContextMenu("Force Into Idle")]
+        public void ForceIntoIdle()
+        {
+            SetState(nameof(IdleState));
         }
 
         public string GetStateName()

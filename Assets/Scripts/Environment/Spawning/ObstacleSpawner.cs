@@ -79,7 +79,7 @@ public class ObstacleSpawner : MonoBehaviour
                 break;
             case ObstacleType.Food:
                 if(foods.Count == 0) { return SpawnObstacleType(ObstacleType.Default); }
-                obs = Spawn(foods[Random.Range(0, stools.Count)]);
+                obs = Spawn(foods[Random.Range(0, foods.Count)]);
                 break;
             case ObstacleType.Heavy:
                 if (foods.Count == 0) { return SpawnObstacleType(ObstacleType.Default); }

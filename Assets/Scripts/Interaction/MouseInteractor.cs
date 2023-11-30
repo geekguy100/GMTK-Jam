@@ -17,9 +17,15 @@ public class MouseInteractor : MonoBehaviour
 
     public IInteractable currentInteractable;
 
+    private float cachedTime;
+    [SerializeField] private float maxHoldTime;
+
+    private Camera mainCamera;
+
     private void Start()
     {
         sampleMousePosCoroutine = StartCoroutine(SampleMousePosition());
+        mainCamera = Camera.main;
     }
 
     public void Update()
@@ -61,6 +67,8 @@ public class MouseInteractor : MonoBehaviour
                     currentInteractable = interactable;
                     currentInteractable.OnInteractableDestroyed += OnInteractableDestroyed;
 
+                    cachedTime = Time.time;
+
                     //currentInteractable.rb.velocity = Vector2.zero;
                 }
             }
@@ -70,6 +78,7 @@ public class MouseInteractor : MonoBehaviour
             // Unassign existing interactable if it exists.
             if (currentInteractable != null)
             {
+                cachedTime = 0;
                 print($"Unassigning interactable {currentInteractable}");
 
                 currentInteractable.OnUnassigned();
@@ -84,12 +93,13 @@ public class MouseInteractor : MonoBehaviour
         }
     }
 
+    private bool tickingDown;
     private void HandleInteractableMovement()
     {
         if (currentInteractable == null)
             return;
 
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
 
         // Lerp towards mouse to give it a bit of force to throw
@@ -97,6 +107,32 @@ public class MouseInteractor : MonoBehaviour
         
         Vector2 targetVelocity = (mousePos - currentInteractable.rb.position) * mouseInteractData.mouseFollowMultiplier;
         currentInteractable.rb.velocity = Vector2.Lerp(currentInteractable.rb.velocity, targetVelocity, mouseInteractData.mouseLerpSpeed * Time.deltaTime);
+
+        if (Time.time - cachedTime >= maxHoldTime && !tickingDown)
+        {
+            tickingDown = true;
+            StartCoroutine(TickHealthDown());
+        }
+    }
+    
+    private IEnumerator TickHealthDown()
+    {
+        var env = currentInteractable.gameObject.GetComponent<EnvironmentObject>();
+        DamageData data = new DamageData()
+        {
+            damage = 10f,
+            force = Vector2.zero,
+            sourceName = "Player",
+            sourceObject = gameObject
+        };
+        
+        while (currentInteractable != null)
+        {
+            env.OnDamaged(data);
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        tickingDown = false;
     }
 
     private void OnInteractableDestroyed()

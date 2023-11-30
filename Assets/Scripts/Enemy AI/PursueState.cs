@@ -48,6 +48,12 @@ namespace EnemyAI
         {
             if (!StateActive)
                 return;
+
+            if (opponent == null)
+            {
+                StateManager.SetState(nameof(IdleState));
+                return;
+            }
             
             input = (opponent.position - transform.position).normalized;
             if (Vector2.Distance(transform.position, opponent.position) <= data.MinDistance)
@@ -62,6 +68,9 @@ namespace EnemyAI
         /// <param name="other">The Collider which entered the trigger.</param>
         private void OnCollisionEnter2D(Collision2D other)
         {
+            if (StateManager.GetStateName() == nameof(DazedState))
+                return;
+            
             if (other.gameObject.CompareTag("Stool"))
             {
                 PursuedStool = other.gameObject.GetComponent<Obstacle>();

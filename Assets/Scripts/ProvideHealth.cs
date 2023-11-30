@@ -14,6 +14,9 @@ public class ProvideHealth : MonoBehaviour
         }
 
         EnvironmentObject fighter = incomingObject.GetComponent<EnvironmentObject>();
+        if (fighter == null)
+            return;
+        
         fighter.AddHealth(amount);
         
         GetComponent<EnvironmentObject>().OnRemove();

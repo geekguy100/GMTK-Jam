@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using EnemyAI;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
@@ -23,11 +24,11 @@ public class GameManager : Singleton<GameManager>
 
     public bool isGameActive { get { return isGameStarted && !isPaused && !isGameOver; } }
 
-    public event Action OnGameStart;
-    public event Action OnGameEnd;
-    public event Action OnGameWin;
-    public event Action OnGameLose;
-    public event Action OnGameRestart;
+    public UnityEvent OnGameStart;
+    public UnityEvent OnGameEnd;
+    public UnityEvent OnGameWin;
+    public UnityEvent OnGameLose;
+    public UnityEvent OnGameRestart;
 
 
     /// <summary>
@@ -49,7 +50,7 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    void Awake()
+    void Start()
     {
         isGameStarted = false;
 
@@ -68,14 +69,16 @@ public class GameManager : Singleton<GameManager>
 
         // Reset the time remaining.
         timeRemainingSeconds = timeData.totalGameTimeSeconds;
-
+        
         // Start the game.
         OnGameStart?.Invoke();
+        
+        AudioManager.Instance.PlayMusic();
     }
 
     public void ResetGame()
     {
-
+        AudioManager.Instance.StopMusicsAudio();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     void Update()

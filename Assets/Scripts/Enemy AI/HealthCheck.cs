@@ -2,7 +2,6 @@
 
 namespace EnemyAI
 {
-    [RequireComponent(typeof(OpponentContainer), typeof(EnvironmentObject))]
     public class HealthCheck : RngCheck
     {
         [SerializeField] private bool isLeftFighter;

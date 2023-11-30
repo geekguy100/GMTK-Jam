@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseInteractData: {fileID: 11400000, guid: e8c51ebb49d1d9b3495dc878379b13ca, type: 2}
+  maxHoldTime: 1
